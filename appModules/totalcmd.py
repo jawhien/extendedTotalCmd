@@ -7,11 +7,13 @@
 
 import appModuleHandler
 import addonHandler
+import api
 import NVDAObjects
 from NVDAObjects.IAccessible import IAccessible
 import speech
 import controlTypes
 import winsound
+import re
 import ui
 import winUser
 from . import tcApi
@@ -306,6 +308,15 @@ class TCList8x(IAccessible):
 				sizeKB = int(size)
 				sizeMB = int((sizeKB / 1024) * 100) / 100
 				template = _("{mb} MB, {kb} KB").format(mb=sizeMB, kb=sizeKB)
+				ui.message(template)
+			elif selected == 0 and tcApi.isCurrentFolder() == False:
+				hnd = tcApi.getSizeHandle()
+				obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
+				text = obj.displayText
+				obj = api.getFocusObject()
+				size = text[len(obj.name):text.find('.')-2]
+				size = re.sub(r'[^0-9]+', r'', size)
+				template = _("{size} bytes").format(size=size)
 				ui.message(template)
 			else:
 				ui.message(_("Nothing selected"))
