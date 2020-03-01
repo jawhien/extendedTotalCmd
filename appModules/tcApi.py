@@ -1,6 +1,6 @@
 
 from ctypes import windll
-from NVDAObjects.IAccessible import IAccessible
+from NVDAObjects import IAccessible
 import winUser
 import api
 
@@ -67,7 +67,7 @@ class tcApi():
 		hnd = self.getSizeHandle()
 		obj = IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
 		text = obj.displayText
-		if textInfo.find('<') >= 0 or textInfo.find('>') >= 0:
+		if text.find('<') >= 0 or text.find('>') >= 0:
 			return True
 		else:
 			return False
