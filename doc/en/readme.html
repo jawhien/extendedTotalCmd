@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Extended module for Total Commander</title>
+</head>
+<body>
+<h1>Extended module for Total Commander</h1>
+<a href="https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/">Page on JNSoft.RU</a>
+<p>This add-on improves the accessibility of the file Manager Total Commander, mostly versions 8.0 and higher.</p>
+<p>Developer: Eugene Poplavsky <a href="https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/donation.php">Help the add-on developer</a>!</p>
+<h3>Shortcuts</h3>
+<table>
+<tr><th>Command</th><th>Action</th></tr>
+<tr><td>CONTROL+SHIFT+E</td><td>Reports information about the selected elements</td></tr>
+<tr><td>CONTROL+SHIFT+E</td><td>Reports the size of selected elements</td></tr>
+</table>
+<h3>Change log</h3>
+<p>V 2.0</p>
+<ul>
+<li>Fixed a bug where the border of the list was mistakenly identified on some files.</li>
+<li>Fixed problem in 32 bit versions of tc8+ when the exit to the previous directory, declared the first list item, then the item in focus.</li>
+<li>Added announcement of item positions in the list, if this feature is enabled in the NVDA settings. (Only in TC9 +)</li>
+<li>Added the ability to report information about selected items by ctrl + shift + e. (Only in TC9 +)</li>
+<li>Added declaration of selected elements when pressing CTRL + A. (Only in TC9 +)</li>
+<li>Added announcement about deselecting when pressing CTRL + num-. (Only in TC9 +)</li>
+<li>Added announcement of the size of selected files by pressing CTRL + SHIFT + R. (Only in TC9+).</li>
+</ul> 
+<p>v 1.4</p>
+<ul>
+<li>The signal at the bottom of the list has been replaced with standard windows sound.</li>
+<li>Added a signal to the top of the list.</li>
+<li>Now not only arrows are processed, but also Home, End, PageUp and PageDown keys for signaling list boundaries.</li>
+<li>Added compatibility with new versions of NVDA.</li>
+</ul>
+<p>V 1.3:</p>
+<ul>
+<li>The sound signal will now sound only when navigating the list when the down arrow is pressed on the last element of the list, and not when the focus is on the last element.</li>
+<li>Fixed erroneous behavior outside the main window, settings, and other lists.</li>
+<li>Improved behavior in the FTP connection dialog.</li>
+</ul>
+<p>V 1.2:</p>
+<ul>
+<li>The mechanism for determining the active panel in versions 8 and above has been changed.</li>
+<li>Optimized code to avoid problems with versions 7 and below.</li>
+<li>When the focus falls on the last element of the list, a sound signal will be played.</li>
+<li>Fixed incorrect pronunciation of the active panel outside the main window.</li>
+</ul>
+<p>V 1.1:</p>
+<ul>
+<li>Now, in the disc selection window, disc labels are read.</li>
+<li>A description has been added to the elements with the name of the active panel, when you press the (NVDA + UpArrow) or (NVDA + TAB) keys, the name of the element and the name of the active panel are pronounced.</li>.
+<li>Minor improvements.</li>
+</ul>
+<p>V 1.0:</p>
+<ul>
+<li>First version.</li>
+</ul>
+</body>
+</html>
