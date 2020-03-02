@@ -342,7 +342,7 @@ class TCList8x(IAccessible):
 				ui.message(convertedSize)
 			elif selected == 0 and sizeData != False:
 				obj = api.getFocusObject()
-				size = sizeData[len(obj.name):sizeData.find('.')-2]
+				size = sizeData[len(obj.name):sizeData.find('.', len(obj.name))-2]
 				size = re.sub(r'[^0-9]+', r'', size)
 				convertedSize = tcInfo.convertSizeFromBytes(size)
 				ui.message(convertedSize)
