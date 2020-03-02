@@ -332,6 +332,10 @@ class TCList8x(IAccessible):
 			selected = tcApi.getSelectedElements()
 			sizeData = tcApi.getAvailableSize()
 			if selected > 0:
+				waitIndicator = sizeData[0:1]
+				if waitIndicator == '?':
+					ui.message(_("The size is calculated... Wait a few seconds."))
+					return
 				size = ''
 				for s in sizeData:
 					if s.isspace() == False and s.isdigit() == False:
