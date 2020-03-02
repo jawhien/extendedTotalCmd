@@ -295,6 +295,7 @@ class TCList8x(IAccessible):
 	def script_reportFileSize(self, gesture):
 		if tcApi.isApiSupported():
 			selected = tcApi.getSelectedElements()
+			sizeData = tcApi.getAvailableSize()
 			if selected > 0:
 				hnd = tcApi.getSizeHandle()
 				obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
@@ -309,12 +310,9 @@ class TCList8x(IAccessible):
 				sizeMB = int((sizeKB / 1024) * 100) / 100
 				template = _("{mb} MB, {kb} KB").format(mb=sizeMB, kb=sizeKB)
 				ui.message(template)
-			elif selected == 0 and tcApi.isCurrentFolder() == False:
-				hnd = tcApi.getSizeHandle()
-				obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
-				text = obj.displayText
+			elif selected == 0 and sizeData != False:
 				obj = api.getFocusObject()
-				size = text[len(obj.name):text.find('.')-2]
+				size = sizeData[len(obj.name):sizeData.find('.')-2]
 				size = re.sub(r'[^0-9]+', r'', size)
 				template = _("{size} bytes").format(size=size)
 				ui.message(template)
