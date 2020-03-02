@@ -297,11 +297,8 @@ class TCList8x(IAccessible):
 			selected = tcApi.getSelectedElements()
 			sizeData = tcApi.getAvailableSize()
 			if selected > 0:
-				hnd = tcApi.getSizeHandle()
-				obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
-				text = obj.displayText
 				size = ''
-				for s in text:
+				for s in sizeData:
 					if s.isspace() == False and s.isdigit() == False:
 						break
 					if s.isdigit():
