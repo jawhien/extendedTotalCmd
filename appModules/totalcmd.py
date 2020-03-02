@@ -317,7 +317,7 @@ class TCList8x(IAccessible):
 				template = _("{size} bytes").format(size=size)
 				ui.message(template)
 			else:
-				ui.message(_("Nothing selected"))
+				ui.message(_("No size information. Try select this folder."))
 		else:
 			ui.message(_("Not supported in this version of total commander"))
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
