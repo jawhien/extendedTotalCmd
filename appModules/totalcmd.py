@@ -25,6 +25,27 @@ manifest = addonHandler.getCodeAddon().manifest
 oldActivePannel=0
 activePannel=1
 
+class getTCInfo():
+
+	def convertSizeFromBytes(self, bytes):
+		sizeBytes = int(bytes)
+		sizeKB = int((sizeBytes / 1024) * 100) / 100
+		sizeMB = int((sizeBytes / 1024 / 1024) * 100) / 100
+		sizeGB = int((sizeBytes / 1024 / 1024 / 1024) * 100) / 100
+		sizeTB = int((sizeBytes / 1024 / 1024 / 1024 / 1024) * 100) / 100
+		if sizeTB >= 1:
+			return _("{size} tB").format(size=sizeTB)
+		elif sizeGB >= 1:
+			return _("{size} gB").format(size=sizeGB)
+		elif sizeMB >= 1:
+			return _("{size} mB").format(size=sizeMB)
+		elif sizeKB >= 1:
+			return _("{size} kB").format(size=sizeKB)
+		else:
+			return _("{size} Bytes").format(size=sizeBytes)
+
+tcInfo = getTCInfo()
+
 class AppModule(appModuleHandler.AppModule):
 	scriptCategory = manifest['summary']
 
@@ -311,8 +332,8 @@ class TCList8x(IAccessible):
 				obj = api.getFocusObject()
 				size = sizeData[len(obj.name):sizeData.find('.')-2]
 				size = re.sub(r'[^0-9]+', r'', size)
-				template = _("{size} bytes").format(size=size)
-				ui.message(template)
+				convertedSize = tcInfo.convertSizeFromBytes(size)
+				ui.message(convertedSize)
 			else:
 				ui.message(_("No size information. Try select this folder."))
 		else:
