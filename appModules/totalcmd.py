@@ -44,6 +44,20 @@ class getTCInfo():
 		else:
 			return _("{size} Bytes").format(size=sizeBytes)
 
+	def convertSizeFromKB(self, kb):
+		sizeKB = int(kb)
+		sizeMB = int((sizeKB / 1024) * 100) / 100
+		sizeGB = int((sizeKB / 1024 / 1024) * 100) / 100
+		sizeTB = int((sizeKB / 1024 / 1024 / 1024) * 100) / 100
+		if sizeTB >= 1:
+			return _("{size} tB").format(size=sizeTB)
+		elif sizeGB >= 1:
+			return _("{size} gB").format(size=sizeGB)
+		elif sizeMB >= 1:
+			return _("{size} mB").format(size=sizeMB)
+		else:
+			return _("{size} kB").format(size=sizeKB)
+
 tcInfo = getTCInfo()
 
 class AppModule(appModuleHandler.AppModule):
@@ -324,10 +338,8 @@ class TCList8x(IAccessible):
 						break
 					if s.isdigit():
 						size += s
-				sizeKB = int(size)
-				sizeMB = int((sizeKB / 1024) * 100) / 100
-				template = _("{mb} MB, {kb} KB").format(mb=sizeMB, kb=sizeKB)
-				ui.message(template)
+				convertedSize = tcInfo.convertSizeFromKB(size)
+				ui.message(convertedSize)
 			elif selected == 0 and sizeData != False:
 				obj = api.getFocusObject()
 				size = sizeData[len(obj.name):sizeData.find('.')-2]
