@@ -63,14 +63,14 @@ class tcApi():
 		hnd = self.sendMessage(param1, 0)
 		return hnd
 
-	def isCurrentFolder(self):
+	def getAvailableSize(self):
 		hnd = self.getSizeHandle()
 		obj = IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
 		text = obj.displayText
 		if text.find('<') >= 0 or text.find('>') >= 0:
-			return True
-		else:
 			return False
+		else:
+			return text
 
 	def isApiSupported(self):
 		obj = api.getFocusObject()
