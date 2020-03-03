@@ -58,6 +58,34 @@ class getTCInfo():
 		else:
 			return _("{size} kB").format(size=sizeKB)
 
+	def speakSize(self):
+		if tcApi.isApiSupported():
+			selected = tcApi.getSelectedElements()
+			sizeData = tcApi.getAvailableSize()
+			if selected > 0:
+				waitIndicator = sizeData[0:1]
+				if waitIndicator == '?':
+					ui.message(_("The size is calculated, wait a few seconds..."))
+					return
+				size = ''
+				for s in sizeData:
+					if s.isspace() == False and s.isdigit() == False:
+						break
+					if s.isdigit():
+						size += s
+				convertedSize = self.convertSizeFromKB(size)
+				ui.message(convertedSize)
+			elif selected == 0 and sizeData != False:
+				obj = api.getFocusObject()
+				size = sizeData[len(obj.name):sizeData.find('.', len(obj.name))-2]
+				size = re.sub(r'[^0-9]+', r'', size)
+				convertedSize = self.convertSizeFromBytes(size)
+				ui.message(convertedSize)
+			else:
+				ui.message(_("No size information. Try select this item."))
+		else:
+			ui.message(_("Not supported in this version of total commander"))
+
 tcInfo = getTCInfo()
 
 class AppModule(appModuleHandler.AppModule):
@@ -179,26 +207,7 @@ class TCList(IAccessible):
 			ui.message(_("Not supported in this version of total commander"))
 
 	def script_reportFileSize(self, gesture):
-		if tcApi.isApiSupported():
-			selected = tcApi.getSelectedElements()
-			if selected > 0:
-				hnd = tcApi.getSizeHandle()
-				obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
-				text = obj.displayText
-				size = ''
-				for s in text:
-					if s.isspace() == False and s.isdigit() == False:
-						break
-					if s.isdigit():
-						size += s
-				sizeKB = int(size)
-				sizeMB = int((sizeKB / 1024) * 100) / 100
-				template = _("{mb} MB, {kb} KB").format(mb=sizeMB, kb=sizeKB)
-				ui.message(template)
-			else:
-				ui.message(_("Nothing selected"))
-		else:
-			ui.message(_("Not supported in this version of total commander"))
+		tcInfo.speakSize()
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
 	__nextElementGestures = {
@@ -328,32 +337,7 @@ class TCList8x(IAccessible):
 			ui.message(_("Not supported in this version of total commander"))
 
 	def script_reportFileSize(self, gesture):
-		if tcApi.isApiSupported():
-			selected = tcApi.getSelectedElements()
-			sizeData = tcApi.getAvailableSize()
-			if selected > 0:
-				waitIndicator = sizeData[0:1]
-				if waitIndicator == '?':
-					ui.message(_("The size is calculated... Wait a few seconds."))
-					return
-				size = ''
-				for s in sizeData:
-					if s.isspace() == False and s.isdigit() == False:
-						break
-					if s.isdigit():
-						size += s
-				convertedSize = tcInfo.convertSizeFromKB(size)
-				ui.message(convertedSize)
-			elif selected == 0 and sizeData != False:
-				obj = api.getFocusObject()
-				size = sizeData[len(obj.name):sizeData.find('.', len(obj.name))-2]
-				size = re.sub(r'[^0-9]+', r'', size)
-				convertedSize = tcInfo.convertSizeFromBytes(size)
-				ui.message(convertedSize)
-			else:
-				ui.message(_("No size information. Try select this folder."))
-		else:
-			ui.message(_("Not supported in this version of total commander"))
+		tcInfo.speakSize()
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
 	__nextElementGestures = {
