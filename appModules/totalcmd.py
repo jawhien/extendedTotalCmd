@@ -86,6 +86,28 @@ class getTCInfo():
 		else:
 			ui.message(_("Not supported in this version of total commander"))
 
+	def speakSelectedCommand(self):
+		if tcApi.isApiSupported():
+			selected = tcApi.getSelectedElements()
+			if selected > 0:
+				template = _("Selected {count} items").format(count=selected)
+				ui.message(template)
+			elif selected == 0:
+				ui.message(_("Nothing selected"))
+		else:
+			ui.message(_("Not supported in this version of total commander"))
+
+	def speakSelectedItemsInfo(self):
+		if tcApi.isApiSupported():
+			total = tcApi.getCountElements()
+			selected = tcApi.getSelectedElements()
+			if selected > total:
+				selected = total
+			template = _("Selected {selected} of {total} items").format(selected=selected, total=total)
+			ui.message(template)
+		else:
+			ui.message(_('Not supported in this version of total commander'))
+
 tcInfo = getTCInfo()
 
 class AppModule(appModuleHandler.AppModule):
@@ -183,28 +205,12 @@ class TCList(IAccessible):
 			self.bindGesture(gesture, "selectedCommands")
 
 	def script_selectedElementsInfo(self, gesture):
-		if tcApi.isApiSupported():
-			total = tcApi.getCountElements()
-			selected = tcApi.getSelectedElements()
-			if selected > total:
-				selected = total
-			template = _("Selected {selected} of {total} items").format(selected=selected, total=total)
-			ui.message(template)
-		else:
-			ui.message(_('Not supported in this version of total commander'))
+		tcInfo.speakSelectedItemsInfo()
 	script_selectedElementsInfo.__doc__ = _("Reports information about the number of selected elements")
 
 	def script_selectedCommands(self, gesture):
 		gesture.send()
-		if tcApi.isApiSupported():
-			selected = tcApi.getSelectedElements()
-			if selected > 0:
-				template = _("Selected {count} items").format(count=selected)
-				ui.message(template)
-			elif selected == 0:
-				ui.message(_("Nothing selected"))
-		else:
-			ui.message(_("Not supported in this version of total commander"))
+		tcInfo.speakSelectedCommand()
 
 	def script_reportFileSize(self, gesture):
 		tcInfo.speakSize()
@@ -313,28 +319,12 @@ class TCList8x(IAccessible):
 			self.bindGesture(gesture, "selectedCommands")
 
 	def script_selectedElementsInfo(self, gesture):
-		if tcApi.isApiSupported():
-			total = tcApi.getCountElements()
-			selected = tcApi.getSelectedElements()
-			if selected > total:
-				selected = total
-			template = _("Selected {selected} of {total} items").format(selected=selected, total=total)
-			ui.message(template)
-		else:
-			ui.message(_('Not supported in this version of total commander'))
+		tcInfo.speakSelectedItemsInfo()
 	script_selectedElementsInfo.__doc__ = _("Reports information about the number of selected elements")
 
 	def script_selectedCommands(self, gesture):
 		gesture.send()
-		if tcApi.isApiSupported():
-			selected = tcApi.getSelectedElements()
-			if selected > 0:
-				template = _("Selected {count} items").format(count=selected)
-				ui.message(template)
-			elif selected == 0:
-				ui.message(_("Nothing selected"))
-		else:
-			ui.message(_("Not supported in this version of total commander"))
+		tcInfo.speakSelectedCommand()
 
 	def script_reportFileSize(self, gesture):
 		tcInfo.speakSize()
