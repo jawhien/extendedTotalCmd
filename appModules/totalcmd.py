@@ -108,6 +108,15 @@ class getTCInfo():
 		else:
 			ui.message(_('Not supported in this version of total commander'))
 
+	def getPreviousItemGestures(self):
+		return {"kb:upArrow","kb:leftArrow","KB:PageUp","KB:HOME"}
+
+	def getNextItemGestures(self):
+		return {"kb:downArrow","kb:rightArrow","KB:PageDown","KB:END"}
+
+	def getSelectedCommandGestures(self):
+		return {"KB:CONTROL+A","KB:CONTROL+numpadMinus"}
+
 tcInfo = getTCInfo()
 
 class AppModule(appModuleHandler.AppModule):
@@ -129,6 +138,9 @@ class TCList(IAccessible):
 	scriptCategory = manifest['summary']
 	lastPanel = 0
 	activePanel = 1
+	__previousItemGestures = tcInfo.getPreviousItemGestures()
+	__nextItemGestures = tcInfo.getNextItemGestures()
+	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
 
 	def event_gainFocus(self):
 		global oldActivePannel
@@ -197,9 +209,9 @@ class TCList(IAccessible):
 			winsound.PlaySound("default",1)
 
 	def initOverlayClass(self):
-		for gesture in self.__nextElementGestures:
+		for gesture in self.__nextItemGestures:
 			self.bindGesture(gesture, "nextElement")
-		for gesture in self.__previousElementGestures:
+		for gesture in self.__previousItemGestures:
 			self.bindGesture(gesture, "previousElement")
 		for gesture in self.__selectedCommandsGestures:
 			self.bindGesture(gesture, "selectedCommands")
@@ -216,25 +228,6 @@ class TCList(IAccessible):
 		tcInfo.speakSize()
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
-	__nextElementGestures = {
-		"kb:downArrow",
-		"kb:rightArrow",
-		"KB:PageDown",
-		"KB:END"
-	}
-
-	__previousElementGestures = {
-		"kb:upArrow",
-		"kb:leftArrow",
-		"KB:PageUp",
-		"KB:HOME"
-	}
-
-	__selectedCommandsGestures = {
-		"KB:CONTROL+A",
-		"KB:CONTROL+numpadMinus"
-	}
-
 	__gestures={
 		"KB:CONTROL+SHIFT+E":"selectedElementsInfo",
 	"KB:CONTROL+SHIFT+R":"reportFileSize"
@@ -250,6 +243,9 @@ class TCCombo(IAccessible):
 
 class TCList8x(IAccessible):
 	scriptCategory = manifest['summary']
+	__previousItemGestures = tcInfo.getPreviousItemGestures()
+	__nextItemGestures = tcInfo.getNextItemGestures()
+	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
 
 	def event_gainFocus(self):
 		global oldActivePannel
@@ -311,9 +307,9 @@ class TCList8x(IAccessible):
 			winsound.PlaySound("default",1)
 
 	def initOverlayClass(self):
-		for gesture in self.__nextElementGestures:
+		for gesture in self.__nextItemGestures:
 			self.bindGesture(gesture, "nextElement")
-		for gesture in self.__previousElementGestures:
+		for gesture in self.__previousItemGestures:
 			self.bindGesture(gesture, "previousElement")
 		for gesture in self.__selectedCommandsGestures:
 			self.bindGesture(gesture, "selectedCommands")
@@ -330,31 +326,14 @@ class TCList8x(IAccessible):
 		tcInfo.speakSize()
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
-	__nextElementGestures = {
-		"kb:downArrow",
-		"kb:rightArrow",
-		"KB:PageDown",
-		"KB:END"
-	}
-
-	__previousElementGestures = {
-		"kb:upArrow",
-		"kb:leftArrow",
-		"KB:PageUp",
-		"KB:HOME"
-	}
-
-	__selectedCommandsGestures = {
-		"KB:CONTROL+A",
-		"KB:CONTROL+numpadMinus"
-	}
-
 	__gestures={
 		"KB:CONTROL+SHIFT+E":"selectedElementsInfo",
 	"KB:CONTROL+SHIFT+R":"reportFileSize"
 	}
 
 class TCListConnect(IAccessible):
+	__previousItemGestures = tcInfo.getPreviousItemGestures()
+	__nextItemGestures = tcInfo.getNextItemGestures()
 
 	def script_nextElement(self, gesture):
 		gesture.send()
@@ -367,22 +346,7 @@ class TCListConnect(IAccessible):
 			winsound.PlaySound("default",1)
 
 	def initOverlayClass(self):
-		for gesture in self.__nextElementGestures:
+		for gesture in self.__nextItemGestures:
 			self.bindGesture(gesture, "nextElement")
-		for gesture in self.__previousElementGestures:
+		for gesture in self.__previousItemGestures:
 			self.bindGesture(gesture, "previousElement")
-
-	__nextElementGestures = {
-		"kb:downArrow",
-		"kb:rightArrow",
-		"KB:PageDown",
-		"KB:END"
-	}
-
-	__previousElementGestures = {
-		"kb:upArrow",
-		"kb:leftArrow",
-		"KB:PageUp",
-		"KB:HOME"
-	}
-
