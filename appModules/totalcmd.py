@@ -137,15 +137,12 @@ class AppModule(appModuleHandler.AppModule):
 
 class TCList(IAccessible):
 	scriptCategory = manifest['summary']
-	lastPanel = 0
-	activePanel = 1
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
 	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
 
 	def event_gainFocus(self):
-		global oldActivePannel
-		global activePannel
+		global oldActivePannel, activePannel
 		if oldActivePannel !=self.windowControlID:
 			oldActivePannel=self.windowControlID
 			obj=self
@@ -249,8 +246,7 @@ class TCList8x(IAccessible):
 	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
 
 	def event_gainFocus(self):
-		global oldActivePannel
-		global activePannel
+		global oldActivePannel, activePannel
 		if oldActivePannel !=self.windowControlID:
 			oldActivePannel=self.windowControlID
 			obj=self
