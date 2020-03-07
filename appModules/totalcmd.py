@@ -95,8 +95,6 @@ class getTCInfo():
 				ui.message(template)
 			elif selected == 0:
 				ui.message(_("Nothing selected"))
-		else:
-			ui.message(_("Not supported in this version of total commander"))
 
 	def speakSelectedItemsInfo(self):
 		if tcApi.isApiSupported():
