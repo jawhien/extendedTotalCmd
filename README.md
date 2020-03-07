@@ -1,5 +1,5 @@
 # This document in other languages
-[–ÛÒÒÍËÈ](https://github.com/jawhien/extendedTotalCmd/tree/master/doc/ru)
+[–†—É—Å—Å–∫–∏–π](https://github.com/jawhien/extendedTotalCmd/tree/master/doc/ru)
 
 # Total Commander
 
@@ -51,7 +51,7 @@ If you liked my add-on, you can donate any amount on the [special page](https://
 In this case, you need to [create a new issue](https://github.com/jawhien/extendedTotalCmd/issues/new) in the GitHub repository. Describe as much as possible your problem / proposal.
 
 ## The add-on does not support my language, can I help with the translation?
-Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the authorís email address in the NVDA Add-ons Manager.
+Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the author‚Äôs email address in the NVDA Add-ons Manager.
 
 # Change log
 
