@@ -1,6 +1,3 @@
-# This document in other languages
-[Русский](https://github.com/jawhien/extendedTotalCmd/tree/master/doc/ru)
-
 # Total Commander
 
 This add-on improves the accessibility of the Total Commander file manager. It is compatible with all versions starting with TC 7.0, but some functions work only in versions 9.0 and higher.

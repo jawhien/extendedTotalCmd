@@ -1,0 +1,63 @@
+
+h1 {
+font-size: 22pt;
+}
+h2 {
+font-size: 20pt;
+}
+h3 {
+font-size: 18pt;
+}
+.wrapper {
+width: 100%;
+outline:1px solid #787274;
+padding:0.5em;
+margin: 0 auto;
+font-family: "Century Gothic", Verdana, Arial;
+font-size: 15pt;}
+.header{
+height: 15%;
+background-color: #ccffff;
+margin-bottom: 0.75em;
+text-align: center;
+}
+.sidebar{
+width: 20%;
+height:70%;
+background-color:#CCFFCC;
+margin-bottom:5%;
+float:right;
+padding:0.5em;
+text-align: left;
+}
+.sidebar ul {
+list-style-type: none;
+}
+.content{
+height:70%;
+width:75%;
+padding:0.5em;
+background-color:#CCFF99;
+margin-bottom:5%;
+text-align: justify;
+}
+.footer{
+height:10%;
+background-color:#FFFFCC;
+margin-bottom:0.5em;
+}
+.clear{
+clear:both;
+}
+
+@media screen and (max-width:640px){
+.sidebar{
+width: 100%;
+height:auto;
+}
+.content{
+height:70%;
+width:100%;
+}
+}
+
