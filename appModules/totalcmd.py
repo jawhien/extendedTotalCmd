@@ -127,7 +127,7 @@ class AppModule(appModuleHandler.AppModule):
 		if obj.windowClassName in ("ComboLBox", "ComboLBox.UnicodeClass"):
 			clsList.insert(0, TCCombo)
 		if obj.windowClassName in ("LCLListBox", "LCLListBox.UnicodeClass")  and obj.parent.parent.parent.windowClassName == "TTOTAL_CMD":
-			clsList.insert(0, TCList8x)
+			clsList.insert(0, TCList64)
 		if obj.windowClassName in ("LCLListBox", "LCLListBox.UnicodeClass")  and obj.parent.parent.parent.windowClassName == "TCONNECT":
 			clsList.insert(0, TCListConnect)
 		if obj.windowClassName in ("TMyListBox", "TMyListBox.UnicodeClass") and obj.parent.parent.parent.windowClassName == "TCONNECT":
@@ -237,7 +237,7 @@ class TCCombo(IAccessible):
 			self.name = description[0:1] + " (" + description[2:] + ")"
 		super(TCCombo,self).event_gainFocus()
 
-class TCList8x(IAccessible):
+class TCList64(IAccessible):
 	scriptCategory = manifest['summary']
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
@@ -257,7 +257,7 @@ class TCList8x(IAccessible):
 				elif obj.previous and obj.next and obj.previous.windowClassName == "Window" and obj.next.windowClassName == "LCLListBox":
 					speech.speakMessage(_("Right"))
 					activePannel = 2
-		super(TCList8x,self).event_gainFocus()
+		super(TCList64,self).event_gainFocus()
 
 	def _get_positionInfo(self):
 		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
@@ -289,7 +289,7 @@ class TCList8x(IAccessible):
 			if self.hasFocus:
 				speech.speakMessage(" ".join(speakList))
 		else:
-			super(TCList8x,self).reportFocus()
+			super(TCList64,self).reportFocus()
 
 	def script_nextElement(self, gesture):
 		gesture.send()
