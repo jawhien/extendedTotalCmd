@@ -1,3 +1,8 @@
+#appModules/tcApi.py
+#A part of Total Commander add-on
+#Copyright (C) 2020 Eugene Poplavsky <jawhien@gmail.com>
+#This file is covered by the GNU General Public License.
+#See the file LICENSE.txt for more details.
 
 from ctypes import windll
 from NVDAObjects import IAccessible
