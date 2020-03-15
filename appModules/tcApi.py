@@ -85,3 +85,5 @@ class tcApi():
 		else:
 			return False
 
+	def getCurDirPanelHandle(self):
+		return self.sendMessage(21, 0)
