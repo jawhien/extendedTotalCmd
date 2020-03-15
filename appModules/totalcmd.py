@@ -116,6 +116,11 @@ class getTCInfo():
 	def getSelectedCommandGestures(self):
 		return {"KB:CONTROL+A","KB:CONTROL+numpadMinus"}
 
+	def speakCurrentPath(self):
+		hnd = tcApi.getCurDirPanelHandle()
+		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
+		ui.message(obj.name)
+
 tcInfo = getTCInfo()
 
 class AppModule(appModuleHandler.AppModule):
@@ -224,7 +229,12 @@ class TCList(IAccessible):
 		tcInfo.speakSize()
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
+	def script_speakPath(self, gesture):
+		tcInfo.speakCurrentPath()
+	script_speakPath.__doc__ = _("Reports the current path to the folder.")
+
 	__gestures={
+		"kb:control+shift+d":"speakPath",
 		"KB:CONTROL+SHIFT+E":"selectedElementsInfo",
 	"KB:CONTROL+SHIFT+R":"reportFileSize"
 	}
@@ -321,7 +331,12 @@ class TCList64(IAccessible):
 		tcInfo.speakSize()
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
+	def script_speakPath(self, gesture):
+		tcInfo.speakCurrentPath()
+	script_speakPath.__doc__ = _("Reports the current path to the folder.")
+
 	__gestures={
+		"kb:control+shift+d":"speakPath",
 		"KB:CONTROL+SHIFT+E":"selectedElementsInfo",
 	"KB:CONTROL+SHIFT+R":"reportFileSize"
 	}
