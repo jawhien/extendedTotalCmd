@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Extended module for Total Commander 2.0\n"
-"POT-Creation-Date: 2020-03-11 20:54+0300\n"
-"PO-Revision-Date: 2020-03-11 21:00+0300\n"
+"POT-Creation-Date: 2020-03-15 14:47+0300\n"
+"PO-Revision-Date: 2020-03-15 14:48+0300\n"
 "Last-Translator: Eugene Poplavsky <jawhien@gmail.com>\n"
 "Language-Team: Eugene Poplavsky <jawhien@gmail.com>\n"
 "Language: ru\n"
@@ -69,34 +69,38 @@ msgstr "Ничего не выделено"
 msgid "Selected {selected} of {total} items"
 msgstr "Выделено {selected} из {total} элементов"
 
-#: appModules/totalcmd.py:156 appModules/totalcmd.py:255
+#: appModules/totalcmd.py:161 appModules/totalcmd.py:265
 msgid "Left"
 msgstr "Левая"
 
-#: appModules/totalcmd.py:159 appModules/totalcmd.py:258
+#: appModules/totalcmd.py:164 appModules/totalcmd.py:268
 msgid "Right"
 msgstr "Правая"
 
-#: appModules/totalcmd.py:176 appModules/totalcmd.py:275
+#: appModules/totalcmd.py:181 appModules/totalcmd.py:285
 msgid "Left pannel"
 msgstr "Левая панель"
 
-#: appModules/totalcmd.py:178 appModules/totalcmd.py:277
+#: appModules/totalcmd.py:183 appModules/totalcmd.py:287
 msgid "Right pannel"
 msgstr "Правая панель"
 
-#: appModules/totalcmd.py:188 appModules/totalcmd.py:286
+#: appModules/totalcmd.py:193 appModules/totalcmd.py:296
 #, python-brace-format
 msgid "{current} of {all}"
 msgstr "{current} из {all}"
 
-#: appModules/totalcmd.py:217 appModules/totalcmd.py:314
+#: appModules/totalcmd.py:222 appModules/totalcmd.py:324
 msgid "Reports information about the number of selected elements"
 msgstr "Сообщает информацию о выделенных элементах"
 
-#: appModules/totalcmd.py:225 appModules/totalcmd.py:322
+#: appModules/totalcmd.py:230 appModules/totalcmd.py:332
 msgid "Reports to the size off selected files and folders"
 msgstr "Сообщает размер выделенных элементов"
+
+#: appModules/totalcmd.py:234 appModules/totalcmd.py:336
+msgid "Reports the current path to the folder."
+msgstr "Сообщает текущий путь к папке."
 
 #: globalPlugins/extendedTotalCMD/__init__.py:19
 msgid "Update Total Commander add-on..."
