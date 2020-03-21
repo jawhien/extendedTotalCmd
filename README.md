@@ -41,6 +41,7 @@ You can install the add-on through the NVDA add-on manager, for this, do the fol
 
 * Control + Shift + E - Reports information about selected items.
 * Control + Shift + R - Reports size information for selected items. If no items are selected, reports the size of the file in focus.
+* Control + Shift + D - Reports the full path of the current directory.
 
 # Frequently Asked Questions
 
