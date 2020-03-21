@@ -52,6 +52,19 @@ Yes, please send me letter to the email address indicated in the add-on, and I w
 
 # Change log
 
+## V2.1.0: 21.03.2020
+
+* Added a new function to reports the full path to the current directory.
+* Added option to check updates. To check the update, open the tools menu in the main NVDA menu and select "Update Total Commander add-on..."
+* Fixed a bug in Total Commander version 7 and 8 when you select file pronounced the message that the TC version is not supported.
+* Now add-on can determine the size of any file, even if it is not selected.
+* Fixed a bug where the size of the elements for which there is a symbol "." could not be determined.
+* Now the size of the elements can be represented in bytes, kB, mB, gB, or tB. The value will be automatically converted to the correct format.
+* When reports the size of the directory if it is not defined, the add-on will report it.
+* Fully updated documentation. Made the layout of pages for readability.
+* Removed unused variables.
+* Full code optimization.
+
 ## V2.0.1: 01.03.2020
 * Documentation bugs fixed
 
