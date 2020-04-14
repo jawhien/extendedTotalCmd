@@ -87,3 +87,21 @@ class tcApi():
 
 	def getCurDirPanelHandle(self):
 		return self.sendMessage(21, 0)
+
+	def getTabListHandle(self):
+		activePanel = self.getActivePanelNum()
+		param1 = 26 if activePanel == 1 else 27
+		hnd = self.sendMessage(param1, 0)
+		return hnd
+
+	def getTabList(self):
+		hnd = self.getTabListHandle()
+		items = IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
+		if items == None:
+			return False
+		tabList = items.children
+		output = []
+		for tab in tabList:
+			if tab.windowHandle == hnd:
+				output.append(tab)
+		return output
