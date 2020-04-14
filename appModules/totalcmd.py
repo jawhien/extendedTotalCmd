@@ -29,7 +29,10 @@ activePannel=1
 class getTCInfo():
 
 	def convertSizeFromBytes(self, bytes):
-		sizeBytes = int(bytes)
+		try:
+			sizeBytes = int(bytes)
+		except ValueError:
+			return False
 		sizeKB = int((sizeBytes / 1024) * 100) / 100
 		sizeMB = int((sizeBytes / 1024 / 1024) * 100) / 100
 		sizeGB = int((sizeBytes / 1024 / 1024 / 1024) * 100) / 100
@@ -63,6 +66,7 @@ class getTCInfo():
 		if tcApi.isApiSupported():
 			selected = tcApi.getSelectedElements()
 			sizeData = tcApi.getAvailableSize()
+
 			if selected > 0:
 				waitIndicator = sizeData[0:1]
 				if waitIndicator == '?':
@@ -81,7 +85,10 @@ class getTCInfo():
 				size = sizeData[len(obj.name):sizeData.find('.', len(obj.name))-2]
 				size = re.sub(r'[^0-9]+', r'', size)
 				convertedSize = self.convertSizeFromBytes(size)
-				ui.message(convertedSize)
+				if convertedSize == False:
+					ui.message(_("No size information. Try select this item."))
+				else:
+					ui.message(convertedSize)
 			else:
 				ui.message(_("No size information. Try select this item."))
 		else:
