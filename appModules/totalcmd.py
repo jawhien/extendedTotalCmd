@@ -116,10 +116,28 @@ class getTCInfo():
 	def getSelectedCommandGestures(self):
 		return {"KB:CONTROL+A","KB:CONTROL+numpadMinus"}
 
+	def getToggleTabGestures(self):
+		return {"kb:control+tab","kb:control+shift+tab"}
+
 	def speakCurrentPath(self):
 		hnd = tcApi.getCurDirPanelHandle()
 		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
 		ui.message(obj.name)
+
+	def reportActiveTab(self):
+		tabList = tcApi.getTabList()
+		if tabList == False:
+			ui.message(_("No open tabs"))
+			return
+		for tab in tabList:
+			if controlTypes.STATE_SELECTED in tab.states:
+				position = tab.IAccessibleChildID
+				count = len(tabList)
+				speakList = []
+				speakList.append(_("{name} tab").format(name=tab.name))
+				if config.conf['presentation']['reportObjectPositionInformation'] == True and tcApi.isApiSupported():
+					speakList.append(_("{position} of {all}").format(position=position, all=count))
+				ui.message("  ".join(speakList))
 
 tcInfo = getTCInfo()
 
@@ -252,6 +270,7 @@ class TCList64(IAccessible):
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
 	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
+	__toggleTabGestures = tcInfo.getToggleTabGestures()
 
 	def event_gainFocus(self):
 		global oldActivePannel, activePannel
@@ -311,6 +330,10 @@ class TCList64(IAccessible):
 		if not self.previous:
 			winsound.PlaySound("default",1)
 
+	def script_speakCurrentTab(self, gesture):
+		gesture.send()
+		tcInfo.reportActiveTab()
+
 	def initOverlayClass(self):
 		for gesture in self.__nextItemGestures:
 			self.bindGesture(gesture, "nextElement")
@@ -318,6 +341,8 @@ class TCList64(IAccessible):
 			self.bindGesture(gesture, "previousElement")
 		for gesture in self.__selectedCommandsGestures:
 			self.bindGesture(gesture, "selectedCommands")
+		for gesture in self.__toggleTabGestures:
+			self.bindGesture(gesture, "speakCurrentTab")
 
 	def script_selectedElementsInfo(self, gesture):
 		tcInfo.speakSelectedItemsInfo()
