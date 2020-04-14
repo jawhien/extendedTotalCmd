@@ -117,7 +117,7 @@ class getTCInfo():
 		return {"KB:CONTROL+A","KB:CONTROL+numpadMinus"}
 
 	def getToggleTabGestures(self):
-		return {"kb:control+tab","kb:control+shift+tab"}
+		return {"kb:CONTROL+TAB","kb:CONTROL+SHIFT+TAB"}
 
 	def speakCurrentPath(self):
 		hnd = tcApi.getCurDirPanelHandle()
@@ -161,6 +161,7 @@ class TCList(IAccessible):
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
 	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
+	__toggleTabGestures = tcInfo.getToggleTabGestures()
 
 	def event_gainFocus(self):
 		global oldActivePannel, activePannel
@@ -227,6 +228,10 @@ class TCList(IAccessible):
 		if not self.previous:
 			winsound.PlaySound("default",1)
 
+	def script_speakCurrentTab(self, gesture):
+		gesture.send()
+		tcInfo.reportActiveTab()
+
 	def initOverlayClass(self):
 		for gesture in self.__nextItemGestures:
 			self.bindGesture(gesture, "nextElement")
@@ -234,6 +239,8 @@ class TCList(IAccessible):
 			self.bindGesture(gesture, "previousElement")
 		for gesture in self.__selectedCommandsGestures:
 			self.bindGesture(gesture, "selectedCommands")
+		for gesture in self.__toggleTabGestures:
+			self.bindGesture(gesture, "speakCurrentTab")
 
 	def script_selectedElementsInfo(self, gesture):
 		tcInfo.speakSelectedItemsInfo()
