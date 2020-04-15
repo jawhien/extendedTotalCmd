@@ -62,11 +62,16 @@ class getTCInfo():
 		else:
 			return _("{size} kB").format(size=sizeKB)
 
+	def getSingleFileSize(self, str):
+		str = str[:str.rfind(":")]
+		size = str[str.rfind(" ", 0, len(str[:-13].rstrip())):-13]
+		size = re.sub(r'[^0-9]+', r'', size)
+		return size
+
 	def speakSize(self):
 		if tcApi.isApiSupported():
 			selected = tcApi.getSelectedElements()
 			sizeData = tcApi.getAvailableSize()
-
 			if selected > 0:
 				waitIndicator = sizeData[0:1]
 				if waitIndicator == '?':
@@ -81,9 +86,7 @@ class getTCInfo():
 				convertedSize = self.convertSizeFromKB(size)
 				ui.message(convertedSize)
 			elif selected == 0 and sizeData != False:
-				obj = api.getFocusObject()
-				size = sizeData[len(obj.name):sizeData.find('.', len(obj.name))-2]
-				size = re.sub(r'[^0-9]+', r'', size)
+				size = self.getSingleFileSize(sizeData)
 				convertedSize = self.convertSizeFromBytes(size)
 				if convertedSize == False:
 					ui.message(_("No size information. Try select this item."))
