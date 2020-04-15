@@ -23,8 +23,10 @@ import config
 addonHandler.initTranslation()
 tcApi = tcApi.tcApi()
 manifest = addonHandler.getCodeAddon().manifest
+
 oldActivePannel=0
 activePannel=1
+currentTab = 0
 
 class getTCInfo():
 
@@ -407,7 +409,16 @@ class TCListConnect(IAccessible):
 
 class tcTabPanel(IAccessible):
 
-	def event_stateChange(self):
+	def _get_positionInfo(self):
+		if tcApi.isApiSupported():
+			index= self.IAccessibleChildID
+			totalCount= len(tcApi.getTabList())
+			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
+		else:
+			return None
+
+	def event_selection(self):
+
 		if controlTypes.STATE_SELECTED in self.states:
 			self.reportFocus()
-		super(tcTabPanel,self).event_stateChange()
+		super(tcTabPanel,self).event_selection()
