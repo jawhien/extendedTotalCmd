@@ -165,6 +165,8 @@ class AppModule(appModuleHandler.AppModule):
 			clsList.insert(0, TCListConnect)
 		if obj.windowClassName in ("TMyListBox", "TMyListBox.UnicodeClass") and obj.parent.parent.parent.windowClassName == "TCONNECT":
 			clsList.insert(0, TCListConnect)
+		if obj.windowClassName in ("SysTabControl32", "SysTabControl32.UnicodeClass"):
+			clsList.insert(0, tcTabPanel)
 
 class TCList(IAccessible):
 	scriptCategory = manifest['summary']
@@ -358,8 +360,8 @@ class TCList64(IAccessible):
 			self.bindGesture(gesture, "previousElement")
 		for gesture in self.__selectedCommandsGestures:
 			self.bindGesture(gesture, "selectedCommands")
-		for gesture in self.__toggleTabGestures:
-			self.bindGesture(gesture, "speakCurrentTab")
+#		for gesture in self.__toggleTabGestures:
+#			self.bindGesture(gesture, "speakCurrentTab")
 
 	def script_selectedElementsInfo(self, gesture):
 		tcInfo.speakSelectedItemsInfo()
@@ -402,3 +404,10 @@ class TCListConnect(IAccessible):
 			self.bindGesture(gesture, "nextElement")
 		for gesture in self.__previousItemGestures:
 			self.bindGesture(gesture, "previousElement")
+
+class tcTabPanel(IAccessible):
+
+	def event_stateChange(self):
+		if controlTypes.STATE_SELECTED in self.states:
+			self.reportFocus()
+		super(tcTabPanel,self).event_stateChange()
