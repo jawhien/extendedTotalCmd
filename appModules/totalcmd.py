@@ -417,8 +417,16 @@ class tcTabPanel(IAccessible):
 		else:
 			return None
 
-	def event_selection(self):
+	def isDuplicateIAccessibleEvent(self, obj):
+		global currentTab
+		tab = {"handle":obj.windowHandle,"childID":obj.IAccessibleChildID,"items":obj.positionInfo["similarItemsInGroup"]}
+		if tab == currentTab:
+			return True
+		else:
+			currentTab = tab
+			return False
 
-		if controlTypes.STATE_SELECTED in self.states:
+	def event_selection(self):
+		if controlTypes.STATE_SELECTED in self.states and not self.isDuplicateIAccessibleEvent(self):
 			self.reportFocus()
 		super(tcTabPanel,self).event_selection()
