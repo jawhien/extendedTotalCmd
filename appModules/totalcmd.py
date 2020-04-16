@@ -417,7 +417,9 @@ class tcTabPanel(IAccessible):
 			totalCount= len(tcApi.getTabList())
 			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
 		else:
-			return None
+			index= self.IAccessibleChildID
+			totalCount= len(tcApi.getTabList32(self))
+			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
 
 	def isDuplicateIAccessibleEvent(self, obj):
 		global currentTab
