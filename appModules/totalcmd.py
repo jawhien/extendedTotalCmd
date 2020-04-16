@@ -151,7 +151,7 @@ class AppModule(appModuleHandler.AppModule):
 			clsList.insert(0, TCListConnect)
 		if obj.windowClassName in ("SysTabControl32", "SysTabControl32.UnicodeClass"):
 			clsList.insert(0, tcTabPanel)
-		if obj.windowClassName in ("TMyTabControl", "TMyTabControl.UnicodeClass"):
+		if obj.windowClassName in ("TMyTabControl", "TMyTabControl.UnicodeClass") and obj.parent.parent.parent.parent.parent.windowClassName == "TTOTAL_CMD":
 			clsList.insert(0, tcTabPanel)
 
 class TCList(IAccessible):
@@ -382,7 +382,7 @@ class tcTabPanel(IAccessible):
 	def _get_positionInfo(self):
 		if tcApi.isApiSupported():
 			index= self.IAccessibleChildID
-			totalCount= len(tcApi.getTabList())
+			totalCount= len(tcApi.getTabList32only(self))
 			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
 		else:
 			index= self.IAccessibleChildID
@@ -391,6 +391,8 @@ class tcTabPanel(IAccessible):
 
 	def isDuplicateIAccessibleEvent(self, obj):
 		global currentTab
+		if obj.windowClassName != "SysTabControl32" and obj.windowClassName != "TMyTabControl":
+			return False
 		tab = {"handle":obj.windowHandle,"childID":obj.IAccessibleChildID,"items":obj.positionInfo["similarItemsInGroup"]}
 		if tab == currentTab:
 			return True
