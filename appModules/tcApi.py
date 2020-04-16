@@ -105,3 +105,14 @@ class tcApi():
 			if tab.windowHandle == hnd:
 				output.append(tab)
 		return output
+
+	def getTabList32(self, obj):
+		items = obj.parent
+		if items == None:
+			return False
+		tabList = items.children
+		output = []
+		for tab in tabList:
+			if tab.windowHandle == obj.windowHandle:
+				output.append(tab)
+		return output
