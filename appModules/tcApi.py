@@ -78,12 +78,11 @@ class tcApi():
 			return text
 
 	def isApiSupported(self):
-		obj = api.getFocusObject()
-		version = int(obj.appModule.productVersion.split(".")[0])
-		if version >= 9:
-			return True
-		else:
+		num = self.getActivePanelNum()
+		if num == 0:
 			return False
+		else:
+			return True
 
 	def getCurDirPanelHandle(self):
 		return self.sendMessage(21, 0)
