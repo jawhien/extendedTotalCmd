@@ -106,7 +106,7 @@ class tcApi():
 				output.append(tab)
 		return output
 
-	def getTabList32(self, obj):
+	def getTabList32only(self, obj):
 		items = obj.parent
 		if items == None:
 			return False
