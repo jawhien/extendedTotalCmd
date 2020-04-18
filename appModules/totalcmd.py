@@ -129,6 +129,10 @@ class getTCInfo():
 		return {"KB:CONTROL+A","KB:CONTROL+numpadMinus"}
 
 	def speakCurrentPath(self):
+		if not tcApi.isApiSupported():
+			ui.message(_('Not supported in this version of total commander'))
+			return
+
 		hnd = tcApi.getCurDirPanelHandle()
 		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
 		ui.message(obj.name)
