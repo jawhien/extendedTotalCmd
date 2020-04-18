@@ -17,6 +17,7 @@ import winsound
 import re
 import ui
 import winUser
+import scriptHandler
 from . import tcApi
 import config
 
@@ -137,6 +138,16 @@ class getTCInfo():
 		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
 		ui.message(obj.name)
 
+	def copyCurrentPath(self):
+		if not tcApi.isApiSupported():
+			ui.message(_('Not supported in this version of total commander'))
+			return
+
+		hnd = tcApi.getCurDirPanelHandle()
+		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
+		if api.copyToClip(obj.name):
+			ui.message(_("Copied to clipboard"))
+
 tcInfo = getTCInfo()
 
 class AppModule(appModuleHandler.AppModule):
@@ -250,8 +261,10 @@ class TCList(IAccessible):
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
 	def script_speakPath(self, gesture):
+		if scriptHandler.getLastScriptRepeatCount() != 0:
+			tcInfo.copyCurrentPath()
 		tcInfo.speakCurrentPath()
-	script_speakPath.__doc__ = _("Reports the current path to the folder.")
+	script_speakPath.__doc__ = _("Reports the current path to the folder. Pressing twice Copies it to the clipboard.")
 
 	__gestures={
 		"kb:control+shift+d":"speakPath",
@@ -352,8 +365,10 @@ class TCList64(IAccessible):
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
 	def script_speakPath(self, gesture):
+		if scriptHandler.getLastScriptRepeatCount() != 0:
+			tcInfo.copyCurrentPath()
 		tcInfo.speakCurrentPath()
-	script_speakPath.__doc__ = _("Reports the current path to the folder.")
+	script_speakPath.__doc__ = _("Reports the current path to the folder. Pressing twice Copies it to the clipboard.")
 
 	__gestures={
 		"kb:control+shift+d":"speakPath",
