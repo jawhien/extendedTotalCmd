@@ -41,9 +41,13 @@ You can install the add-on through the NVDA add-on manager, for this, do the fol
 
 * Control + Shift + E - Reports information about selected items.
 * Control + Shift + R - Reports size information for selected items. If no items are selected, reports the size of the file in focus.
-* Control + Shift + D - Reports the full path of the current directory.
+* Control + Shift + D - Reports the full path of the current directory. Pressing twice Copies it to the clipboard.
 
 # Frequently Asked Questions
+
+## Does not the reporting of the size of the file under the cursor
+
+Determining the size of file under cursor only works when using Brief view.
 
 ## How can I help develop the add-on?
 If you liked my add-on, you can donate any amount on the [special page](https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/donation.php).
