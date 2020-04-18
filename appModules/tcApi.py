@@ -78,8 +78,7 @@ class tcApi():
 			return text
 
 	def isApiSupported(self):
-		num = self.getActivePanelNum()
-		if num == 0:
+		if self.getActivePanelNum() == 0:
 			return False
 		else:
 			return True
@@ -105,7 +104,7 @@ class tcApi():
 				output.append(tab)
 		return output
 
-	def getTabList32only(self, obj):
+	def getTabListFromTab(self, obj):
 		items = obj.parent
 		if items == None:
 			return False

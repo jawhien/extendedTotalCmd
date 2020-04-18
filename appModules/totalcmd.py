@@ -380,14 +380,9 @@ class TCListConnect(IAccessible):
 class tcTabPanel(IAccessible):
 
 	def _get_positionInfo(self):
-		if tcApi.isApiSupported():
-			index= self.IAccessibleChildID
-			totalCount= len(tcApi.getTabList32only(self))
-			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
-		else:
-			index= self.IAccessibleChildID
-			totalCount= len(tcApi.getTabList32only(self))
-			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
+		index= self.IAccessibleChildID
+		totalCount= len(tcApi.getTabListFromTab(self))
+		return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
 
 	def isDuplicateIAccessibleEvent(self, obj):
 		global currentTab
