@@ -40,6 +40,10 @@ You can install the add-on through the NVDA add-on manager, for this, do the fol
 * Control + Shift + R - Reports size information for selected items. If no items are selected, reports the size of the file in focus.
 * Control + Shift + D - Reports the full path of the current directory. Pressing twice Copies it to the clipboard.
 
+# Acknowledgments
+
+I would like to thank all those who send their suggestions, and also helps in testing and detecting errors. Your contribution is undoubtedly very important for the development of this add-on.
+
 # Frequently Asked Questions
 
 ## Does not the reporting of the size of the file under the cursor
@@ -56,6 +60,15 @@ In this case, you need to [create a new issue](https://github.com/jawhien/extend
 Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the author’s email address in the NVDA Add-ons Manager.
 
 # Change log
+
+## v2.2.0: 20.04.2020
+
+* When switching tabs, the name of the selected tab will now be reported, as well as its position, if enabled in the NVDA settings.
+* Added the function of copying the path to the current folder to the clipboard by double-pressing CTRL + SHIFT + D
+* Fixed a bug leading to problems when determining the version of TC.
+* Fixed a bug when determining the file size under the cursor associated with using a large font.
+* Code optimization.
+* Other minor improvements and fixes.
 
 ## V2.1.0: 21.03.2020
 
