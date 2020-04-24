@@ -148,6 +148,40 @@ class getTCInfo():
 		if api.copyToClip(obj.name):
 			ui.message(_("Copied to clipboard"))
 
+	def speakActivePannel(self, obj):
+		global oldActivePannel, activePannel
+		if obj.windowClassName == "TMyListBox":
+			if oldActivePannel !=obj.windowControlID:
+				oldActivePannel=obj.windowControlID
+				obj2 = obj
+				while obj2 and obj2.parent and obj2.parent.windowClassName!="TTOTAL_CMD":
+					obj2 = obj2.parent
+				counter=0
+				while obj2 and obj2.previous and obj2.windowClassName!="TPanel":
+					obj2 = obj2.previous
+					if obj2.windowClassName!="TDrivePanel":
+						counter+=1
+				if obj.parent.parent.parent.windowClassName=="TTOTAL_CMD":
+					if counter==2:
+						speech.speakMessage(_("Left"))
+						activePannel = 1
+					else:
+						speech.speakMessage(_("Right"))
+						activePannel = 2
+		elif obj.windowClassName == "LCLListBox":
+			if oldActivePannel != obj.windowControlID:
+				oldActivePannel = obj.windowControlID
+				obj2 = obj
+				while obj2 and obj2.parent and obj2.parent.windowClassName!="TTOTAL_CMD":
+					obj2 = obj2.parent
+				if obj.parent.parent.parent.windowClassName == "TTOTAL_CMD":
+					if obj2.previous and obj2.next and obj2.previous.windowClassName == "LCLListBox" and obj.next.windowClassName == "Window":
+						speech.speakMessage(_("Left"))
+						activePannel = 1
+					elif obj2.previous and obj2.next and obj2.previous.windowClassName == "Window" and obj.next.windowClassName == "LCLListBox":
+						speech.speakMessage(_("Right"))
+						activePannel = 2
+
 tcInfo = getTCInfo()
 
 class AppModule(appModuleHandler.AppModule):
@@ -285,22 +319,33 @@ class TCList64(IAccessible):
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
 	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
+	activePanel = 0
 
 	def event_gainFocus(self):
-		global oldActivePannel, activePannel
-		if oldActivePannel !=self.windowControlID:
-			oldActivePannel=self.windowControlID
-			obj=self
-			while obj and obj.parent and obj.parent.windowClassName!="TTOTAL_CMD":
-				obj=obj.parent
-			if self.parent.parent.parent.windowClassName == "TTOTAL_CMD":
-				if obj.previous and obj.next and obj.previous.windowClassName == "LCLListBox" and obj.next.windowClassName == "Window":
-					speech.speakMessage(_("Left"))
-					activePannel = 1
-				elif obj.previous and obj.next and obj.previous.windowClassName == "Window" and obj.next.windowClassName == "LCLListBox":
-					speech.speakMessage(_("Right"))
-					activePannel = 2
+		global activePannel
+		if tcApi.isApiSupported():
+			curPanel = tcApi.getActivePanelNum()
+			if curPanel != activePannel:
+				activePannel = curPanel
+				message = _("Left") if curPanel == 1 else _("Right")
+				ui.message(message)
+		else:
+			tcInfo.speakActivePannel(self)
 		super(TCList64,self).event_gainFocus()
+
+#		if oldActivePannel !=self.windowControlID:
+#			oldActivePannel=self.windowControlID
+#			obj=self
+#			while obj and obj.parent and obj.parent.windowClassName!="TTOTAL_CMD":
+#				obj=obj.parent
+#			if self.parent.parent.parent.windowClassName == "TTOTAL_CMD":
+#				if obj.previous and obj.next and obj.previous.windowClassName == "LCLListBox" and obj.next.windowClassName == "Window":
+#					speech.speakMessage(_("Left"))
+#					activePannel = 1
+#				elif obj.previous and obj.next and obj.previous.windowClassName == "Window" and obj.next.windowClassName == "LCLListBox":
+#					speech.speakMessage(_("Right"))
+#					activePannel = 2
+#		super(TCList64,self).event_gainFocus()
 
 	def _get_positionInfo(self):
 		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
