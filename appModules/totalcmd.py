@@ -319,7 +319,6 @@ class TCList64(IAccessible):
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
 	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
-	activePanel = 0
 
 	def event_gainFocus(self):
 		global activePannel
@@ -332,20 +331,6 @@ class TCList64(IAccessible):
 		else:
 			tcInfo.speakActivePannel(self)
 		super(TCList64,self).event_gainFocus()
-
-#		if oldActivePannel !=self.windowControlID:
-#			oldActivePannel=self.windowControlID
-#			obj=self
-#			while obj and obj.parent and obj.parent.windowClassName!="TTOTAL_CMD":
-#				obj=obj.parent
-#			if self.parent.parent.parent.windowClassName == "TTOTAL_CMD":
-#				if obj.previous and obj.next and obj.previous.windowClassName == "LCLListBox" and obj.next.windowClassName == "Window":
-#					speech.speakMessage(_("Left"))
-#					activePannel = 1
-#				elif obj.previous and obj.next and obj.previous.windowClassName == "Window" and obj.next.windowClassName == "LCLListBox":
-#					speech.speakMessage(_("Right"))
-#					activePannel = 2
-#		super(TCList64,self).event_gainFocus()
 
 	def _get_positionInfo(self):
 		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
