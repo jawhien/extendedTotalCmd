@@ -189,7 +189,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		if obj.windowClassName in ("TMyListBox", "TMyListBox.UnicodeClass")  and obj.parent.parent.parent.windowClassName == "TTOTAL_CMD":
-			clsList.insert(0, TCList)
+			clsList.insert(0, TCList64)
 		if obj.windowClassName in ("ComboLBox", "ComboLBox.UnicodeClass"):
 			clsList.insert(0, TCCombo)
 		if obj.windowClassName in ("LCLListBox", "LCLListBox.UnicodeClass")  and obj.parent.parent.parent.windowClassName == "TTOTAL_CMD":
@@ -202,109 +202,6 @@ class AppModule(appModuleHandler.AppModule):
 			clsList.insert(0, tcTabPanel)
 		if obj.windowClassName in ("TMyTabControl", "TMyTabControl.UnicodeClass") and obj.parent.parent.parent.parent.parent.windowClassName == "TTOTAL_CMD":
 			clsList.insert(0, tcTabPanel)
-
-class TCList(IAccessible):
-	scriptCategory = manifest['summary']
-	__previousItemGestures = tcInfo.getPreviousItemGestures()
-	__nextItemGestures = tcInfo.getNextItemGestures()
-	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
-
-	def event_gainFocus(self):
-		global oldActivePannel, activePannel
-		if oldActivePannel !=self.windowControlID:
-			oldActivePannel=self.windowControlID
-			obj=self
-			while obj and obj.parent and obj.parent.windowClassName!="TTOTAL_CMD":
-				obj=obj.parent
-			counter=0
-			while obj and obj.previous and obj.windowClassName!="TPanel":
-				obj=obj.previous
-				if obj.windowClassName!="TDrivePanel":
-					counter+=1
-			if self.parent.parent.parent.windowClassName=="TTOTAL_CMD":
-				if counter==2:
-					speech.speakMessage(_("Left"))
-					activePannel = 1
-				else:
-					speech.speakMessage(_("Right"))
-					activePannel = 2
-		super(TCList,self).event_gainFocus()
-
-	def _get_positionInfo(self):
-		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
-			index= tcApi.getCurrentElementNum()
-			totalCount= tcApi.getCountElements()
-			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
-		else:
-			return None
-
-	def reportFocus(self):
-		global activePannel
-		obj = self
-		if obj.parent.parent.parent.windowClassName=="TTOTAL_CMD":
-			if activePannel == 1:
-				self.description = _("Left pannel")
-			else:
-				self.description = _("Right pannel")
-
-		if self.name:
-			speakList=[]
-			if controlTypes.STATE_SELECTED in self.states:
-				speakList.append(controlTypes.stateLabels[controlTypes.STATE_SELECTED])
-			speakList.append(self.name.split("\\")[-1])
-
-			if config.conf['presentation']['reportObjectPositionInformation'] == True and tcApi.isApiSupported():
-				positionInfo = self.positionInfo
-				template = _('{current} of {all}').format(current=positionInfo['indexInGroup'], all=positionInfo['similarItemsInGroup'])
-				if self.name != '..':
-					speakList.append(' ' + template)
-
-			if self.hasFocus:
-				speech.speakMessage(" ".join(speakList))
-		else:
-			super(TCList,self).reportFocus()
-
-	def script_nextElement(self, gesture):
-		gesture.send()
-		if not self.next:
-			winsound.PlaySound("default",1)
-
-	def script_previousElement(self, gesture):
-		gesture.send()
-		if not self.previous:
-			winsound.PlaySound("default",1)
-
-	def initOverlayClass(self):
-		for gesture in self.__nextItemGestures:
-			self.bindGesture(gesture, "nextElement")
-		for gesture in self.__previousItemGestures:
-			self.bindGesture(gesture, "previousElement")
-		for gesture in self.__selectedCommandsGestures:
-			self.bindGesture(gesture, "selectedCommands")
-
-	def script_selectedElementsInfo(self, gesture):
-		tcInfo.speakSelectedItemsInfo()
-	script_selectedElementsInfo.__doc__ = _("Reports information about the number of selected elements")
-
-	def script_selectedCommands(self, gesture):
-		gesture.send()
-		tcInfo.speakSelectedCommand()
-
-	def script_reportFileSize(self, gesture):
-		tcInfo.speakSize()
-	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
-
-	def script_speakPath(self, gesture):
-		if scriptHandler.getLastScriptRepeatCount() != 0:
-			tcInfo.copyCurrentPath()
-		tcInfo.speakCurrentPath()
-	script_speakPath.__doc__ = _("Reports the current path to the folder. Pressing twice Copies it to the clipboard.")
-
-	__gestures={
-		"kb:control+shift+d":"speakPath",
-		"KB:CONTROL+SHIFT+E":"selectedElementsInfo",
-	"KB:CONTROL+SHIFT+R":"reportFileSize"
-	}
 
 class TCCombo(IAccessible):
 
