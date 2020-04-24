@@ -12,6 +12,7 @@ Note: In versions older than 2017.3, the add-on was not tested, but, most likely
 * More precise definition of the right and left panel.
 * Sound indication when reaching the borders of the list of elements.
 * The pronunciation of labels for items in the drive selection window.
+* Support work with tabs.
 * The ability to quickly recognize the active panel. To do this, press the key command NVDA + Up Arrow, or NVDA + TAB.
 * Full support for 64-bit versions of Total Commander.
 * Report actions when selecting items or undoing them. (This function is only available in TC 9+).
