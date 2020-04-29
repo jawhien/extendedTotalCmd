@@ -202,6 +202,8 @@ class AppModule(appModuleHandler.AppModule):
 			clsList.insert(0, tcTabPanel)
 		if obj.windowClassName in ("TMyTabControl", "TMyTabControl.UnicodeClass") and obj.parent.parent.parent.parent.parent.windowClassName == "TTOTAL_CMD":
 			clsList.insert(0, tcTabPanel)
+		if obj.windowClassName in ("TMyTabbedNotebook"):
+			clsList.insert(0, tcTabPanel)
 
 class TCCombo(IAccessible):
 
@@ -222,9 +224,9 @@ class TCList64(IAccessible):
 		if tcApi.isApiSupported():
 			curPanel = tcApi.getActivePanelNum()
 			if curPanel != activePannel:
-				activePannel = curPanel
 				message = _("Left") if curPanel == 1 else _("Right")
 				ui.message(message)
+				activePannel = curPanel
 		else:
 			tcInfo.speakActivePannel(self)
 		super(TCList64,self).event_gainFocus()
@@ -332,7 +334,7 @@ class tcTabPanel(IAccessible):
 
 	def isDuplicateIAccessibleEvent(self, obj):
 		global currentTab
-		if obj.windowClassName != "SysTabControl32" and obj.windowClassName != "TMyTabControl":
+		if obj.windowClassName != "SysTabControl32" and obj.windowClassName != "TMyTabControl" and obj.windowClassName != "TMyTabbedNotebook":
 			return False
 		tab = {"handle":obj.windowHandle,"childID":obj.IAccessibleChildID,"items":obj.positionInfo["similarItemsInGroup"]}
 		if tab == currentTab:
