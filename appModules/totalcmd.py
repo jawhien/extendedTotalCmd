@@ -187,22 +187,21 @@ tcInfo = getTCInfo()
 class AppModule(appModuleHandler.AppModule):
 	scriptCategory = manifest['summary']
 
+	def _getForegroundClass(self, obj):
+		try:
+			return obj.parent.parent.parent.windowClassName
+		except AttributeError:
+			return None
+
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
-		if obj.windowClassName in ("TMyListBox", "TMyListBox.UnicodeClass")  and obj.parent.parent.parent.windowClassName == "TTOTAL_CMD":
+		windowClass = obj.windowClassName
+		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundClass(obj) == "TTOTAL_CMD":
 			clsList.insert(0, TCList64)
-		if obj.windowClassName in ("ComboLBox", "ComboLBox.UnicodeClass"):
+		if windowClass in ("TMyListBox","LCLListBox") and self._getForegroundClass(obj) == "TCONNECT":
+			clsList.insert(0, TCListConnect)
+		if windowClass in ("ComboLBox"):
 			clsList.insert(0, TCCombo)
-		if obj.windowClassName in ("LCLListBox", "LCLListBox.UnicodeClass")  and obj.parent.parent.parent.windowClassName == "TTOTAL_CMD":
-			clsList.insert(0, TCList64)
-		if obj.windowClassName in ("LCLListBox", "LCLListBox.UnicodeClass")  and obj.parent.parent.parent.windowClassName == "TCONNECT":
-			clsList.insert(0, TCListConnect)
-		if obj.windowClassName in ("TMyListBox", "TMyListBox.UnicodeClass") and obj.parent.parent.parent.windowClassName == "TCONNECT":
-			clsList.insert(0, TCListConnect)
-		if obj.windowClassName in ("SysTabControl32", "SysTabControl32.UnicodeClass"):
-			clsList.insert(0, tcTabPanel)
-		if obj.windowClassName in ("TMyTabControl", "TMyTabControl.UnicodeClass") and obj.parent.parent.parent.parent.parent.windowClassName == "TTOTAL_CMD":
-			clsList.insert(0, tcTabPanel)
-		if obj.windowClassName in ("TMyTabbedNotebook"):
+		if windowClass in ("SysTabControl32", "TMyTabControl", "TMyTabbedNotebook"):
 			clsList.insert(0, tcTabPanel)
 
 class TCCombo(IAccessible):
