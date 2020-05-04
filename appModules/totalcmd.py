@@ -20,6 +20,7 @@ import winUser
 import scriptHandler
 from . import tcApi
 import config
+import eventHandler
 
 addonHandler.initTranslation()
 tcApi = tcApi.tcApi()
@@ -227,7 +228,8 @@ class TCFileList(IAccessible):
 		super(TCFileList,self).event_gainFocus()
 
 	def event_selectionWithIn(self):
-		tcInfo.speakSelectedCommand()
+		if not eventHandler.isPendingEvents("gainFocus"):
+			tcInfo.speakSelectedCommand()
 
 	def reportFocus(self):
 		global activePannel
