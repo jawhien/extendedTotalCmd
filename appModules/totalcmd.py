@@ -231,6 +231,9 @@ class TCFileList(IAccessible):
 		if not eventHandler.isPendingEvents("gainFocus"):
 			tcInfo.speakSelectedCommand()
 
+	def event_selection(self):
+		pass
+
 	def reportFocus(self):
 		global activePannel
 		obj = self
