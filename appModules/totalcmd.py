@@ -230,6 +230,9 @@ class TCFileList(IAccessible):
 		else:
 			return None
 
+	def event_selectionWithIn(self):
+		tcInfo.speakSelectedCommand()
+
 	def reportFocus(self):
 		global activePannel
 		obj = self
