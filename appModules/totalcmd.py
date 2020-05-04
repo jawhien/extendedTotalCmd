@@ -187,7 +187,7 @@ tcInfo = getTCInfo()
 class AppModule(appModuleHandler.AppModule):
 	scriptCategory = manifest['summary']
 
-	def _getForegroundClass(self, obj):
+	def _getForegroundWindowClass(self, obj):
 		try:
 			return obj.parent.parent.parent.windowClassName
 		except AttributeError:
@@ -195,24 +195,16 @@ class AppModule(appModuleHandler.AppModule):
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		windowClass = obj.windowClassName
-		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundClass(obj) == "TTOTAL_CMD":
-			clsList.insert(0, TCList64)
-		if windowClass in ("TMyListBox","LCLListBox") and self._getForegroundClass(obj) == "TCONNECT":
-			clsList.insert(0, TCListConnect)
+		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD":
+			clsList.insert(0, TCFileList)
+		if windowClass in ("TMyListBox","LCLListBox") and self._getForegroundWindowClass(obj) == "TCONNECT":
+			clsList.insert(0, TCFTPList)
 		if windowClass in ("ComboLBox"):
-			clsList.insert(0, TCCombo)
+			clsList.insert(0, TCDriveList)
 		if windowClass in ("SysTabControl32", "TMyTabControl", "TMyTabbedNotebook"):
-			clsList.insert(0, tcTabPanel)
+			clsList.insert(0, TCTabControl)
 
-class TCCombo(IAccessible):
-
-	def event_gainFocus(self):
-		description = self.displayText
-		if description:
-			self.name = description[0:1] + " (" + description[2:] + ")"
-		super(TCCombo,self).event_gainFocus()
-
-class TCList64(IAccessible):
+class TCFileList(IAccessible):
 	scriptCategory = manifest['summary']
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
@@ -228,7 +220,7 @@ class TCList64(IAccessible):
 				activePannel = curPanel
 		else:
 			tcInfo.speakActivePannel(self)
-		super(TCList64,self).event_gainFocus()
+		super(TCFileList,self).event_gainFocus()
 
 	def _get_positionInfo(self):
 		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
@@ -260,7 +252,7 @@ class TCList64(IAccessible):
 			if self.hasFocus:
 				speech.speakMessage(" ".join(speakList))
 		else:
-			super(TCList64,self).reportFocus()
+			super(TCFileList,self).reportFocus()
 
 	def script_nextElement(self, gesture):
 		gesture.send()
@@ -304,7 +296,7 @@ class TCList64(IAccessible):
 	"KB:CONTROL+SHIFT+R":"reportFileSize"
 	}
 
-class TCListConnect(IAccessible):
+class TCFTPList(IAccessible):
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
 
@@ -324,7 +316,15 @@ class TCListConnect(IAccessible):
 		for gesture in self.__previousItemGestures:
 			self.bindGesture(gesture, "previousElement")
 
-class tcTabPanel(IAccessible):
+class TCDriveList(IAccessible):
+
+	def event_gainFocus(self):
+		description = self.displayText
+		if description:
+			self.name = description[0:1] + " (" + description[2:] + ")"
+		super(TCDriveList,self).event_gainFocus()
+
+class TCTabControl(IAccessible):
 
 	def _get_positionInfo(self):
 		index= self.IAccessibleChildID
@@ -345,4 +345,4 @@ class tcTabPanel(IAccessible):
 	def event_selection(self):
 		if controlTypes.STATE_SELECTED in self.states and not self.isDuplicateIAccessibleEvent(self):
 			self.reportFocus()
-		super(tcTabPanel,self).event_selection()
+		super(TCTabControl,self).event_selection()
