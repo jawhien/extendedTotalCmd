@@ -126,9 +126,6 @@ class getTCInfo():
 	def getNextItemGestures(self):
 		return {"kb:downArrow","kb:rightArrow","KB:PageDown","KB:END"}
 
-	def getSelectedCommandGestures(self):
-		return {"KB:CONTROL+A","KB:CONTROL+numpadMinus"}
-
 	def speakCurrentPath(self):
 		if not tcApi.isApiSupported():
 			ui.message(_('Not supported in this version of total commander'))
@@ -208,7 +205,14 @@ class TCFileList(IAccessible):
 	scriptCategory = manifest['summary']
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
-	__selectedCommandsGestures = tcInfo.getSelectedCommandGestures()
+
+	def _get_positionInfo(self):
+		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
+			index= tcApi.getCurrentElementNum()
+			totalCount= tcApi.getCountElements()
+			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
+		else:
+			return None
 
 	def event_gainFocus(self):
 		global activePannel
@@ -221,14 +225,6 @@ class TCFileList(IAccessible):
 		else:
 			tcInfo.speakActivePannel(self)
 		super(TCFileList,self).event_gainFocus()
-
-	def _get_positionInfo(self):
-		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
-			index= tcApi.getCurrentElementNum()
-			totalCount= tcApi.getCountElements()
-			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
-		else:
-			return None
 
 	def event_selectionWithIn(self):
 		tcInfo.speakSelectedCommand()
@@ -272,16 +268,10 @@ class TCFileList(IAccessible):
 			self.bindGesture(gesture, "nextElement")
 		for gesture in self.__previousItemGestures:
 			self.bindGesture(gesture, "previousElement")
-		for gesture in self.__selectedCommandsGestures:
-			self.bindGesture(gesture, "selectedCommands")
 
 	def script_selectedElementsInfo(self, gesture):
 		tcInfo.speakSelectedItemsInfo()
 	script_selectedElementsInfo.__doc__ = _("Reports information about the number of selected elements")
-
-	def script_selectedCommands(self, gesture):
-		gesture.send()
-		tcInfo.speakSelectedCommand()
 
 	def script_reportFileSize(self, gesture):
 		tcInfo.speakSize()
