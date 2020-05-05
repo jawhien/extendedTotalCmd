@@ -350,4 +350,11 @@ class TCTabControl(IAccessible):
 class TCMSGForm(IAccessible):
 
 	def initOverlayClass(self):
-		pass
+		self.role = controlTypes.ROLE_STATICTEXT
+		text = self.displayText
+		if text.find("?") >= 0:
+			self.name = text[:text.rfind("?") + 1]
+		elif text.find("!") >= 0:
+			self.name = text[:text.rfind("!") + 1]
+		else:
+			self.name = text
