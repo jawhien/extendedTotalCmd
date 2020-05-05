@@ -201,6 +201,8 @@ class AppModule(appModuleHandler.AppModule):
 			clsList.insert(0, TCDriveList)
 		if windowClass in ("SysTabControl32", "TMyTabControl", "TMyTabbedNotebook"):
 			clsList.insert(0, TCTabControl)
+		if windowClass in ("TExtMsgForm"):
+			clsList.insert(0, TCMSGForm)
 
 class TCFileList(IAccessible):
 	scriptCategory = manifest['summary']
@@ -228,7 +230,7 @@ class TCFileList(IAccessible):
 		super(TCFileList,self).event_gainFocus()
 
 	def event_selectionWithIn(self):
-		if not eventHandler.isPendingEvents("gainFocus"):
+		if not eventHandler.isPendingEvents("gainFocus") and not eventHandler.isPendingEvents("valueChange"):
 			tcInfo.speakSelectedCommand()
 
 	def event_selection(self):
@@ -344,3 +346,8 @@ class TCTabControl(IAccessible):
 		if controlTypes.STATE_SELECTED in self.states and not self.isDuplicateIAccessibleEvent(self):
 			self.reportFocus()
 		super(TCTabControl,self).event_selection()
+
+class TCMSGForm(IAccessible):
+
+	def initOverlayClass(self):
+		pass
