@@ -1,8 +1,6 @@
 #appModules/totalcmd.py
 #A part of Total Commander add-on
 #Copyright (C) 2020 Eugene Poplavsky <jawhien@gmail.com>
-#Some parts of the code copied from the original module that is included with NVDA
-#Copyright (C) 2006-2012 NVDA Contributors
 #This file is covered by the GNU General Public License.
 #See the file LICENSE.txt for more details.
 
