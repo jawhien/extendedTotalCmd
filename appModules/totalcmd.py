@@ -201,6 +201,8 @@ class AppModule(appModuleHandler.AppModule):
 			clsList.insert(0, TCTabControl)
 		if windowClass in ("TExtMsgForm"):
 			clsList.insert(0, TCMSGForm)
+		if windowClass in ("TOverWriteForm"):
+			clsList.insert(0, tcOverWriteBox)
 
 class TCFileList(IAccessible):
 	scriptCategory = manifest['summary']
@@ -356,3 +358,9 @@ class TCMSGForm(IAccessible):
 			self.name = text[:text.rfind("!") + 1]
 		else:
 			self.name = text
+
+class tcOverWriteBox(IAccessible):
+
+	def initOverlayClass(self):
+		text = self.displayText
+		self.name = text[:text.rfind("+")]
