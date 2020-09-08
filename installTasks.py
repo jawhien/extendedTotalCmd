@@ -2,17 +2,11 @@
 
 import webbrowser
 import wx
+import gui
 import addonHandler
 addonHandler.initTranslation()
-import gui
-import languageHandler
 
-curLang = languageHandler.curLang
-
-if curLang == "ru_RU":
-	DONATIONS_URL = "https://jnsoft.ru/ru/articles/nvda/extendedTotalCmd/donation.php"
-else:
-	DONATIONS_URL = "https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/donation.php"
+donations_url = "https://money.yandex.ru/to/410012216939697"
 
 def onInstall():
 	manifest = addonHandler.getCodeAddon().manifest
@@ -23,4 +17,4 @@ You want to make a donation now? For transaction you will be redirected to the w
 	# Translators: The title of the dialog shown during add-on installation.
 	if gui.messageBox(message, caption=_("Request donations for {name}").format(name=manifest['summary']),
 		style=wx.YES_NO|wx.ICON_QUESTION) == wx.YES:
-		webbrowser.open(DONATIONS_URL)
+		webbrowser.open(donations_url)
