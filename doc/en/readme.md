@@ -6,6 +6,7 @@ This add-on improves the accessibility of the Total Commander file manager. It i
 
 * NVDA 2017.3 or higher, including 2019.3.
 Note: In versions older than 2017.3, the add-on was not tested, but, most likely, no problems will arise.
+* Warning! The add-on may not be compatible with other add-ons for Total Commander, as well as the "sounds by navigation on files" add-on.
 
 # Main features
 
