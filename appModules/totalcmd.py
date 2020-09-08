@@ -200,7 +200,7 @@ class AppModule(appModuleHandler.AppModule):
 		if windowClass in ("SysTabControl32", "TMyTabControl", "TMyTabbedNotebook"):
 			clsList.insert(0, TCTabControl)
 		if windowClass in ("TExtMsgForm"):
-			clsList.insert(0, TCMSGForm)
+			clsList.insert(0, tcMessageBox)
 		if windowClass in ("TOverWriteForm"):
 			clsList.insert(0, tcOverWriteBox)
 
@@ -347,7 +347,7 @@ class TCTabControl(IAccessible):
 			self.reportFocus()
 		super(TCTabControl,self).event_selection()
 
-class TCMSGForm(IAccessible):
+class tcMessageBox(IAccessible):
 
 	def initOverlayClass(self):
 		self.role = controlTypes.ROLE_STATICTEXT
