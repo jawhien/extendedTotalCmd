@@ -21,7 +21,7 @@ import config
 import eventHandler
 
 addonHandler.initTranslation()
-tcApi = tcApi.tcApi()
+
 manifest = addonHandler.getCodeAddon().manifest
 
 oldActivePannel=0
