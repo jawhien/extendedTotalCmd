@@ -300,9 +300,13 @@ class TCFileList(IAccessible):
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
 	def script_speakPath(self, gesture):
-		if scriptHandler.getLastScriptRepeatCount() != 0:
-			tcInfo.copyCurrentPath()
-		tcInfo.speakCurrentPath()
+		if not tcApi.isApiSupported():
+			ui.message(_('Not supported in this version of total commander'))
+			return
+		curPath = tcInfo.getCurrentDirPath()
+		if scriptHandler.getLastScriptRepeatCount() != 0 and api.copyToClip(curPath):
+			ui.message(_("Copied to clipboard"))
+		ui.message(curPath)
 	script_speakPath.__doc__ = _("Reports the current path to the folder. Pressing twice Copies it to the clipboard.")
 
 	__gestures={
