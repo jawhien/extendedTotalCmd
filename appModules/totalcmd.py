@@ -65,9 +65,12 @@ class getTCInfo():
 		else:
 			return _("{size} kB").format(size=sizeKB)
 
-	def getSingleFileSize(self, str):
+	def getCurrentDirPath(self):
 		hnd = tcApi.getCurDirPanelHandle()
-		folder = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0).name[:-1]
+		return NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0).name[:-1]
+
+	def getSingleFileSize(self, str):
+		folder = self.getCurrentDirPath()
 		if re.match(r'[0-9]+:/', folder):
 			return self.getSingleFileSize2(str)
 		name = api.getFocusObject().name.split("\t")[0]
