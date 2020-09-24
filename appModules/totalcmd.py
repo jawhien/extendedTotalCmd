@@ -140,25 +140,6 @@ class getTCInfo():
 	def getNextItemGestures(self):
 		return {"kb:downArrow","kb:rightArrow","KB:PageDown","KB:END"}
 
-	def speakCurrentPath(self):
-		if not tcApi.isApiSupported():
-			ui.message(_('Not supported in this version of total commander'))
-			return
-
-		hnd = tcApi.getCurDirPanelHandle()
-		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
-		ui.message(obj.name)
-
-	def copyCurrentPath(self):
-		if not tcApi.isApiSupported():
-			ui.message(_('Not supported in this version of total commander'))
-			return
-
-		hnd = tcApi.getCurDirPanelHandle()
-		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
-		if api.copyToClip(obj.name):
-			ui.message(_("Copied to clipboard"))
-
 	def speakActivePannel(self, obj):
 		global oldActivePannel, activePannel
 		if obj.windowClassName == "TMyListBox":
