@@ -19,6 +19,7 @@ import scriptHandler
 from . import tcApi
 import config
 import eventHandler
+import os
 
 addonHandler.initTranslation()
 
@@ -65,6 +66,17 @@ class getTCInfo():
 			return _("{size} kB").format(size=sizeKB)
 
 	def getSingleFileSize(self, str):
+		hnd = tcApi.getCurDirPanelHandle()
+		folder = NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0).name[:-1]
+		if re.match(r'[0-9]+:/', folder):
+			return self.getSingleFileSize2(str)
+		name = api.getFocusObject().name.split("\t")[0]
+		path = '\\'.join([folder, name])
+		if os.path.isfile(path):
+			return os.path.getsize(path)
+		return False
+
+	def getSingleFileSize2(self, str):
 		str = str[:str.rfind(":")]
 		size = str[str.rfind(" ", 0, len(str[:-13].rstrip())):-13]
 		size = re.sub(r'[^0-9]+', r'', size)
