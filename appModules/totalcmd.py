@@ -69,50 +69,57 @@ class getTCInfo():
 		hnd = tcApi.getCurDirPanelHandle()
 		return NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0).name[:-1]
 
-	def getSingleFileSize(self, str):
-		folder = self.getCurrentDirPath()
-		if re.match(r'[0-9]+:/', folder):
-			return self.getSingleFileSize2(str)
+	def getSingleFileSize(self):
+		currentDir = self.getCurrentDirPath()
 		name = api.getFocusObject().name.split("\t")[0]
-		path = '\\'.join([folder, name])
-		if os.path.isfile(path):
-			return os.path.getsize(path)
-		return False
+		path = '\\'.join([currentDir, name])
+		statusbar = tcApi.getAvailableSize()
 
-	def getSingleFileSize2(self, str):
+		if currentDir.startswith("\\\\") and statusbar and re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}', statusbar):
+			return self.convertSizeFromBytes(self.getSingleFileSizeFromStatusbar(statusbar))
+		elif currentDir.startswith("\\\\"):
+			return _("This object is not supported.")
+		elif re.match(r'[0-9]+:/', currentDir) and statusbar:
+			return self.convertSizeFromBytes(self.getSingleFileSizeFromStatusbar(statusbar))
+		elif re.match(r'[0-9]+:/', currentDir) and statusbar == False:
+			return _("No size information. Try select this item.")
+		elif os.path.isfile(path):
+			return self.convertSizeFromBytes(os.path.getsize(path))
+		elif os.path.isdir(path):
+			return _("This object is directory.")
+		else:
+			return _("No size information. Try select this item.")
+
+	def getSingleFileSizeFromStatusbar(self, str):
 		str = str[:str.rfind(":")]
 		size = str[str.rfind(" ", 0, len(str[:-13].rstrip())):-13]
 		size = re.sub(r'[^0-9]+', r'', size)
 		return size
 
+	def getSelectedFilesSize(self):
+		sizeData = tcApi.getAvailableSize()
+		waitIndicator = sizeData[0:1]
+		if waitIndicator == '?':
+			ui.message(_("The size is calculated, wait a few seconds..."))
+			return
+		size = ''
+		for s in sizeData:
+			if s.isspace() == False and s.isdigit() == False:
+				break
+			if s.isdigit():
+				size += s
+		convertedSize = self.convertSizeFromKB(size)
+		ui.message(convertedSize)
+
 	def speakSize(self):
-		if tcApi.isApiSupported():
-			selected = tcApi.getSelectedElements()
-			sizeData = tcApi.getAvailableSize()
-			if selected > 0:
-				waitIndicator = sizeData[0:1]
-				if waitIndicator == '?':
-					ui.message(_("The size is calculated, wait a few seconds..."))
-					return
-				size = ''
-				for s in sizeData:
-					if s.isspace() == False and s.isdigit() == False:
-						break
-					if s.isdigit():
-						size += s
-				convertedSize = self.convertSizeFromKB(size)
-				ui.message(convertedSize)
-			elif selected == 0 and sizeData != False:
-				size = self.getSingleFileSize(sizeData)
-				convertedSize = self.convertSizeFromBytes(size)
-				if convertedSize == False:
-					ui.message(_("No size information. Try select this item."))
-				else:
-					ui.message(convertedSize)
-			else:
-				ui.message(_("No size information. Try select this item."))
-		else:
+		if not tcApi.isApiSupported():
 			ui.message(_("Not supported in this version of total commander"))
+			return
+		if tcApi.getSelectedElements() > 0:
+			size = self.getSelectedFilesSize()
+		else:
+			size = self.getSingleFileSize()
+		ui.message(size)
 
 	def speakSelectedCommand(self):
 		if tcApi.isApiSupported():
