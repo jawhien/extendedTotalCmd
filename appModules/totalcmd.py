@@ -80,7 +80,7 @@ class getTCInfo():
 		elif currentDir.startswith("\\\\"):
 			return _("This object is not supported.")
 		elif re.match(r'[0-9]+:/', currentDir) and statusbar:
-			return self.convertSizeFromBytes(self.getSingleFileSizeFromStatusbar(statusbar))
+			return self.getSingleFileSizeFromStatusbar(statusbar)
 		elif re.match(r'[0-9]+:/', currentDir) and statusbar == False:
 			return _("No size information. Try select this item.")
 		elif os.path.isfile(path):
@@ -91,10 +91,12 @@ class getTCInfo():
 			return _("No size information. Try select this item.")
 
 	def getSingleFileSizeFromStatusbar(self, str):
-		str = str[:str.rfind(":")]
-		size = str[str.rfind(" ", 0, len(str[:-13].rstrip())):-13]
-		size = re.sub(r'[^0-9]+', r'', size)
-		return size
+		size = re.sub(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}.*', '', str).strip()
+		if size[-1:].isdigit():
+			return self.convertSizeFromBytes(re.sub(r'[^0-9]+', '', size[size.rfind(" "):]))
+		else:
+			return size[size.rfind(" ", 0, size.rfind(" ")):]
+
 
 	def getSelectedFilesSize(self):
 		sizeData = tcApi.getAvailableSize()
