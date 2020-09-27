@@ -97,21 +97,13 @@ class getTCInfo():
 		else:
 			return size[size.rfind(" ", 0, size.rfind(" ")):]
 
-
 	def getSelectedFilesSize(self):
 		sizeData = tcApi.getAvailableSize()
-		waitIndicator = sizeData[0:1]
-		if waitIndicator == '?':
+		if sizeData[0:1] == '?':
 			ui.message(_("The size is calculated, wait a few seconds..."))
 			return
-		size = ''
-		for s in sizeData:
-			if s.isspace() == False and s.isdigit() == False:
-				break
-			if s.isdigit():
-				size += s
-		convertedSize = self.convertSizeFromKB(size)
-		ui.message(convertedSize)
+		size=re.match(r'[\d,\s]+\s[\S]+\s', sizeData)
+		return size.group().strip()
 
 	def speakSize(self):
 		if not tcApi.isApiSupported():
