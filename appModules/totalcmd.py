@@ -260,12 +260,12 @@ class TCFileList(IAccessible):
 	def script_nextElement(self, gesture):
 		gesture.send()
 		if not self.next:
-			winsound.PlaySound("default",1)
+			winsound.PlaySound("default", winsound.SND_ASYNC)
 
 	def script_previousElement(self, gesture):
 		gesture.send()
 		if not self.previous:
-			winsound.PlaySound("default",1)
+			winsound.PlaySound("default", winsound.SND_ASYNC)
 
 	def initOverlayClass(self):
 		for gesture in self.__nextItemGestures:
@@ -304,12 +304,12 @@ class TCFTPList(IAccessible):
 	def script_nextElement(self, gesture):
 		gesture.send()
 		if not self.next:
-			winsound.PlaySound("default",1)
+			winsound.PlaySound("default", winsound.SND_ASYNC)
 
 	def script_previousElement(self, gesture):
 		gesture.send()
 		if not self.previous:
-			winsound.PlaySound("default",1)
+			winsound.PlaySound("default", winsound.SND_ASYNC)
 
 	def initOverlayClass(self):
 		for gesture in self.__nextItemGestures:
