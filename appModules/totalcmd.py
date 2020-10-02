@@ -258,7 +258,7 @@ class TCFileList(IAccessible):
 		else:
 			size = tcInfo.getSingleFileSize()
 		ui.message(size)
-	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
+	script_reportFileSize.__doc__ = _("Reports the size of the file under the cursor. If multiple objects are selected, reports their total size.")
 
 	def script_speakPath(self, gesture):
 		if not tcApi.isApiSupported():
