@@ -51,20 +51,6 @@ class getTCInfo():
 		else:
 			return _("{size} Bytes").format(size=sizeBytes)
 
-	def convertSizeFromKB(self, kb):
-		sizeKB = int(kb)
-		sizeMB = int((sizeKB / 1024) * 100) / 100
-		sizeGB = int((sizeKB / 1024 / 1024) * 100) / 100
-		sizeTB = int((sizeKB / 1024 / 1024 / 1024) * 100) / 100
-		if sizeTB >= 1:
-			return _("{size} tB").format(size=sizeTB)
-		elif sizeGB >= 1:
-			return _("{size} gB").format(size=sizeGB)
-		elif sizeMB >= 1:
-			return _("{size} mB").format(size=sizeMB)
-		else:
-			return _("{size} kB").format(size=sizeKB)
-
 	def getCurrentDirPath(self):
 		hnd = tcApi.getCurDirPanelHandle()
 		return NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0).name[:-1]
@@ -74,7 +60,6 @@ class getTCInfo():
 		name = api.getFocusObject().name.split("\t")[0]
 		path = '\\'.join([currentDir, name])
 		statusbar = tcApi.getAvailableSize()
-
 		if currentDir.startswith("\\\\") and statusbar and re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}', statusbar):
 			return self.convertSizeFromBytes(self.getSingleFileSizeFromStatusbar(statusbar))
 		elif currentDir.startswith("\\\\"):
@@ -168,7 +153,6 @@ class getTCInfo():
 tcInfo = getTCInfo()
 
 class AppModule(appModuleHandler.AppModule):
-	scriptCategory = manifest['summary']
 
 	def _getForegroundWindowClass(self, obj):
 		try:
@@ -225,12 +209,10 @@ class TCFileList(IAccessible):
 
 	def reportFocus(self):
 		global activePannel
-		obj = self
-		if obj.parent.parent.parent.windowClassName=="TTOTAL_CMD":
-			if activePannel == 1:
-				self.description = _("Left pannel")
-			else:
-				self.description = _("Right pannel")
+		if activePannel == 1:
+			self.description = _("Left pannel")
+		else:
+			self.description = _("Right pannel")
 
 		if self.name:
 			speakList=[]
