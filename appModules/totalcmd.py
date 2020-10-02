@@ -105,16 +105,6 @@ class getTCInfo():
 		size=re.match(r'[\d,\s]+\s[\S]+\s', sizeData)
 		return size.group().strip()
 
-	def speakSize(self):
-		if not tcApi.isApiSupported():
-			ui.message(_("Not supported in this version of total commander"))
-			return
-		if tcApi.getSelectedElements() > 0:
-			size = self.getSelectedFilesSize()
-		else:
-			size = self.getSingleFileSize()
-		ui.message(size)
-
 	def speakSelectedCommand(self):
 		if tcApi.isApiSupported():
 			selected = tcApi.getSelectedElements()
@@ -278,7 +268,14 @@ class TCFileList(IAccessible):
 	script_selectedElementsInfo.__doc__ = _("Reports information about the number of selected elements")
 
 	def script_reportFileSize(self, gesture):
-		tcInfo.speakSize()
+		if not tcApi.isApiSupported():
+			ui.message(_("Not supported in this version of total commander"))
+			return
+		if tcApi.getSelectedElements() > 0:
+			size = tcInfo.getSelectedFilesSize()
+		else:
+			size = tcInfo.getSingleFileSize()
+		ui.message(size)
 	script_reportFileSize.__doc__ = _("Reports to the size off selected files and folders")
 
 	def script_speakPath(self, gesture):
