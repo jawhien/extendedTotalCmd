@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Extended module for Total Commander 2.0\n"
-"POT-Creation-Date: 2020-04-18 15:43+0300\n"
-"PO-Revision-Date: 2020-04-18 15:51+0300\n"
+"Project-Id-Version: Total Commander add-on 2.3\n"
+"POT-Creation-Date: 2020-10-03 13:06+0300\n"
+"PO-Revision-Date: 2020-10-03 13:14+0300\n"
 "Last-Translator: Eugene Poplavsky <jawhien@gmail.com>\n"
 "Language-Team: Eugene Poplavsky <jawhien@gmail.com>\n"
 "Language: ru\n"
@@ -18,22 +18,22 @@ msgstr ""
 "X-Poedit-SearchPath-1: installTasks.py\n"
 "X-Poedit-SearchPath-2: globalPlugins\n"
 
-#: appModules/totalcmd.py:44 appModules/totalcmd.py:60
+#: appModules/totalcmd.py:44
 #, python-brace-format
 msgid "{size} tB"
 msgstr "{size} тБ"
 
-#: appModules/totalcmd.py:46 appModules/totalcmd.py:62
+#: appModules/totalcmd.py:46
 #, python-brace-format
 msgid "{size} gB"
 msgstr "{size} гБ"
 
-#: appModules/totalcmd.py:48 appModules/totalcmd.py:64
+#: appModules/totalcmd.py:48
 #, python-brace-format
 msgid "{size} mB"
 msgstr "{size} мБ"
 
-#: appModules/totalcmd.py:50 appModules/totalcmd.py:66
+#: appModules/totalcmd.py:50
 #, python-brace-format
 msgid "{size} kB"
 msgstr "{size} кБ"
@@ -43,73 +43,87 @@ msgstr "{size} кБ"
 msgid "{size} Bytes"
 msgstr "{size} Байт"
 
-#: appModules/totalcmd.py:81
-msgid "The size is calculated, wait a few seconds..."
-msgstr "Размер определяется, подождите несколько секунд..."
+#: appModules/totalcmd.py:66
+msgid "This object is not supported."
+msgstr "Этот объект не поддерживается."
 
-#: appModules/totalcmd.py:95 appModules/totalcmd.py:99
+#: appModules/totalcmd.py:70 appModules/totalcmd.py:76
 msgid "No size information. Try select this item."
 msgstr "Нет информации о размере. Попробуйте выделить этот элемент."
 
-#: appModules/totalcmd.py:101 appModules/totalcmd.py:121
-#: appModules/totalcmd.py:134 appModules/totalcmd.py:143
-msgid "Not supported in this version of total commander"
-msgstr "Не поддерживается в этой версии Total Commander"
+#: appModules/totalcmd.py:74
+msgid "This object is directory. Select it for size."
+msgstr "Этот объект является директорией. Выделите его, чтобы узнать размер."
 
-#: appModules/totalcmd.py:107
+#: appModules/totalcmd.py:88
+msgid "The size is calculated, wait a few seconds..."
+msgstr "Размер определяется, подождите несколько секунд..."
+
+#: appModules/totalcmd.py:97
 #, python-brace-format
 msgid "Selected {count} items"
 msgstr "Выделено {count} элементов"
 
-#: appModules/totalcmd.py:110
+#: appModules/totalcmd.py:100
 msgid "Nothing selected"
 msgstr "Ничего не выделено"
 
-#: appModules/totalcmd.py:118
+#: appModules/totalcmd.py:108
 #, python-brace-format
 msgid "Selected {selected} of {total} items"
 msgstr "Выделено {selected} из {total} элементов"
 
-#: appModules/totalcmd.py:149
-msgid "Copied to clipboard"
-msgstr "Скопировано в буфер обмена"
+#: appModules/totalcmd.py:111 appModules/totalcmd.py:254
+#: appModules/totalcmd.py:265
+msgid "Not supported in this version of total commander"
+msgstr "Не поддерживается в этой версии Total Commander"
 
-#: appModules/totalcmd.py:192 appModules/totalcmd.py:298
+#: appModules/totalcmd.py:134 appModules/totalcmd.py:147
+#: appModules/totalcmd.py:196
 msgid "Left"
 msgstr "Левая"
 
-#: appModules/totalcmd.py:195 appModules/totalcmd.py:301
+#: appModules/totalcmd.py:137 appModules/totalcmd.py:150
+#: appModules/totalcmd.py:196
 msgid "Right"
 msgstr "Правая"
 
-#: appModules/totalcmd.py:212 appModules/totalcmd.py:318
+#: appModules/totalcmd.py:213
 msgid "Left pannel"
 msgstr "Левая панель"
 
-#: appModules/totalcmd.py:214 appModules/totalcmd.py:320
+#: appModules/totalcmd.py:215
 msgid "Right pannel"
 msgstr "Правая панель"
 
-#: appModules/totalcmd.py:224 appModules/totalcmd.py:329
+#: appModules/totalcmd.py:224
 #, python-brace-format
 msgid "{current} of {all}"
 msgstr "{current} из {all}"
 
-#: appModules/totalcmd.py:253 appModules/totalcmd.py:357
+#: appModules/totalcmd.py:250
 msgid "Reports information about the number of selected elements"
 msgstr "Сообщает информацию о выделенных элементах"
 
-#: appModules/totalcmd.py:261 appModules/totalcmd.py:365
-msgid "Reports to the size off selected files and folders"
-msgstr "Сообщает размер выделенных элементов"
+#: appModules/totalcmd.py:261
+msgid ""
+"Reports the size of the file under the cursor. If multiple objects are "
+"selected, reports their total size."
+msgstr ""
+"Сообщает размер файла под курсором. Если выделено несколько объектов, "
+"сообщает их общий размер."
 
-#: appModules/totalcmd.py:267 appModules/totalcmd.py:371
+#: appModules/totalcmd.py:269
+msgid "Copied to clipboard"
+msgstr "Скопировано в буфер обмена"
+
+#: appModules/totalcmd.py:271
 msgid ""
 "Reports the current path to the folder. Pressing twice Copies it to the "
 "clipboard."
 msgstr ""
-"Сообщает путь к текущей директории. При двойном нажатии копирует его в "
-"буфер обмена."
+"Сообщает путь к текущей директории. При двойном нажатии копирует его в буфер "
+"обмена."
 
 #: globalPlugins/extendedTotalCMD/__init__.py:19
 msgid "Update Total Commander add-on..."
@@ -136,7 +150,7 @@ msgstr "Получить новую версию"
 msgid "Close"
 msgstr "Закрыть"
 
-#: installTasks.py:20
+#: installTasks.py:18
 #, python-brace-format
 msgid ""
 " {name} - this free add-on for NVDA.\n"
@@ -152,10 +166,13 @@ msgstr ""
 "Вы хотите сделать пожертвование сейчас? Для совершения платежа вы будете "
 "перенаправлены на сайт разработчика."
 
-#: installTasks.py:24
+#: installTasks.py:22
 #, python-brace-format
 msgid "Request donations for {name}"
 msgstr "Запрос пожертвования для {name}"
+
+#~ msgid "Reports to the size off selected files and folders"
+#~ msgstr "Сообщает размер выделенных элементов"
 
 #~ msgid "Reports the current path to the folder."
 #~ msgstr "Сообщает текущий путь к папке."
