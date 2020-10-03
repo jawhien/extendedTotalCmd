@@ -50,7 +50,7 @@ I would like to thank all those who send their suggestions, and also helps in te
 
 ## Does not the reporting of the size of the file under the cursor
 
-Determining the size of file under cursor only works when using Brief view.
+In some cases (for example, when working via FTP), determining the size of the file under the cursor works only brief view.
 
 ## How can I help develop the add-on?
 If you liked my add-on, you can donate any amount on the [special page](https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/donation.php).
@@ -62,9 +62,24 @@ In this case, you need to [create a new issue](https://github.com/jawhien/extend
 Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the author’s email address in the NVDA Add-ons Manager.
 
 # Change log
+V2.3: 05.10.2020
+* Fixed incorrect detection of the active panel in some cases.
+* Fixed tab support in some 32-bit version dialog boxes.
+* Messages about selecting files or canceling it no longer depend on pressing certain keys.
+* Fixed duplicate messages when selecting files.
+* Fixed persistent messages about selected files when switching tabs in the main window of Total Commander.
+* Improvements to dialogs with messages. Now, when these dialogs appear (for example, when deleting files) NVDA will read the information that is displayed on the screen.
+* Improved file overwrite dialog. Now when the message about overwriting files appears, NVDA will report all the information that is displayed on the screen.
+* The trailing ">" character is now missing in the path to the current directory.
+* Fixed determination of the size of selected files. Now it is reported as displayed on the screen. You can set the display format in the Total Commander settings.
+* Fixed determining the size of the file under the cursor. It is now reported correctly in both short and detailed view.
+* Fixed determination of the size of files with UNC paths and when working via FTP. The size is now reported as displayed on the screen. you can change the display format in the settings of Total Commander. (Works correctly only in short form)
+* Updated some messages.
+* Updated Russian localization.
+* Full code optimization.
+* Other minor improvements and fixes.
 
-## v2.2.0: 20.04.2020
-
+V2.2.0: 20.04.2020
 * When switching tabs, the name of the selected tab will now be reported, as well as its position, if enabled in the NVDA settings.
 * Added the function of copying the path to the current folder to the clipboard by double-pressing CTRL + SHIFT + D
 * Fixed a bug leading to problems when determining the version of TC.
@@ -72,8 +87,7 @@ Yes, please send me letter to the email address indicated in the add-on, and I w
 * Code optimization.
 * Other minor improvements and fixes.
 
-## V2.1.0: 21.03.2020
-
+V2.1.0: 21.03.2020
 * Added a new function to reports the full path to the current directory.
 * Added option to check updates. To check the update, open the tools menu in the main NVDA menu and select "Update Total Commander add-on..."
 * Fixed a bug in Total Commander version 7 and 8 when you select file pronounced the message that the TC version is not supported.
@@ -85,10 +99,10 @@ Yes, please send me letter to the email address indicated in the add-on, and I w
 * Removed unused variables.
 * Full code optimization.
 
-## V2.0.1: 01.03.2020
+V2.0.1: 01.03.2020
 * Documentation bugs fixed
 
-## V2.0: 22.02.2020
+V2.0: 22.02.2020
 * Fixed a bug where the list borders were erroneously determined on some files.
 * The problem was fixed in 32 bit versions of TC8 +, when, upon exiting to the previous directory, the first element of the list was declared first, and then the element in focus.
 * Added announcement of item positions in the list, if this feature is enabled in the NVDA settings. (Only in TC9 +).
@@ -97,27 +111,27 @@ Yes, please send me letter to the email address indicated in the add-on, and I w
 * Added announcement about deselecting when pressing CTRL + num-. (Only in TC9 +).
 * Added announcement of the size of selected files by pressing CTRL + SHIFT + R. (Only in TC9 +).
 
-## V1.4: 19.07.2019
+V1.4: 19.07.2019
 * The list border signal has been replaced with standard windows sound.
 * Added a signal to the top of the list.
 * Now not only arrows are processed, but also Home, End, PageUp and PageDown keys for signaling list boundaries.
 * Added compatibility with new versions of NVDA.
 
-## V1.3
+V1.3
 * The sound signal will now play only when navigating the list when the down arrow is pressed on the last element of the list, and not when the focus is on the last element.
 * Fixed erroneous behavior outside the main window, settings, and other lists.
 * Improved behavior in the FTP connection dialog.
 
-## V1.2
+V1.2
 * The mechanism for determining the active panel in versions 8 and above has been changed.
 * Optimized code to avoid problems with versions 7 and below.
 * When the focus falls on the last element of the list, a sound signal will be played.
 * Fixed incorrect pronunciation of the active panel outside the main window.
 
-## V1.1
+V1.1
 * Now, in the disc selection window, disc labels are read.
 * A description with the name of the active panel has been added to the elements, when you press the (NVDA + UpArrow) or (NVDA + TAB) keys, the element name and the name of the active panel are pronounced.
 * Minor improvements.
 
-## V1.0
+V1.0
 * First version.

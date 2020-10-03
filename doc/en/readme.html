@@ -82,7 +82,7 @@ Note: In versions older than 2017.3, the add-on was not tested, but, most likely
 <div id="faq">
 <h2>Frequently Asked Questions</h2>
 <h3>Does not the reporting of the size of the file under the cursor</h3>
-<p>Determining the size of file under cursor only works when using Brief view.</p>
+<p>In some cases (for example, when working via FTP), determining the size of the file under the cursor works only brief view.</p>
 <h3>How can I help develop the add-on?</h3>
 <p>If you liked my add-on, you can donate any amount on the <a href="https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/donation.php">special page</a>.</p>
 <h3>I found a bug / I have suggestions for improving the add-on, how can I contact you?</h3>
@@ -92,6 +92,24 @@ Note: In versions older than 2017.3, the add-on was not tested, but, most likely
 </div>
 <div id="change-log">
 <h2>Change log</h2>
+<h3>V2.3: 05.10.2020</h3>
+<ul>
+<li>Fixed incorrect detection of the active panel in some cases.</li>
+<li>Fixed tab support in some 32-bit version dialog boxes.</li>
+<li>Messages about selecting files or canceling it no longer depend on pressing certain keys.</li>
+<li>Fixed duplicate messages when selecting files.</li>
+<li>Fixed persistent messages about selected files when switching tabs in the main window of Total Commander.</li>
+<li>Improvements to dialogs with messages. Now, when these dialogs appear (for example, when deleting files) NVDA will read the information that is displayed on the screen.</li>
+<li>Improved file overwrite dialog. Now when the message about overwriting files appears, NVDA will report all the information that is displayed on the screen.</li>
+<li>The trailing ">" character is now missing in the path to the current directory.</li>
+<li>Fixed determination of the size of selected files. Now it is reported as displayed on the screen. You can set the display format in the Total Commander settings.</li>
+<li>Fixed determining the size of the file under the cursor. It is now reported correctly in both short and detailed view.</li>
+<li>Fixed determination of the size of files with UNC paths and when working via FTP. The size is now reported as displayed on the screen. you can change the display format in the settings of Total Commander. (Works correctly only in short form)</li>
+<li>Updated some messages.</li>
+<li>Updated Russian localization.</li>
+<li>Full code optimization.</li>
+<li>Other minor improvements and fixes.</li>
+</ul>
 <h3>v2.2.0: 20.04.2020</h3>
 <ul>
 <li>When switching tabs, the name of the selected tab will now be reported, as well as its position, if enabled in the NVDA settings.</li>
