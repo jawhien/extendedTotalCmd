@@ -71,7 +71,7 @@ class getTCInfo():
 		elif os.path.isfile(path):
 			return self.convertSizeFromBytes(os.path.getsize(path))
 		elif os.path.isdir(path):
-			return _("This object is directory.")
+			return _("This object is directory. Select it for size.")
 		else:
 			return _("No size information. Try select this item.")
 
