@@ -16,6 +16,7 @@ import re
 import ui
 import winUser
 import scriptHandler
+import threading
 from . import tcApi
 import config
 import eventHandler
@@ -71,9 +72,26 @@ class getTCInfo():
 		elif os.path.isfile(path):
 			return self.convertSizeFromBytes(os.path.getsize(path))
 		elif os.path.isdir(path):
-			return _("This object is directory. Select it for size.")
+			threads = threading.enumerate()
+			for thr in threads:
+				if thr.getName() == path: return _("The size is calculated, wait a few seconds...")
+
+			t1 = threading.Thread(name=path, target=self.speakSingleDirectorySize, args=(path,))
+			t1.start()
+			return None
 		else:
 			return _("No size information. Try select this item.")
+
+	def speakSingleDirectorySize(self, path):
+		ui.message(self.convertSizeFromBytes(self.getSingleDirectorySize(path)))
+
+	def getSingleDirectorySize(self, path):
+		totalSize = 0
+		for dirpath, dirnames, filenames in os.walk(path):
+			for f in filenames:
+				fp = os.path.join(dirpath, f)
+				totalSize += os.path.getsize(fp)
+		return totalSize
 
 	def getSingleFileSizeFromStatusbar(self, str):
 		size = re.sub(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}.*', '', str).strip()
