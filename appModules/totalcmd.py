@@ -62,7 +62,7 @@ class getTCInfo():
 		path = '\\'.join([currentDir, name])
 		statusbar = tcApi.getAvailableSize()
 		if currentDir.startswith("\\\\") and statusbar and re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}', statusbar):
-			return self.convertSizeFromBytes(self.getSingleFileSizeFromStatusbar(statusbar))
+			return self.getSingleFileSizeFromStatusbar(statusbar)
 		elif currentDir.startswith("\\\\"):
 			return _("This object is not supported.")
 		elif re.match(r'[0-9]+:/', currentDir) and statusbar:
