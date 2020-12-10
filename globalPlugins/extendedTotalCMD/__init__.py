@@ -18,6 +18,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.tools = gui.mainFrame.sysTrayIcon.toolsMenu
 		self.tcUpdater = self.tools.Append(wx.ID_ANY, _("Update Total Commander add-on..."), _("Update Total Commander add-on..."))
 		gui.mainFrame.sysTrayIcon.Bind(wx.EVT_MENU, updater.onCheckForUpdates, self.tcUpdater)
+		updater.autoCheckForUpdates()
 
 	def terminate(self):
 		self.tools.Remove(self.tcUpdater)

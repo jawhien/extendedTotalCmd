@@ -8,7 +8,6 @@ import addonHandler
 import wx
 import gui
 from gui import guiHelper
-import api
 import threading
 import webbrowser
 try:
@@ -33,26 +32,42 @@ def loadUpdateInfo():
 	latest = data[0]
 	newVersion = latest["tag_name"]
 	if newVersion > updateInfo["currentVersion"]:
-		updateInfo["text"] = _("New version {version} is available.").format(version=newVersion)
+		updateInfo["text"] = _("New version {version} is available. Do you want to download it?").format(version=newVersion)
 		updateInfo["newVersion"] = newVersion
 		updateInfo["getAddonUrl"] = "https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/"
 		updateInfo["isAvailable"] = True
 	else:
 		updateInfo["text"] = _("No update available.")
 
+def getAddon():
+	webbrowser.open(updateInfo["getAddonUrl"])
+
 def onCheckForUpdates(event):
-	t = threading.Thread(target=checkForUpdates)
+	t = threading.Thread(target=update)
 	t.daemon = True
 	t.start()
 
-def checkForUpdates():
+def autoCheckForUpdates():
+	t = threading.Timer(5.0, autoUpdate)
+	t.daemon = True
+	t.start()
+
+def update():
 	loadUpdateInfo()
 	wx.CallAfter(tcAddonUpdateDialog, gui.mainFrame)
+
+def autoUpdate():
+	loadUpdateInfo()
+	if updateInfo["isAvailable"]:
+		dlg = wx.MessageDialog(gui.mainFrame, updateInfo["text"], _("Update Total Commander add-on"), wx.YES_NO | wx.ICON_QUESTION)
+		if dlg.ShowModal() == wx.ID_YES:
+			getAddon()
+		dlg.Destroy()
 
 class tcAddonUpdateDialog(wx.Dialog):
 
 	def __init__(self,parent):
-		super(tcAddonUpdateDialog,self).__init__(parent, title= _("Update"), size = (500, 700))
+		super(tcAddonUpdateDialog,self).__init__(parent, title= _("Update Total Commander add-on"), size = (500, 700))
 		self.sizerLayout = guiHelper.BoxSizerHelper(self, wx.VERTICAL)
 		self.sizerLayout.addItem (wx.StaticText(self, label=updateInfo["text"]))
 		self.buttons = guiHelper.ButtonHelper(wx.HORIZONTAL)
@@ -67,7 +82,7 @@ class tcAddonUpdateDialog(wx.Dialog):
 		wx.CallAfter(self.Show)
 
 	def onUpdate(self, event):
-		webbrowser.open(updateInfo["getAddonUrl"])
+		getAddon()
 		self.Destroy()
 
 
