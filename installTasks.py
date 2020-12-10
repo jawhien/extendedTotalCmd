@@ -8,9 +8,14 @@ import webbrowser
 import wx
 import gui
 import addonHandler
+from languageHandler import getLanguage
+
 addonHandler.initTranslation()
 
-donations_url = "https://money.yandex.ru/to/410012216939697"
+lang = getLanguage().split("_")[0]
+if lang != "en" and lang != "ru": lang = "en"
+
+donations_url = "https://jnsoft.ru/{lang}/articles/nvda/extendedTotalCmd/donation.php".format(lang=lang)
 
 def onInstall():
 	manifest = addonHandler.getCodeAddon().manifest
@@ -18,7 +23,6 @@ def onInstall():
 	message = _(""" {name} - this free add-on for NVDA.
 You can make a donation to the author to help further development of this add-on and other free software.
 You want to make a donation now? For transaction you will be redirected to the website of the developer.""").format(name=manifest['summary'])
-	# Translators: The title of the dialog shown during add-on installation.
-	if gui.messageBox(message, caption=_("Request donations for {name}").format(name=manifest['summary']),
-		style=wx.YES_NO|wx.ICON_QUESTION) == wx.YES:
+
+	if gui.messageBox(message, caption=_("Request donations for {name}").format(name=manifest['summary']), style=wx.YES_NO|wx.ICON_QUESTION) == wx.YES:
 		webbrowser.open(donations_url)

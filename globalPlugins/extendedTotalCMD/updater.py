@@ -10,6 +10,7 @@ import gui
 from gui import guiHelper
 import threading
 import webbrowser
+from languageHandler import getLanguage
 try:
 	import urllib2
 except:
@@ -34,7 +35,9 @@ def loadUpdateInfo():
 	if newVersion > updateInfo["currentVersion"]:
 		updateInfo["text"] = _("New version {version} is available. Do you want to download it?").format(version=newVersion)
 		updateInfo["newVersion"] = newVersion
-		updateInfo["getAddonUrl"] = "https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/"
+		lang = getLanguage().split("_")[0]
+		if lang != "en" and lang != "ru": lang = "en"
+		updateInfo["getAddonUrl"] = "https://jnsoft.ru/{locale}/articles/nvda/extendedTotalCmd/".format(locale=lang)
 		updateInfo["isAvailable"] = True
 	else:
 		updateInfo["text"] = _("No update available.")
