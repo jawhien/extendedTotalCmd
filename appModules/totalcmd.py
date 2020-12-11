@@ -219,6 +219,9 @@ class TCFileList(IAccessible):
 		super(TCFileList,self).event_gainFocus()
 
 	def event_selectionWithIn(self):
+		events = eventHandler._pendingEventCountsByName
+		if len(events) == 0: return
+
 		if not eventHandler.isPendingEvents("gainFocus") and not eventHandler.isPendingEvents("valueChange"):
 			tcInfo.speakSelectedCommand()
 
