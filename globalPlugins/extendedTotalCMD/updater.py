@@ -51,7 +51,7 @@ def onCheckForUpdates(event):
 	t.start()
 
 def autoCheckForUpdates():
-	t = threading.Timer(5.0, autoUpdate)
+	t = threading.Timer(3.0, autoUpdate)
 	t.daemon = True
 	t.start()
 
