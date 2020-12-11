@@ -29,7 +29,11 @@ updateInfo = {"text":"", "currentVersion":manifest["version"], "newVersion":"", 
 def loadUpdateInfo():
 	global updateInfo
 	checkUrl = "https://api.github.com/repos/jawhien/extendedTotalCmd/releases"
-	data = json.load(opener.open(checkUrl))
+	try:
+		data = json.load(opener.open(checkUrl))
+	except:
+		updateInfo["text"] = _("An error occurred while checking for updates! Check your internet connection.")
+		return
 	latest = data[0]
 	newVersion = latest["tag_name"]
 	if newVersion > updateInfo["currentVersion"]:
