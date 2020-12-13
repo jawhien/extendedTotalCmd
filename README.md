@@ -65,6 +65,14 @@ In this case, you need to [create a new issue](https://github.com/jawhien/extend
 Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the author’s email address in the NVDA Add-ons Manager.
 
 # Change log
+V2.4: 13.12.2020
+* Added definition of the size of directories under the cursor. This is a slower process than determining the size of a single file and can take several seconds.
+* Added automatic check for updates after starting NVDA. Note: the automatic check for updates will not be performed if the check for updates for NVDA is disabled in the settings.
+* Fixed a bug due to which the size of files was not detected in some cases.
+* Fixed a bug due to which the website page in English was always opened.
+* Fixed some false positives for selection events.
+* Other minor improvements.
+
 V2.3: 05.10.2020
 * Fixed incorrect detection of the active panel in some cases.
 * Fixed tab support in some 32-bit version dialog boxes.
