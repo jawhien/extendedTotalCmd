@@ -23,7 +23,6 @@ msgstr ""
 msgid "{size} tB"
 msgstr "{size} тБ"
 
-#: appModules/totalcmd.py:47
 #, python-brace-format
 msgid "{size} gB"
 msgstr "{size} гБ"
