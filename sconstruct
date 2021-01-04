@@ -129,10 +129,6 @@ def createAddonHelp(dir):
 		cssTarget = env.Command(cssPath, "style.css", Copy("$TARGET", "$SOURCE"))
 		env.Depends(addon, cssTarget)
 	if os.path.isfile("readme.md"):
-		readmePath = os.path.join(docsDir, buildVars.baseLanguage, "readme.md")
-		readmeTarget = env.Command(readmePath, "readme.md", Copy("$TARGET", "$SOURCE"))
-		env.Depends(addon, readmeTarget)
-
 
 def createAddonBundleFromPath(path, dest):
 	""" Creates a bundle from a directory that contains an addon manifest file."""
