@@ -1,0 +1,6 @@
+*.html
+*.ini
+*.mo
+*.pot
+*.nvda-addon
+.sconsign.dblite
