@@ -82,7 +82,7 @@ A: In this case, you need to [create a new issue](https://github.com/jawhien/ext
 
 Q: The add-on does not support my language, can I help with the translation?
 
-A: Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the author’s email address in the NVDA Add-ons Manager.
+A: Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the authorâ€™s email address in the NVDA Add-ons Manager.
 
 <a name="user-content-change-log"></a>
 # Change log
