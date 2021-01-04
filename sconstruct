@@ -129,6 +129,11 @@ def createAddonHelp(dir):
 		cssTarget = env.Command(cssPath, "style.css", Copy("$TARGET", "$SOURCE"))
 		env.Depends(addon, cssTarget)
 
+	if os.path.isfile("LICENSE.txt"):
+		licensePath = os.path.join(dir, "LICENSE.txt")
+		licenseTarget = env.Command(licensePath, "LICENSE.txt", Copy("$TARGET", "$SOURCE"))
+		env.Depends(addon, licenseTarget)
+
 def createAddonBundleFromPath(path, dest):
 	""" Creates a bundle from a directory that contains an addon manifest file."""
 	basedir = os.path.abspath(path)
