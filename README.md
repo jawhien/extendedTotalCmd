@@ -1,5 +1,5 @@
 # This document in other languages
-[Русский](https://github.com/jawhien/extendedTotalCmd/tree/master/doc/ru)
+[Русский](https://github.com/jawhien/extendedTotalCmd/tree/master/addon/doc/ru)
 
 # Total Commander
 
