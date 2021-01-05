@@ -37,15 +37,11 @@ def md2html(source, dest):
 		for k, v in headerDic.items():
 			mdText = mdText.replace(k, v, 1)
 		htmlText = markdown.markdown(mdText).split("<!-- border -->")
-
 	with codecs.open(os.path.join("documentation.tpl"), "r", "utf-8") as f:
 		docTemplate = f.read()
-
 	docText = docTemplate.format(lang=lang, title=title, header=htmlText[0], menu=htmlText[1], content=htmlText[2])
-
 	with codecs.open(dest, "w", "utf-8") as f:
 		f.write(docText)
-
 
 def mdTool(env):
 	mdAction = env.Action(
