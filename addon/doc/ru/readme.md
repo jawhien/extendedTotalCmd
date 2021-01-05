@@ -5,6 +5,8 @@
 [Поддержать автора дополнения](https://jnsoft.ru/ru/articles/nvda/extendedTotalCmd/donation.php)
 [Репозиторий GitHub](https://github.com/jawhien/extendedTotalCmd)
 
+<!-- border -->
+
 # Содержание
 
 * [Совместимость](#user-content-compatibility)
@@ -15,6 +17,8 @@
 * [Вопросы и ответы](#user-content-faq)
 * [Список изменений](#user-content-change-log)
 * [Официальная страница дополнения](https://jnsoft.ru/ru/articles/nvda/extendedTotalCmd/)
+
+<!-- border -->
 
 <a name="user-content-compatibility"></a>
 # Совместимость

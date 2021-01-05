@@ -5,6 +5,8 @@ This add-on improves the accessibility of the Total Commander file manager. It i
 [Donate the author of the add-on](https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/donation.php)
 [GitHub repository](https://github.com/jawhien/extendedTotalCmd)
 
+<!-- border -->
+
 # Table of contents
 
 * [Compatibility](#user-content-compatibility)
@@ -15,6 +17,8 @@ This add-on improves the accessibility of the Total Commander file manager. It i
 * [Frequently Asked Questions](#user-content-faq)
 * [Change log](#user-content-change-log)
 * [Official page of the add-on](https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/)
+
+<!-- border -->
 
 <a name="user-content-compatibility"></a>
 # Compatibility
