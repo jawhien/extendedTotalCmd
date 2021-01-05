@@ -36,20 +36,13 @@ def md2html(source, dest):
 		mdText = f.read()
 		for k, v in headerDic.items():
 			mdText = mdText.replace(k, v, 1)
-		htmlText = markdown.markdown(mdText)
-	# Optimization: build resulting HTML text in one go instead of writing parts separately.
-	docText = "\n".join([
-		"<!DOCTYPE html>",
-		"<html lang=\"%s\">" % lang,
-		"<head>",
-		"<meta charset=\"UTF-8\">"
-		"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-		"<link rel=\"stylesheet\" type=\"text/css\" href=\"../style.css\" media=\"screen\">",
-		"<title>%s</title>" % title,
-		"</head>\n<body>",
-		htmlText,
-		"</body>\n</html>"
-	])
+		htmlText = markdown.markdown(mdText).split("<!-- border -->")
+
+	with codecs.open(os.path.join("documentation.tpl"), "r", "utf-8") as f:
+		docTemplate = f.read()
+
+	docText = docTemplate.format(lang=lang, title=title, header=htmlText[0], menu=htmlText[1], content=htmlText[2])
+
 	with codecs.open(dest, "w", "utf-8") as f:
 		f.write(docText)
 
