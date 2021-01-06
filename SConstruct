@@ -37,7 +37,7 @@ def md2html(source, dest):
 		for k, v in headerDic.items():
 			mdText = mdText.replace(k, v, 1)
 		htmlText = markdown.markdown(mdText).split("<!-- border -->")
-	with codecs.open(os.path.join("documentation.tpl"), "r", "utf-8") as f:
+	with codecs.open(os.path.join("templates", "documentation.tpl"), "r", "utf-8") as f:
 		docTemplate = f.read()
 	docText = docTemplate.format(lang=lang, title=title, header=htmlText[0], menu=htmlText[1], content=htmlText[2])
 	with codecs.open(dest, "w", "utf-8") as f:
@@ -116,7 +116,6 @@ def createAddonHelp(dir):
 		cssPath = os.path.join(docsDir, "style.css")
 		cssTarget = env.Command(cssPath, "style.css", Copy("$TARGET", "$SOURCE"))
 		env.Depends(addon, cssTarget)
-
 	if os.path.isfile("LICENSE.txt"):
 		licensePath = os.path.join(dir, "LICENSE.txt")
 		licenseTarget = env.Command(licensePath, "LICENSE.txt", Copy("$TARGET", "$SOURCE"))
@@ -165,7 +164,6 @@ def generateTranslatedManifest(source, language, out):
 def expandGlobs(files):
 	return [f for pattern in files for f in env.Glob(pattern)]
 
-
 addon = env.NVDAAddon(addonFile, env.Dir('addon'))
 
 langDirs = [f for f in env.Glob(os.path.join("addon", "locale", "*"))]
@@ -177,7 +175,7 @@ for dir in langDirs:
 	env.Depends(moFile, poFile)
 	translatedManifest = env.NVDATranslatedManifest(
 		dir.File("manifest.ini"),
-		[moFile, os.path.join("manifest-translated.ini.tpl")]
+		[moFile, os.path.join("templates", "manifest-translated.ini.tpl")]
 	)
 	env.Depends(translatedManifest, ["buildVars.py"])
 	env.Depends(addon, [translatedManifest, moFile])
@@ -210,7 +208,7 @@ env.Alias('mergePot', mergePot)
 env.Depends(mergePot, i18nFiles)
 
 # Generate Manifest path
-manifest = env.NVDAManifest(os.path.join("addon", "manifest.ini"), os.path.join("manifest.ini.tpl"))
+manifest = env.NVDAManifest(os.path.join("addon", "manifest.ini"), os.path.join("templates", "manifest.ini.tpl"))
 # Ensure manifest is rebuilt if buildVars is updated.
 env.Depends(manifest, "buildVars.py")
 
