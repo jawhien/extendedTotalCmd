@@ -59,15 +59,6 @@ def getStatusBarHandle():
 	param1 = 7 if activePanel == 1 else 8
 	return sendMessage(param1, 0)
 
-def getAvailableSize():
-	hnd = getStatusBarHandle()
-	obj = IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
-	text = obj.displayText
-	if text.find('<') >= 0 or text.find('>') >= 0:
-		return False
-	else:
-		return text
-
 def getStatusBarText():
 	return getStatusBarObject().displayText
 
