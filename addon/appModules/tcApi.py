@@ -78,6 +78,9 @@ def getAvailableSize():
 def getStatusBar():
 	return IAccessible.getNVDAObjectFromEvent(getSizeHandle(), winUser.OBJID_CLIENT, 0).displayText
 
+def getStatusBarObject():
+	return IAccessible.getNVDAObjectFromEvent(getSizeHandle(), winUser.OBJID_CLIENT, 0)
+
 def isApiSupported():
 	if getActivePanelNum() == 0:
 		return False
