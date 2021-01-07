@@ -108,6 +108,15 @@ class getTCInfo():
 		size=re.match(r'[\d,\s]+\s[\S]+\s', sizeData)
 		return size.group().strip()
 
+	def getDateTime(self):
+		if tcApi.getSelectedElements() > 0:
+			return _("There is no information about the time of the change.")
+		str = tcApi.getStatusBar()
+		datetime = re.search(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2,4}\s[0-9]{1,2}:[0-9]{1,2}', str)
+		if not datetime:
+			return _("There is no information about the time of the change.")
+		return datetime.group(0)
+
 	def speakSelectedCommand(self):
 		if tcApi.isApiSupported():
 			selected = tcApi.getSelectedElements()
@@ -291,10 +300,19 @@ class TCFileList(IAccessible):
 		ui.message(curPath)
 	script_speakPath.__doc__ = _("Reports the current path to the folder. Pressing twice Copies it to the clipboard.")
 
+	def script_speakDateTime(self, gesture):
+		if not tcApi.isApiSupported():
+			ui.message(_('Not supported in this version of total commander'))
+			return
+		datetime = tcInfo.getDateTime()
+		ui.message(datetime)
+	script_speakDateTime.__doc__ = _("Reports the modification time of the file under the cursor.")
+
 	__gestures={
 		"kb:control+shift+d":"speakPath",
 		"KB:CONTROL+SHIFT+E":"selectedElementsInfo",
-	"KB:CONTROL+SHIFT+R":"reportFileSize"
+	"KB:CONTROL+SHIFT+R":"reportFileSize",
+		"kb:control+shift+t":"speakDateTime",
 	}
 
 class TCFTPList(IAccessible):
