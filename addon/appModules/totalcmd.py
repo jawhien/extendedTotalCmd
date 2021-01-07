@@ -101,11 +101,11 @@ class getTCInfo():
 			return size[size.rfind(" ", 0, size.rfind(" ")):]
 
 	def getSelectedFilesSize(self):
-		sizeData = tcApi.getAvailableSize()
-		if sizeData[0:1] == '?':
+		statusBar = tcApi.getStatusBarText()
+		if statusBar.startswith("?"):
 			ui.message(_("The size is calculated, wait a few seconds..."))
 			return
-		size=re.match(r'[\d,\s]+\s[\S]+\s', sizeData)
+		size=re.match(r'[\d,\s]+\s[\S]+\s', statusBar)
 		return size.group().strip()
 
 	def getDateTime(self):
