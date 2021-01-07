@@ -60,14 +60,14 @@ class getTCInfo():
 		currentDir = self.getCurrentDirPath()
 		name = api.getFocusObject().name.split("\t")[0]
 		path = '\\'.join([currentDir, name])
-		statusbar = tcApi.getAvailableSize()
-		if currentDir.startswith("\\\\") and statusbar and re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}', statusbar):
+		statusbar = tcApi.getStatusBarText()
+		if currentDir.startswith("\\\\") and not re.findall(r'<\S*[\s>]', statusbar) and re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}', statusbar):
 			return self.getSingleFileSizeFromStatusbar(statusbar)
 		elif currentDir.startswith("\\\\"):
 			return _("This object is not supported.")
-		elif re.match(r'[0-9]+:/', currentDir) and statusbar:
+		elif re.match(r'[0-9]+:/', currentDir) and not re.findall(r'<\S*[\s>]', statusbar):
 			return self.getSingleFileSizeFromStatusbar(statusbar)
-		elif re.match(r'[0-9]+:/', currentDir) and statusbar == False:
+		elif re.match(r'[0-9]+:/', currentDir) and re.findall(r'<\S*[\s>]', statusbar):
 			return _("No size information. Try select this item.")
 		elif os.path.isfile(path):
 			return self.convertSizeFromBytes(os.path.getsize(path))
@@ -75,7 +75,6 @@ class getTCInfo():
 			threads = threading.enumerate()
 			for thr in threads:
 				if thr.getName() == path: return _("The size is calculated, wait a few seconds...")
-
 			t1 = threading.Thread(name=path, target=self.speakSingleDirectorySize, args=(path,))
 			t1.start()
 			return None
