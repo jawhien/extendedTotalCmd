@@ -187,6 +187,12 @@ class AppModule(appModuleHandler.AppModule):
 		except AttributeError:
 			return None
 
+	def _get_statusBar(self):
+		if api.getForegroundObject().windowClassName == "TTOTAL_CMD":
+			obj = tcApi.getStatusBarObject()
+			obj.name = obj.displayText
+			return obj
+
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		windowClass = obj.windowClassName
 		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD":
@@ -206,6 +212,7 @@ class TCFileList(IAccessible):
 	scriptCategory = manifest['summary']
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
+
 
 	def _get_positionInfo(self):
 		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
