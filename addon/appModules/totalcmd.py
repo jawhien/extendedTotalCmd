@@ -111,7 +111,7 @@ class getTCInfo():
 	def getDateTime(self):
 		if tcApi.getSelectedElements() > 0:
 			return _("There is no information about the time of the change.")
-		str = tcApi.getStatusBar()
+		str = tcApi.getStatusBarText()
 		datetime = re.search(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2,4}\s[0-9]{1,2}:[0-9]{1,2}', str)
 		if not datetime:
 			return _("There is no information about the time of the change.")

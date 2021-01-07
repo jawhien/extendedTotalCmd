@@ -12,24 +12,19 @@ import api
 def sendMessage(param1, param2):
 	user32 = windll.user32
 	hnd = user32.GetForegroundWindow()
-	value = user32.SendMessageW(hnd, 1074, param1, param2)
-	return value
+	return user32.SendMessageW(hnd, 1074, param1, param2)
 
 def getLeftListHandle():
-	left = sendMessage(1, 0)
-	return left
+	return sendMessage(1, 0)
 
 def getRightListHandle():
-	right = sendMessage(2, 0)
-	return right
+	return sendMessage(2, 0)
 
 def getActiveListHandle():
-	active = sendMessage(3, 0)
-	return active
+	return sendMessage(3, 0)
 
 def getActivePanelNum():
-	panel = sendMessage(1000, 0)
-	return panel
+	return sendMessage(1000, 0)
 
 def isUpdir():
 	activePanel = getActivePanelNum()
@@ -49,8 +44,7 @@ def getCountElements():
 def getSelectedElements():
 	activePanel = getActivePanelNum()
 	param1 = 1005 if activePanel == 1 else 1006
-	count = sendMessage(param1, 0)
-	return count
+	return sendMessage(param1, 0)
 
 def getCurrentElementNum():
 	activePanel = getActivePanelNum()
@@ -60,14 +54,13 @@ def getCurrentElementNum():
 		count += 1
 	return count
 
-def getSizeHandle():
+def getStatusBarHandle():
 	activePanel = getActivePanelNum()
 	param1 = 7 if activePanel == 1 else 8
-	hnd = sendMessage(param1, 0)
-	return hnd
+	return sendMessage(param1, 0)
 
 def getAvailableSize():
-	hnd = getSizeHandle()
+	hnd = getStatusBarHandle()
 	obj = IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
 	text = obj.displayText
 	if text.find('<') >= 0 or text.find('>') >= 0:
@@ -75,11 +68,11 @@ def getAvailableSize():
 	else:
 		return text
 
-def getStatusBar():
-	return IAccessible.getNVDAObjectFromEvent(getSizeHandle(), winUser.OBJID_CLIENT, 0).displayText
+def getStatusBarText():
+	return getStatusBarObject().displayText
 
 def getStatusBarObject():
-	return IAccessible.getNVDAObjectFromEvent(getSizeHandle(), winUser.OBJID_CLIENT, 0)
+	return IAccessible.getNVDAObjectFromEvent(getStatusBarHandle(), winUser.OBJID_CLIENT, 0)
 
 def isApiSupported():
 	if getActivePanelNum() == 0:
@@ -93,8 +86,7 @@ def getCurDirPanelHandle():
 def getTabListHandle():
 	activePanel = getActivePanelNum()
 	param1 = 26 if activePanel == 1 else 27
-	hnd = sendMessage(param1, 0)
-	return hnd
+	return sendMessage(param1, 0)
 
 def getTabList():
 	hnd = getTabListHandle()
