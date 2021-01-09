@@ -89,7 +89,10 @@ class getTCInfo():
 		for dirpath, dirnames, filenames in os.walk(path):
 			for f in filenames:
 				fp = os.path.join(dirpath, f)
-				totalSize += os.path.getsize(fp)
+				try:
+					totalSize += os.path.getsize(fp)
+				except:
+					pass
 		return totalSize
 
 	def getSingleFileSizeFromStatusbar(self, str):
