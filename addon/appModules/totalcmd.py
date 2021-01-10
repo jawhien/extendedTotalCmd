@@ -64,13 +64,12 @@ class getTCInfo():
 				i = 0
 
 	def getCurrentDirPath(self):
-		hnd = tcApi.getCurDirPanelHandle()
-		return NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0).name[:-1]
+		return NVDAObjects.IAccessible.getNVDAObjectFromEvent(tcApi.getCurDirPanelHandle(), winUser.OBJID_CLIENT, 0).name[:-1]
 
 	def getSingleFileSize(self):
 		currentDir = self.getCurrentDirPath()
 		name = api.getFocusObject().name.split("\t")[0]
-		path = '\\'.join([currentDir, name])
+		path = os.path.join(currentDir, name)
 		statusbar = tcApi.getStatusBarText()
 		if currentDir.startswith("\\\\") and not re.findall(r'<\S*[\s>]', statusbar) and re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}', statusbar):
 			return self.getSingleFileSizeFromStatusbar(statusbar)
@@ -95,9 +94,6 @@ class getTCInfo():
 			return _("No size information. Try select this item.")
 
 	def speakSingleDirectorySize(self, path):
-		ui.message(self.convertSizeFromBytes(self.getSingleDirectorySize(path)))
-
-	def getSingleDirectorySize(self, path):
 		totalSize = 0
 		for dirpath, dirnames, filenames in os.walk(path):
 			for f in filenames:
@@ -106,7 +102,7 @@ class getTCInfo():
 					totalSize += os.path.getsize(fp)
 				except:
 					pass
-		return totalSize
+		ui.message(self.convertSizeFromBytes(totalSize))
 
 	def getSingleFileSizeFromStatusbar(self, str):
 		size = re.sub(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}.*', '', str).strip()
@@ -118,8 +114,7 @@ class getTCInfo():
 	def getSelectedFilesSize(self):
 		statusBar = tcApi.getStatusBarText()
 		if statusBar.startswith("?"):
-			ui.message(_("The size is calculated, wait a few seconds..."))
-			return
+			return _("The size is calculated, wait a few seconds...")
 		size=re.match(r'[\d,\s]+\s[\S]+\s', statusBar)
 		return size.group().strip()
 
