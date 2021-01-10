@@ -21,6 +21,8 @@ from . import tcApi
 import config
 import eventHandler
 import os
+from tones import beep
+from time import sleep
 
 addonHandler.initTranslation()
 
@@ -52,6 +54,15 @@ class getTCInfo():
 		else:
 			return _("{size} Bytes").format(size=sizeBytes)
 
+	def threadMonitor(self, thread):
+		i = 0
+		while thread.isAlive():
+			sleep(0.1)
+			i += 1
+			if i == 10:
+				beep(250, 90)
+				i = 0
+
 	def getCurrentDirPath(self):
 		hnd = tcApi.getCurDirPanelHandle()
 		return NVDAObjects.IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0).name[:-1]
@@ -77,6 +88,8 @@ class getTCInfo():
 				if thr.getName() == path: return _("The size is calculated, wait a few seconds...")
 			t1 = threading.Thread(name=path, target=self.speakSingleDirectorySize, args=(path,))
 			t1.start()
+			monitor = threading.Thread(name="monitor", target=self.threadMonitor, args=(t1,))
+			monitor.start()
 			return None
 		else:
 			return _("No size information. Try select this item.")
