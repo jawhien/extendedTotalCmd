@@ -213,7 +213,6 @@ class TCFileList(IAccessible):
 	__previousItemGestures = tcInfo.getPreviousItemGestures()
 	__nextItemGestures = tcInfo.getNextItemGestures()
 
-
 	def _get_positionInfo(self):
 		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
 			index= tcApi.getCurrentElementNum()
@@ -259,7 +258,7 @@ class TCFileList(IAccessible):
 			if config.conf['presentation']['reportObjectPositionInformation'] == True and tcApi.isApiSupported():
 				positionInfo = self.positionInfo
 				template = _('{current} of {all}').format(current=positionInfo['indexInGroup'], all=positionInfo['similarItemsInGroup'])
-				if self.name != '..':
+				if self.name.split("\t")[0] != '..':
 					speakList.append(' ' + template)
 			if self.hasFocus:
 				speech.speakMessage(" ".join(speakList))
