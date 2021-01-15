@@ -210,8 +210,6 @@ class AppModule(appModuleHandler.AppModule):
 
 class TCFileList(IAccessible):
 	scriptCategory = manifest['summary']
-	__previousItemGestures = tcInfo.getPreviousItemGestures()
-	__nextItemGestures = tcInfo.getNextItemGestures()
 
 	def _get_positionInfo(self):
 		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
@@ -276,9 +274,9 @@ class TCFileList(IAccessible):
 			winsound.PlaySound("default", winsound.SND_ASYNC)
 
 	def initOverlayClass(self):
-		for gesture in self.__nextItemGestures:
+		for gesture in tcInfo.getNextItemGestures():
 			self.bindGesture(gesture, "nextElement")
-		for gesture in self.__previousItemGestures:
+		for gesture in tcInfo.getPreviousItemGestures():
 			self.bindGesture(gesture, "previousElement")
 
 	def script_selectedElementsInfo(self, gesture):
@@ -322,8 +320,6 @@ class TCFileList(IAccessible):
 	}
 
 class TCFTPList(IAccessible):
-	__previousItemGestures = tcInfo.getPreviousItemGestures()
-	__nextItemGestures = tcInfo.getNextItemGestures()
 
 	def script_nextElement(self, gesture):
 		gesture.send()
@@ -336,9 +332,9 @@ class TCFTPList(IAccessible):
 			winsound.PlaySound("default", winsound.SND_ASYNC)
 
 	def initOverlayClass(self):
-		for gesture in self.__nextItemGestures:
+		for gesture in tcInfo.getNextItemGestures():
 			self.bindGesture(gesture, "nextElement")
-		for gesture in self.__previousItemGestures:
+		for gesture in tcInfo.getPreviousItemGestures():
 			self.bindGesture(gesture, "previousElement")
 
 class TCDriveList(IAccessible):
