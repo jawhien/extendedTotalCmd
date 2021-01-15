@@ -34,26 +34,6 @@ currentTab = 0
 
 class getTCInfo():
 
-	def convertSizeFromBytes(self, bytes):
-		try:
-			sizeBytes = int(bytes)
-		except ValueError:
-			return False
-		sizeKB = int((sizeBytes / 1024) * 100) / 100
-		sizeMB = int((sizeBytes / 1024 / 1024) * 100) / 100
-		sizeGB = int((sizeBytes / 1024 / 1024 / 1024) * 100) / 100
-		sizeTB = int((sizeBytes / 1024 / 1024 / 1024 / 1024) * 100) / 100
-		if sizeTB >= 1:
-			return _("{size} tB").format(size=sizeTB)
-		elif sizeGB >= 1:
-			return _("{size} gB").format(size=sizeGB)
-		elif sizeMB >= 1:
-			return _("{size} mB").format(size=sizeMB)
-		elif sizeKB >= 1:
-			return _("{size} kB").format(size=sizeKB)
-		else:
-			return _("{size} Bytes").format(size=sizeBytes)
-
 	def formatSize(self, size):
 		formats = ["Bytes", "kB", "mB", "gB", "tB"]
 		i = 0
