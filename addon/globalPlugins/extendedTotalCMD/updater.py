@@ -16,9 +16,11 @@ try:
 except:
 	import urllib
 import json
+from versionInfo import version_year, version_major
 
 addonHandler.initTranslation()
 manifest = addonHandler.getCodeAddon().manifest
+
 try:
 	opener = urllib2.build_opener()
 except NameError:
@@ -36,6 +38,9 @@ def loadUpdateInfo():
 		return
 	latest = data[0]
 	newVersion = latest["tag_name"]
+	if newVersion >= "3.0" and (version_year, version_major) < (2018, 3):
+		updateInfo["text"] = _("To install the new version of the add-on, you need NVDA 2018.3 or higher.")
+		return
 	if newVersion > updateInfo["currentVersion"]:
 		updateInfo["text"] = _("New version {version} is available. Do you want to download it?").format(version=newVersion)
 		updateInfo["newVersion"] = newVersion
