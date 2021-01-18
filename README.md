@@ -5,12 +5,14 @@
 
 This add-on improves the accessibility of the Total Commander file manager. It is compatible with all versions starting with TC 7.0, but some functions work only in versions 9.0 and higher.
 
-## Compatibility
+<a name="user-content-compatibility"></a>
+# Compatibility
 
 * NVDA 2017.3 or higher, including 2019.3.
 Note: In versions older than 2017.3, the add-on was not tested, but, most likely, no problems will arise.
 * Warning! The add-on may not be compatible with other add-ons for Total Commander, as well as the "sounds by navigation on files" add-on.
 
+<a name="user-content-main-features"></a>
 # Main features
 
 * More precise definition of the right and left panel.
@@ -24,6 +26,7 @@ Note: In versions older than 2017.3, the add-on was not tested, but, most likely
 * The ability to find out the size of the selected file, or all selected items. (This function is only available in TC 9+).
 * Report of the correct item position information in the list. For this feature to work, enable the corresponding option in the NVDA settings dialog. (This function is only available in TC 9+).
 
+<a name="user-content-installation"></a>
 # Installation
 
 1. Download the NVDA Add-on File [on this page](https://github.com/jawhien/extendedTotalCmd/releases/latest).
@@ -39,33 +42,54 @@ You can install the add-on through the NVDA add-on manager, for this, do the fol
 5. Confirm the installation by clicking the "Yes" button in the dialog box that appears.
 6. If you are updating the add-on, you will need to confirm the installation again.
 
+<a name="user-content-key-commands"></a>
 # Key commands
 
 * Control + Shift + E - Reports information about selected items.
 * Control + Shift + R - Reports size information for selected items. If no items are selected, reports the size of the file in focus.
 * Control + Shift + D - Reports the full path of the current directory. Pressing twice Copies it to the clipboard.
+* Control + Shift + T - reports the date and time of the change.
 
+<a name="user-content-acknowledgments"></a>
 # Acknowledgments
 
 I would like to thank all those who send their suggestions, and also helps in testing and detecting errors. Your contribution is undoubtedly very important for the development of this add-on.
 
+<a name="user-content-faq"></a>
 # Frequently Asked Questions
 
-## Does not the reporting of the size of the file under the cursor
+Q: Does not the reporting of the size of the file under the cursor
 
-In some cases (for example, when working via FTP), determining the size of the file under the cursor works only brief view.
+A: In some cases (for example, when working via FTP), determining the size of the file under the cursor works only brief view.
 
-## How can I help develop the add-on?
-If you liked my add-on, you can donate any amount on the [special page](https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/donation.php).
+Q: How can I help develop the add-on?
 
-## I found a bug / I have suggestions for improving the add-on, how can I contact you?
-In this case, you need to [create a new issue](https://github.com/jawhien/extendedTotalCmd/issues/new) in the GitHub repository. Describe as much as possible your problem / proposal.
+A: If you liked my add-on, you can donate any amount on the [special page](https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/donation.php).
 
-## The add-on does not support my language, can I help with the translation?
-Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the author’s email address in the NVDA Add-ons Manager.
+Q: I found a bug / I have suggestions for improving the add-on, how can I contact you?
 
+A: In this case, you need to [create a new issue](https://github.com/jawhien/extendedTotalCmd/issues/new) in the GitHub repository. Describe as much as possible your problem / proposal.
+
+Q: The add-on does not support my language, can I help with the translation?
+
+A: Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the author’s email address in the NVDA Add-ons Manager.
+
+<a name="user-content-change-log"></a>
 # Change log
+
+V2.5: 19.01.2021
+
+* Fix in the updater: from version 3.0 the compatibility requirements will be updated. Since newer versions will support NVDA 2018.3 or higher, users of earlier versions of the program will receive a message about this when checking for updates.
+* Improvement: When reading the status bar, information about the selected item will now be reported, such as size, creation date, attributes, local disk information, etc. depending on TC settings.
+* Improvement: added the ability to quickly find out the time and date of the change of the selected item, for this press the combination Control + Shift + t. In NVDA settings, you can change the gestures for this action.
+* Improvement: now if callculation of size takes more than 1 second, tones will sound until the process is complete.
+* Improvement: the add-on now uses the standard template and SCons for building.
+* Fix: the position of the object is no longer reported on the ".." element.
+* Fix: in some cases sizing ended with an error.
+* Other minor fixes and optimizations.
+
 V2.4: 13.12.2020
+
 * Added definition of the size of directories under the cursor. This is a slower process than determining the size of a single file and can take several seconds.
 * Added automatic check for updates after starting NVDA. Note: the automatic check for updates will not be performed if the check for updates for NVDA is disabled in the settings.
 * Fixed a bug due to which the size of files was not detected in some cases.
@@ -74,6 +98,7 @@ V2.4: 13.12.2020
 * Other minor improvements.
 
 V2.3: 05.10.2020
+
 * Fixed incorrect detection of the active panel in some cases.
 * Fixed tab support in some 32-bit version dialog boxes.
 * Messages about selecting files or canceling it no longer depend on pressing certain keys.
@@ -91,6 +116,7 @@ V2.3: 05.10.2020
 * Other minor improvements and fixes.
 
 V2.2.0: 20.04.2020
+
 * When switching tabs, the name of the selected tab will now be reported, as well as its position, if enabled in the NVDA settings.
 * Added the function of copying the path to the current folder to the clipboard by double-pressing CTRL + SHIFT + D
 * Fixed a bug leading to problems when determining the version of TC.
@@ -99,6 +125,7 @@ V2.2.0: 20.04.2020
 * Other minor improvements and fixes.
 
 V2.1.0: 21.03.2020
+
 * Added a new function to reports the full path to the current directory.
 * Added option to check updates. To check the update, open the tools menu in the main NVDA menu and select "Update Total Commander add-on..."
 * Fixed a bug in Total Commander version 7 and 8 when you select file pronounced the message that the TC version is not supported.
@@ -111,9 +138,11 @@ V2.1.0: 21.03.2020
 * Full code optimization.
 
 V2.0.1: 01.03.2020
+
 * Documentation bugs fixed
 
 V2.0: 22.02.2020
+
 * Fixed a bug where the list borders were erroneously determined on some files.
 * The problem was fixed in 32 bit versions of TC8 +, when, upon exiting to the previous directory, the first element of the list was declared first, and then the element in focus.
 * Added announcement of item positions in the list, if this feature is enabled in the NVDA settings. (Only in TC9 +).
@@ -123,26 +152,31 @@ V2.0: 22.02.2020
 * Added announcement of the size of selected files by pressing CTRL + SHIFT + R. (Only in TC9 +).
 
 V1.4: 19.07.2019
+
 * The list border signal has been replaced with standard windows sound.
 * Added a signal to the top of the list.
 * Now not only arrows are processed, but also Home, End, PageUp and PageDown keys for signaling list boundaries.
 * Added compatibility with new versions of NVDA.
 
 V1.3
+
 * The sound signal will now play only when navigating the list when the down arrow is pressed on the last element of the list, and not when the focus is on the last element.
 * Fixed erroneous behavior outside the main window, settings, and other lists.
 * Improved behavior in the FTP connection dialog.
 
 V1.2
+
 * The mechanism for determining the active panel in versions 8 and above has been changed.
 * Optimized code to avoid problems with versions 7 and below.
 * When the focus falls on the last element of the list, a sound signal will be played.
 * Fixed incorrect pronunciation of the active panel outside the main window.
 
 V1.1
+
 * Now, in the disc selection window, disc labels are read.
 * A description with the name of the active panel has been added to the elements, when you press the (NVDA + UpArrow) or (NVDA + TAB) keys, the element name and the name of the active panel are pronounced.
 * Minor improvements.
 
 V1.0
+
 * First version.

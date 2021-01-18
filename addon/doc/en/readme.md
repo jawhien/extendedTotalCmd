@@ -63,6 +63,7 @@ You can install the add-on through the NVDA add-on manager, for this, do the fol
 * Control + Shift + E - Reports information about selected items.
 * Control + Shift + R - Reports size information for selected items. If no items are selected, reports the size of the file in focus.
 * Control + Shift + D - Reports the full path of the current directory. Pressing twice Copies it to the clipboard.
+* Control + Shift + T - reports the date and time of the change.
 
 <a name="user-content-acknowledgments"></a>
 # Acknowledgments
@@ -90,6 +91,17 @@ A: Yes, please send me letter to the email address indicated in the add-on, and 
 
 <a name="user-content-change-log"></a>
 # Change log
+
+V2.5: 19.01.2021
+
+* Fix in the updater: from version 3.0 the compatibility requirements will be updated. Since newer versions will support NVDA 2018.3 or higher, users of earlier versions of the program will receive a message about this when checking for updates.
+* Improvement: When reading the status bar, information about the selected item will now be reported, such as size, creation date, attributes, local disk information, etc. depending on TC settings.
+* Improvement: added the ability to quickly find out the time and date of the change of the selected item, for this press the combination Control + Shift + t. In NVDA settings, you can change the gestures for this action.
+* Improvement: now if callculation of size takes more than 1 second, tones will sound until the process is complete.
+* Improvement: the add-on now uses the standard template and SCons for building.
+* Fix: the position of the object is no longer reported on the ".." element.
+* Fix: in some cases sizing ended with an error.
+* Other minor fixes and optimizations.
 
 V2.4: 13.12.2020
 
