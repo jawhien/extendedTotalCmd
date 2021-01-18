@@ -35,7 +35,7 @@ currentTab = 0
 class getTCInfo():
 
 	def formatSize(self, size):
-		formats = ["Bytes", "kB", "mB", "gB", "tB"]
+		formats = [_("Bytes"), _("kB"), _("mB"), _("gB"), _("tB")]
 		i = 0
 		while size >= 1024:
 			if not formats[i + 1]: break
