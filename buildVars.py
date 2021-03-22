@@ -25,7 +25,7 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("This add-on improves the accessability of the Total Commander file manager, mostly versions 8.0 and higher."),
 	# version
-	"addon_version": "2.5",
+	"addon_version": "3.0-dev",
 	# Author(s)
 	"addon_author": "Eugene Poplavsky <jawhien@gmail.com>",
 	# URL for the add-on documentation support

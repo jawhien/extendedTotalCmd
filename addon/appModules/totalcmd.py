@@ -16,6 +16,7 @@ import re
 import ui
 import winUser
 import scriptHandler
+from scriptHandler import script
 import threading
 from . import tcApi
 import config
@@ -138,10 +139,10 @@ class getTCInfo():
 			ui.message(_('Not supported in this version of total commander'))
 
 	def getPreviousItemGestures(self):
-		return {"kb:upArrow","kb:leftArrow","KB:PageUp","KB:HOME"}
+		return ["kb:upArrow","kb:leftArrow","KB:PageUp","KB:HOME"]
 
 	def getNextItemGestures(self):
-		return {"kb:downArrow","kb:rightArrow","KB:PageDown","KB:END"}
+		return ["kb:downArrow","kb:rightArrow","KB:PageDown","KB:END"]
 
 	def speakActivePannel(self, obj):
 		global oldActivePannel, activePannel
@@ -263,26 +264,23 @@ class TCFileList(IAccessible):
 		else:
 			super(TCFileList,self).reportFocus()
 
-	def script_nextElement(self, gesture):
-		gesture.send()
-		if not self.next:
-			winsound.PlaySound("default", winsound.SND_ASYNC)
-
+	@script(gestures=tcInfo.getPreviousItemGestures())
 	def script_previousElement(self, gesture):
 		gesture.send()
 		if not self.previous:
 			winsound.PlaySound("default", winsound.SND_ASYNC)
 
-	def initOverlayClass(self):
-		for gesture in tcInfo.getNextItemGestures():
-			self.bindGesture(gesture, "nextElement")
-		for gesture in tcInfo.getPreviousItemGestures():
-			self.bindGesture(gesture, "previousElement")
+	@script(gestures=tcInfo.getNextItemGestures())
+	def script_nextElement(self, gesture):
+		gesture.send()
+		if not self.next:
+			winsound.PlaySound("default", winsound.SND_ASYNC)
 
+	@script(gesture="kb:Control+Shift+e", description=_("Reports information about the number of selected elements"))
 	def script_selectedElementsInfo(self, gesture):
 		tcInfo.speakSelectedItemsInfo()
-	script_selectedElementsInfo.__doc__ = _("Reports information about the number of selected elements")
 
+	@script(gesture="kb:Control+Shift+r", description=_("Reports the size of the file under the cursor. If multiple objects are selected, reports their total size."))
 	def script_reportFileSize(self, gesture):
 		if not tcApi.isApiSupported():
 			ui.message(_("Not supported in this version of total commander"))
@@ -292,8 +290,8 @@ class TCFileList(IAccessible):
 		else:
 			size = tcInfo.getSingleFileSize()
 		ui.message(size)
-	script_reportFileSize.__doc__ = _("Reports the size of the file under the cursor. If multiple objects are selected, reports their total size.")
 
+	@script(gesture="kb:Control+Shift+d", description=_("Reports the current path to the folder. Pressing twice Copies it to the clipboard."))
 	def script_speakPath(self, gesture):
 		if not tcApi.isApiSupported():
 			ui.message(_('Not supported in this version of total commander'))
@@ -302,40 +300,28 @@ class TCFileList(IAccessible):
 		if scriptHandler.getLastScriptRepeatCount() != 0 and api.copyToClip(curPath):
 			ui.message(_("Copied to clipboard"))
 		ui.message(curPath)
-	script_speakPath.__doc__ = _("Reports the current path to the folder. Pressing twice Copies it to the clipboard.")
 
+	@script(gesture="kb:Control+Shift+t", description=_("Reports the modification time of the file under the cursor."))
 	def script_speakDateTime(self, gesture):
 		if not tcApi.isApiSupported():
 			ui.message(_('Not supported in this version of total commander'))
 			return
 		datetime = tcInfo.getDateTime()
 		ui.message(datetime)
-	script_speakDateTime.__doc__ = _("Reports the modification time of the file under the cursor.")
-
-	__gestures={
-		"kb:control+shift+d":"speakPath",
-		"KB:CONTROL+SHIFT+E":"selectedElementsInfo",
-	"KB:CONTROL+SHIFT+R":"reportFileSize",
-		"kb:control+shift+t":"speakDateTime",
-	}
 
 class TCFTPList(IAccessible):
 
-	def script_nextElement(self, gesture):
-		gesture.send()
-		if not self.next:
-			winsound.PlaySound("default", winsound.SND_ASYNC)
-
+	@script(gestures=tcInfo.getPreviousItemGestures())
 	def script_previousElement(self, gesture):
 		gesture.send()
 		if not self.previous:
 			winsound.PlaySound("default", winsound.SND_ASYNC)
 
-	def initOverlayClass(self):
-		for gesture in tcInfo.getNextItemGestures():
-			self.bindGesture(gesture, "nextElement")
-		for gesture in tcInfo.getPreviousItemGestures():
-			self.bindGesture(gesture, "previousElement")
+	@script(gestures=tcInfo.getNextItemGestures())
+	def script_nextElement(self, gesture):
+		gesture.send()
+		if not self.next:
+			winsound.PlaySound("default", winsound.SND_ASYNC)
 
 class TCDriveList(IAccessible):
 
