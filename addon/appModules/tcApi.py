@@ -33,6 +33,11 @@ def isUpdir():
 	isUpdir = False if updir == 0 else True
 	return isUpdir
 
+def getHeaderHandle():
+	activePanel = getActivePanelNum()
+	param1 = 5 if activePanel == 1 else 6
+	return sendMessage(param1, 0)
+
 def getCountElements():
 	activePanel = getActivePanelNum()
 	param1 = 1001 if activePanel == 1 else 1002

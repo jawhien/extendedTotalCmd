@@ -9,6 +9,7 @@ import addonHandler
 import api
 import NVDAObjects
 from NVDAObjects.IAccessible import IAccessible
+from NVDAObjects.IAccessible import sysListView32
 import speech
 import controlTypes
 import winsound
@@ -32,6 +33,7 @@ manifest = addonHandler.getCodeAddon().manifest
 oldActivePannel=0
 activePannel=1
 currentTab = 0
+isMultiColumn = False
 
 class getTCInfo():
 
@@ -196,8 +198,10 @@ class AppModule(appModuleHandler.AppModule):
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		windowClass = obj.windowClassName
-		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD":
-			clsList.insert(0, TCFileList)
+		if windowClass in ("TMyListBox","LCLListBox") and obj.role == controlTypes.ROLE_LIST:
+			clsList.insert(0, tcFileListObject)
+		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD" and obj.role == controlTypes.ROLE_LISTITEM:
+			clsList.insert(0, tcFileListItem)
 		if windowClass in ("TMyListBox","LCLListBox") and self._getForegroundWindowClass(obj) == "TCONNECT":
 			clsList.insert(0, TCFTPList)
 		if windowClass in ("ComboLBox"):
@@ -209,8 +213,42 @@ class AppModule(appModuleHandler.AppModule):
 		if windowClass in ("TOverWriteForm"):
 			clsList.insert(0, tcOverWriteBox)
 
-class TCFileList(IAccessible):
+class tcFileListObject(sysListView32.List):
+
+	def _getAccessibleName(self):
+		child = api.getFocusObject()
+		name = child.IAccessibleObject.accName(child.IAccessibleChildID)
+		return name
+
+	def _get_isMultiColumn(self):
+		return isMultiColumn
+
+	def _get_columnCount(self):
+		return len(self._getAccessibleName().split("\t"))
+
+class tcFileListItem(sysListView32.ListItem):
 	scriptCategory = manifest['summary']
+
+	def _getAccessibleName(self):
+		name = self.IAccessibleObject.accName(self.IAccessibleChildID)
+		return name
+
+	def _getColumnHeader(self, column):
+		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(tcApi.getHeaderHandle(), winUser.OBJID_CLIENT, 0)
+		if obj == None:
+			return "none"
+		text = obj.displayText
+		headers = "".join(";" + x if x.isupper() else x for x in text).strip(";").split(";")
+		try:
+			headers.pop()
+			headers.append(_("Attributes"))
+			return headers[column -1]
+		except:
+			return "unnow"
+
+	def _getColumnContent(self, column):
+		name = self._getAccessibleName().split("\t")
+		return name[column-1]
 
 	def _get_positionInfo(self):
 		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
@@ -221,7 +259,8 @@ class TCFileList(IAccessible):
 			return None
 
 	def event_gainFocus(self):
-		global activePannel
+		global activePannel, isMultiColumn
+		isMultiColumn = True if self.location.width > 1000 else False
 		if tcApi.isApiSupported():
 			curPanel = tcApi.getActivePanelNum()
 			if curPanel != activePannel:
@@ -230,7 +269,7 @@ class TCFileList(IAccessible):
 				activePannel = curPanel
 		else:
 			tcInfo.speakActivePannel(self)
-		super(TCFileList,self).event_gainFocus()
+		super(tcFileListItem,self).event_gainFocus()
 
 	def event_selectionWithIn(self):
 		events = eventHandler._pendingEventCountsByName
