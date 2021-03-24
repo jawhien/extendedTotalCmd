@@ -230,8 +230,7 @@ class tcFileListItem(sysListView32.ListItem):
 	scriptCategory = manifest['summary']
 
 	def _getAccessibleName(self):
-		name = self.IAccessibleObject.accName(self.IAccessibleChildID)
-		return name
+		return self.IAccessibleObject.accName(self.IAccessibleChildID)
 
 	def _getColumnHeader(self, column):
 		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(tcApi.getHeaderHandle(), winUser.OBJID_CLIENT, 0)
@@ -239,12 +238,12 @@ class tcFileListItem(sysListView32.ListItem):
 			return "none"
 		text = obj.displayText
 		headers = "".join(";" + x if x.isupper() else x for x in text).strip(";").split(";")
-		try:
+		if len(headers) > 1:
 			headers.pop()
 			headers.append(_("Attributes"))
 			return headers[column -1]
-		except:
-			return "unnow"
+		else:
+			return _("Unknown column")
 
 	def _getColumnContent(self, column):
 		name = self._getAccessibleName().split("\t")
