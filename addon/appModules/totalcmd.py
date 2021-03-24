@@ -198,7 +198,6 @@ class AppModule(appModuleHandler.AppModule):
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		windowClass = obj.windowClassName
-#		ui.message(str(obj.name))
 		if windowClass in ("TMyListBox","LCLListBox") and obj.role == controlTypes.ROLE_LIST:
 			clsList.insert(0, tcFileListObject)
 		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD" and obj.role == controlTypes.ROLE_LISTITEM:
