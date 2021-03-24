@@ -198,6 +198,7 @@ class AppModule(appModuleHandler.AppModule):
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		windowClass = obj.windowClassName
+#		ui.message(str(obj.name))
 		if windowClass in ("TMyListBox","LCLListBox") and obj.role == controlTypes.ROLE_LIST:
 			clsList.insert(0, tcFileListObject)
 		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD" and obj.role == controlTypes.ROLE_LISTITEM:
@@ -364,8 +365,9 @@ class TCFTPList(IAccessible):
 class TCDriveList(IAccessible):
 
 	def event_gainFocus(self):
+		name = self.name
 		description = self.displayText
-		if description:
+		if description and name[:2] == "[-" and name[-2:] == "-]":
 			self.name = description[0:1] + " (" + description[2:] + ")"
 		super(TCDriveList,self).event_gainFocus()
 
