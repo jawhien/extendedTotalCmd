@@ -59,9 +59,9 @@ class getTCInfo():
 	def getCurrentDirPath(self):
 		return NVDAObjects.IAccessible.getNVDAObjectFromEvent(tcApi.getCurDirPanelHandle(), winUser.OBJID_CLIENT, 0).name[:-1]
 
-	def getSingleFileSize(self):
+	def getSingleFileSize(self, name):
 		currentDir = self.getCurrentDirPath()
-		name = api.getFocusObject().name.split("\t")[0]
+		name = name.split("\t")[0]
 		path = os.path.join(currentDir, name)
 		statusbar = tcApi.getStatusBarText()
 		if currentDir.startswith("\\\\") and not re.findall(r'<\S*[\s>]', statusbar) and re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}', statusbar):
@@ -327,7 +327,8 @@ class tcFileListItem(sysListView32.ListItem):
 		if tcApi.getSelectedElements() > 0:
 			size = tcInfo.getSelectedFilesSize()
 		else:
-			size = tcInfo.getSingleFileSize()
+			name = self._getColumnContent(1) if isMultiColumn else self.name
+			size = tcInfo.getSingleFileSize(name)
 		ui.message(size)
 
 	@script(gesture="kb:Control+Shift+d", description=_("Reports the current path to the folder. Pressing twice Copies it to the clipboard."))
