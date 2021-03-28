@@ -227,6 +227,12 @@ class tcFileListObject(sysListView32.List):
 	def _get_columnCount(self):
 		return len(self._getAccessibleName().split("\t"))
 
+	def event_selectionWithIn(self):
+		events = eventHandler._pendingEventCountsByName
+		if len(events) == 0: return
+		if not eventHandler.isPendingEvents("gainFocus") and not eventHandler.isPendingEvents("valueChange"):
+			tcInfo.speakSelectedCommand()
+
 class tcFileListItem(sysListView32.ListItem):
 	scriptCategory = manifest['summary']
 
@@ -270,13 +276,6 @@ class tcFileListItem(sysListView32.ListItem):
 		else:
 			tcInfo.speakActivePannel(self)
 		super(tcFileListItem,self).event_gainFocus()
-
-	def event_selectionWithIn(self):
-		events = eventHandler._pendingEventCountsByName
-		if len(events) == 0: return
-
-		if not eventHandler.isPendingEvents("gainFocus") and not eventHandler.isPendingEvents("valueChange"):
-			tcInfo.speakSelectedCommand()
 
 	def event_selection(self):
 		pass
