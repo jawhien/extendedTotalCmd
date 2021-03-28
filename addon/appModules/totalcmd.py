@@ -61,7 +61,8 @@ class getTCInfo():
 
 	def getSingleFileSize(self, name):
 		currentDir = self.getCurrentDirPath()
-		name = name.split("\t")[0]
+		if name == "..":
+			return _("This object is not supported.")
 		path = os.path.join(currentDir, name)
 		statusbar = tcApi.getStatusBarText()
 		if currentDir.startswith("\\\\") and not re.findall(r'<\S*[\s>]', statusbar) and re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}', statusbar):
