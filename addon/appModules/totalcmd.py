@@ -234,16 +234,16 @@ class tcFileListItem(sysListView32.ListItem):
 
 	def _getColumnHeader(self, column):
 		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(tcApi.getHeaderHandle(), winUser.OBJID_CLIENT, 0)
-		if obj == None:
-			return "none"
 		text = obj.displayText
-		headers = "".join(";" + x if x.isupper() else x for x in text).strip(";").split(";")
-		if len(headers) > 1:
+		if len(text) == 0 or len(self._getAccessibleName().split("\t")) == 4:
+			headers = [_("Name"), _("Size"), _("Date"), _("Attributes")]
+			ht = headers[column -1] if column <= len(headers) else _("Unknown column")
+			return ht
+		else:
+			headers = "".join(";" + x if x.isupper() else x for x in text).strip(";").split(";")
 			headers.pop()
 			headers.append(_("Attributes"))
 			return headers[column -1]
-		else:
-			return _("Unknown column")
 
 	def _getColumnContent(self, column):
 		name = self._getAccessibleName().split("\t")
@@ -259,7 +259,7 @@ class tcFileListItem(sysListView32.ListItem):
 
 	def event_gainFocus(self):
 		global activePannel, isMultiColumn
-		isMultiColumn = True if self.location.width > 1000 else False
+		isMultiColumn = True if self.location.width > 500 else False
 		if tcApi.isApiSupported():
 			curPanel = tcApi.getActivePanelNum()
 			if curPanel != activePannel:
