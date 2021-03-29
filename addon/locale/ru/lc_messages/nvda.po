@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Total Commander 2.5\n"
-"POT-Creation-Date: 2021-01-18 15:46+0300\n"
-"PO-Revision-Date: 2021-01-18 15:52+0300\n"
+"POT-Creation-Date: 2021-03-29 15:23+0300\n"
+"PO-Revision-Date: 2021-03-29 15:28+0300\n"
 "Last-Translator: Eugene Poplavsky <jawhien@gmail.com>\n"
 "Language-Team: Eugene Poplavsky <jawhien@gmail.com>\n"
 "Language: ru\n"
@@ -66,6 +66,21 @@ msgstr "Левая"
 msgid "Right"
 msgstr "Правая"
 
+msgid "Name"
+msgstr "Имя"
+
+msgid "Size"
+msgstr "Размер"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Attributes"
+msgstr "Атрибуты"
+
+msgid "Unknown column"
+msgstr "Неизвестный столбец"
+
 msgid "Left pannel"
 msgstr "Левая панель"
 
@@ -86,15 +101,15 @@ msgstr ""
 "Сообщает размер файла под курсором. Если выделено несколько объектов, "
 "сообщает их общий размер."
 
-msgid "Copied to clipboard"
-msgstr "Скопировано в буфер обмена"
-
 msgid ""
 "Reports the current path to the folder. Pressing twice Copies it to the "
 "clipboard."
 msgstr ""
 "Сообщает путь к текущей директории. При двойном нажатии копирует его в буфер "
 "обмена."
+
+msgid "Copied to clipboard"
+msgstr "Скопировано в буфер обмена"
 
 msgid "Reports the modification time of the file under the cursor."
 msgstr "Сообщает время изменения файла под курсором."
@@ -127,6 +142,21 @@ msgstr "Получить новую версию"
 
 msgid "Close"
 msgstr "Закрыть"
+
+#, python-brace-format
+msgid ""
+"This version of NVDA is incompatible. To install the add-on, NVDA version "
+"{year}.{major} or higher is required. Please update NVDA or download an "
+"older version of the add-on here: \n"
+"{link}"
+msgstr ""
+"Дополнение не совместимо с этой версией NVDA. Для его установки требуется "
+"версия NVDA {year}.{major} или выше. Пожалуйста, обновите NVDA или загрузите "
+"более старую версию дополнения здесь: \n"
+"{link}"
+
+msgid "Error"
+msgstr "Ошибка"
 
 #, python-brace-format
 msgid ""
