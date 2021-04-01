@@ -348,6 +348,10 @@ class tcFileListItem(sysListView32.ListItem):
 		datetime = tcInfo.getDateTime()
 		ui.message(datetime)
 
+	@script(gestures=["kb:control+alt+DownArrow", "kb:control+alt+UpArrow"])
+	def script_changeLine(self, gesture):
+			ui.message(_('Not supported in this version of total commander'))
+
 class TCFTPList(IAccessible):
 
 	@script(gestures=tcInfo.getPreviousItemGestures())
