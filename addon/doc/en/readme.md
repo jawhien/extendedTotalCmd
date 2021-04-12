@@ -23,8 +23,7 @@ This add-on improves the accessibility of the Total Commander file manager. It i
 <a name="user-content-compatibility"></a>
 # Compatibility
 
-* NVDA 2017.3 or higher, including 2019.3.
-Note: In versions older than 2017.3, the add-on was not tested, but, most likely, no problems will arise.
+* NVDA 2018.3 or higher, including 2019.3.
 * Warning! The add-on may not be compatible with other add-ons for Total Commander, as well as the "sounds by navigation on files" add-on.
 
 <a name="user-content-main-features"></a>
@@ -34,6 +33,7 @@ Note: In versions older than 2017.3, the add-on was not tested, but, most likely
 * Sound indication when reaching the borders of the list of elements.
 * The pronunciation of labels for items in the drive selection window.
 * Support work with tabs.
+* Support for multi-column display mode. (This function is only available in TC 9+).
 * The ability to quickly recognize the active panel. To do this, press the key command NVDA + Up Arrow, or NVDA + TAB.
 * Full support for 64-bit versions of Total Commander.
 * Report actions when selecting items or undoing them. (This function is only available in TC 9+).
