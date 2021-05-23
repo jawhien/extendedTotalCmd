@@ -266,6 +266,7 @@ class tcFileListItem(sysListView32.ListItem):
 
 	def event_gainFocus(self):
 		global activePannel, isMultiColumn
+		if self.location == None: return
 		isMultiColumn = True if self.location.width > 500 else False
 		if tcApi.isApiSupported():
 			curPanel = tcApi.getActivePanelNum()
