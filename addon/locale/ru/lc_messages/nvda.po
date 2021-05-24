@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Total Commander 2.5\n"
-"POT-Creation-Date: 2021-03-29 15:23+0300\n"
-"PO-Revision-Date: 2021-03-29 15:28+0300\n"
+"Project-Id-Version: Total Commander 3.0\n"
+"POT-Creation-Date: 2021-05-24 22:22+0300\n"
+"PO-Revision-Date: 2021-05-24 22:26+0300\n"
 "Last-Translator: Eugene Poplavsky <jawhien@gmail.com>\n"
 "Language-Team: Eugene Poplavsky <jawhien@gmail.com>\n"
 "Language: ru\n"
@@ -134,14 +134,11 @@ msgstr "Доступна новая версия {version}. Хотите ска�
 msgid "No update available."
 msgstr "Нет доступных обновлений."
 
-msgid "Update Total Commander add-on"
-msgstr "Обновление дополнения Total Commander"
+msgid "Data load error"
+msgstr "Ошибка загрузки данных"
 
-msgid "Get new version"
-msgstr "Получить новую версию"
-
-msgid "Close"
-msgstr "Закрыть"
+msgid "Error"
+msgstr "Ошибка"
 
 #, python-brace-format
 msgid ""
@@ -155,8 +152,24 @@ msgstr ""
 "более старую версию дополнения здесь: \n"
 "{link}"
 
-msgid "Error"
-msgstr "Ошибка"
+msgid ""
+"Changes were made to add-ons. You must restart NVDA for these changes to "
+"take effect. Would you like to restart now?"
+msgstr ""
+"В дополнения были внесены изменения. Для того, чтобы они вступили в силу, "
+"необходимо перезагрузить NVDA. Хотите сделать это сейчас?"
+
+msgid "Restart NVDA"
+msgstr "Перезагрузка NVDA"
+
+msgid "Update Total Commander add-on"
+msgstr "Обновление дополнения Total Commander"
+
+msgid "Get new version"
+msgstr "Получить новую версию"
+
+msgid "Close"
+msgstr "Закрыть"
 
 #, python-brace-format
 msgid ""

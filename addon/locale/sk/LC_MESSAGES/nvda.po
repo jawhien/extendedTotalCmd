@@ -146,6 +146,16 @@ msgstr ""
 "si prevezmite staršiu verziu doplnku z webu: \n"
 "{link}"
 
+msgid ""
+"Changes were made to add-ons. You must restart NVDA for these changes to "
+"take effect. Would you like to restart now?"
+msgstr ""
+"Aby sa prejavili zmeny, je potrebné reštartovať NVDA. Chcete reštartovať "
+"teraz?"
+
+msgid "Restart NVDA"
+msgstr "Reštart NVDA"
+
 msgid "Error"
 msgstr "Chyba"
 
