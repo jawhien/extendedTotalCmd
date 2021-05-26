@@ -11,10 +11,7 @@ from gui import guiHelper
 import threading
 import webbrowser
 from languageHandler import getLanguage
-try:
-	import urllib2
-except:
-	import urllib
+import urllib
 import json
 from versionInfo import version_year, version_major
 
@@ -22,9 +19,9 @@ addonHandler.initTranslation()
 manifest = addonHandler.getCodeAddon().manifest
 
 try:
-	opener = urllib2.build_opener()
-except NameError:
-	opener = urllib.request.build_opener()
+	opener = urllib.request.urlopen
+except AttributeError:
+	opener = urllib.urlopen
 
 updateInfo = {"text":"", "currentVersion":manifest["version"], "newVersion":"", "getAddonUrl":"", "downloadUrl":"", "size":"", "FileName":"", "isAvailable":False}
 
@@ -32,7 +29,7 @@ def loadUpdateInfo():
 	global updateInfo
 	checkUrl = "https://api.github.com/repos/jawhien/extendedTotalCmd/releases"
 	try:
-		data = json.load(opener.open(checkUrl))
+		data = json.load(opener(checkUrl))
 	except:
 		updateInfo["text"] = _("An error occurred while checking for updates! Check your internet connection.")
 		return
@@ -61,8 +58,9 @@ def loadUpdateInfo():
 
 def getAddon():
 	import tempfile, os
-	with opener.open(updateInfo["downloadUrl"]) as addon:
-		content = addon.read()
+	addon = opener(updateInfo["downloadUrl"])
+	content = addon.read()
+	addon.close()
 	if updateInfo["size"] != len(content):
 		gui.messageBox(_("Data load error"), _("Error"), style=wx.OK|wx.ICON_ERROR)
 		return
@@ -71,14 +69,17 @@ def getAddon():
 		file.write(content)
 	import core
 	bundle = addonHandler.AddonBundle(path)
-	if not addonHandler.addonVersionCheck.isAddonCompatible(bundle):
-		gui.messageBox(_("This version of NVDA is incompatible. To install the add-on, NVDA version {year}.{major} or higher is required. Please update NVDA or download an older version of the add-on here: \n{link}").format(year=bundle.minimumNVDAVersion[0], major=bundle.minimumNVDAVersion[1], link="https://github.com/jawhien/extendedTotalCmd/releases/tag/2.5"), _("Error"), style=wx.OK|wx.ICON_ERROR)
-		os.close(fd)
-		os.unlink(path)
-		return
+	try:
+		if not addonHandler.addonVersionCheck.isAddonCompatible(bundle):
+			gui.messageBox(_("This version of NVDA is incompatible. To install the add-on, NVDA version {year}.{major} or higher is required. Please update NVDA or download an older version of the add-on here: \n{link}").format(year=bundle.minimumNVDAVersion[0], major=bundle.minimumNVDAVersion[1], link="https://github.com/jawhien/extendedTotalCmd/releases/tag/2.5"), _("Error"), style=wx.OK|wx.ICON_ERROR)
+			os.close(fd)
+			os.unlink(path)
+			return
+	except:
+		pass
 	gui.ExecAndPump(addonHandler.installAddonBundle, bundle)
 	for addon in addonHandler.getAvailableAddons():
-		if not addon.isPendingRemove and bundle.name.lower()==addon.manifest['name'].lower():
+		if not addon.isPendingRemove and manifest["name"].lower() == addon.manifest["name"].lower():
 			addon.requestRemove()
 			break
 	os.close(fd)
