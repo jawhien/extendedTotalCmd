@@ -98,33 +98,14 @@ def autoCheckForUpdates():
 
 def update():
 	loadUpdateInfo()
-	wx.CallAfter(tcAddonUpdateDialog, gui.mainFrame)
+	if updateInfo["isAvailable"]:
+		if gui.messageBox(updateInfo["text"], _("Update Total Commander add-on"), style=wx.YES|wx.NO|wx.ICON_QUESTION) == wx.YES:
+			getAddon()
+	else:
+		gui.messageBox(updateInfo["text"], _("Update Total Commander add-on"), style=wx.OK)
 
 def autoUpdate():
 	loadUpdateInfo()
 	if updateInfo["isAvailable"]:
 		if gui.messageBox(updateInfo["text"], _("Update Total Commander add-on"), style=wx.YES|wx.NO|wx.ICON_QUESTION) == wx.YES:
 			getAddon()
-
-class tcAddonUpdateDialog(wx.Dialog):
-
-	def __init__(self,parent):
-		super(tcAddonUpdateDialog,self).__init__(parent, title= _("Update Total Commander add-on"), size = (500, 700))
-		self.sizerLayout = guiHelper.BoxSizerHelper(self, wx.VERTICAL)
-		self.sizerLayout.addItem (wx.StaticText(self, label=updateInfo["text"]))
-		self.buttons = guiHelper.ButtonHelper(wx.HORIZONTAL)
-		if updateInfo["isAvailable"]:
-			self.updateButton = self.buttons.addButton(self, wx.ID_OK, label=_("Get new version"))
-			self.updateButton.Bind(wx.EVT_BUTTON, self.onUpdate)
-		self.closeButton = self.buttons.addButton(self, wx.ID_CANCEL, label=_("Close"))
-		self.buttonBar = self.sizerLayout.addDialogDismissButtons(self.buttons)
-		self.mainSizer = wx.BoxSizer(wx.VERTICAL)
-		self.mainSizer.Add(self.sizerLayout.sizer, border=5, flag=wx.ALL)
-		self.SetSizer(self.mainSizer)
-		wx.CallAfter(self.Show)
-
-	def onUpdate(self, event):
-		getAddon()
-		self.Destroy()
-
-
