@@ -103,10 +103,8 @@ def update():
 def autoUpdate():
 	loadUpdateInfo()
 	if updateInfo["isAvailable"]:
-		dlg = wx.MessageDialog(gui.mainFrame, updateInfo["text"], _("Update Total Commander add-on"), wx.YES_NO | wx.ICON_QUESTION)
-		if dlg.ShowModal() == wx.ID_YES:
+		if gui.messageBox(updateInfo["text"], _("Update Total Commander add-on"), style=wx.YES|wx.NO|wx.ICON_QUESTION) == wx.YES:
 			getAddon()
-		dlg.Destroy()
 
 class tcAddonUpdateDialog(wx.Dialog):
 
