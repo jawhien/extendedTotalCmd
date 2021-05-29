@@ -128,6 +128,7 @@ class getTCInfo():
 				template = _("Selected {count} items").format(count=selected)
 				ui.message(template)
 			elif selected == 0:
+				# Translators: this message is spoken when the user manually deselects items.
 				ui.message(_("Nothing selected"))
 
 	def speakSelectedItemsInfo(self):
@@ -162,9 +163,11 @@ class getTCInfo():
 						counter+=1
 				if obj.parent.parent.parent.windowClassName=="TTOTAL_CMD":
 					if counter==2:
+						# Translators: this message is spoken when the user switches from one panel to another.
 						speech.speakMessage(_("Left"))
 						activePannel = 1
 					else:
+						# Translators: this message is spoken when the user switches from one panel to another.
 						speech.speakMessage(_("Right"))
 						activePannel = 2
 		elif obj.windowClassName == "LCLListBox":
@@ -175,9 +178,11 @@ class getTCInfo():
 					obj2 = obj2.parent
 				if obj.parent.parent.parent.windowClassName == "TTOTAL_CMD":
 					if obj2.previous and obj2.next and obj2.previous.windowClassName == "LCLListBox" and obj.next.windowClassName == "Window":
+						# Translators: this message is spoken when the user switches from one panel to another.
 						speech.speakMessage(_("Left"))
 						activePannel = 1
 					elif obj2.previous and obj2.next and obj2.previous.windowClassName == "Window" and obj.next.windowClassName == "LCLListBox":
+						# Translators: this message is spoken when the user switches from one panel to another.
 						speech.speakMessage(_("Right"))
 						activePannel = 2
 
@@ -271,6 +276,7 @@ class tcFileListItem(sysListView32.ListItem):
 		if tcApi.isApiSupported():
 			curPanel = tcApi.getActivePanelNum()
 			if curPanel != activePannel:
+				# Translators: this message is spoken when the user switches from one panel to another.
 				message = _("Left") if curPanel == 1 else _("Right")
 				ui.message(message)
 				activePannel = curPanel
@@ -284,8 +290,10 @@ class tcFileListItem(sysListView32.ListItem):
 	def reportFocus(self):
 		global activePannel
 		if activePannel == 1:
+			# Translators: this text is added as a description of the objects in the corresponding panel.
 			self.description = _("Left pannel")
 		else:
+			# Translators: this text is added as a description of the objects in the corresponding panel.
 			self.description = _("Right pannel")
 
 		if self.name:
