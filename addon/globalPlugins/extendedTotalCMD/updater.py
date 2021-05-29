@@ -7,10 +7,7 @@
 import addonHandler
 import wx
 import gui
-from gui import guiHelper
 import threading
-import webbrowser
-from languageHandler import getLanguage
 import urllib
 import json
 from versionInfo import version_year, version_major
@@ -23,7 +20,7 @@ try:
 except AttributeError:
 	opener = urllib.urlopen
 
-updateInfo = {"text":"", "currentVersion":manifest["version"], "newVersion":"", "getAddonUrl":"", "downloadUrl":"", "size":"", "FileName":"", "isAvailable":False}
+updateInfo = {"text":"", "currentVersion":manifest["version"], "newVersion":"", "downloadUrl":"", "size":"", "FileName":"", "isAvailable":False}
 
 def loadUpdateInfo():
 	global updateInfo
@@ -42,9 +39,6 @@ def loadUpdateInfo():
 	if (newVersion > updateInfo["currentVersion"]) or (updateInfo["currentVersion"].find("-dev") and updateInfo["currentVersion"].rstrip("-dev") <= newVersion):
 		updateInfo["text"] = _("New version {version} is available. Do you want to download it?").format(version=newVersion)
 		updateInfo["newVersion"] = newVersion
-		lang = getLanguage().split("_")[0]
-		if lang != "en" and lang != "ru": lang = "en"
-		updateInfo["getAddonUrl"] = "https://jnsoft.ru/{locale}/articles/nvda/extendedTotalCmd/".format(locale=lang)
 		for asset in latest["assets"]:
 			if asset["content_type"] == "application/x-nvda-addon":
 				updateInfo["downloadUrl"] = asset["browser_download_url"]
