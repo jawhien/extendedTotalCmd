@@ -20,10 +20,14 @@ donations_url = "https://jnsoft.ru/{lang}/articles/nvda/extendedTotalCmd/donatio
 
 def onInstall():
 	manifest = addonHandler.getCodeAddon().manifest
-	if isinstance(manifest["minimumNVDAVersion"], unicode):
-		minVersion = manifest["minimumNVDAVersion"].split(".")
-	else:
+	try:
+		if isinstance(manifest["minimumNVDAVersion"], unicode):
+			minVersion = manifest["minimumNVDAVersion"].split(".")
+		else:
+			minVersion = manifest["minimumNVDAVersion"]
+	except NameError:
 		minVersion = manifest["minimumNVDAVersion"]
+
 	year = int(minVersion[0])
 	major = int(minVersion[1])
 
