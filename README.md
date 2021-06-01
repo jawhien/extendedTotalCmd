@@ -8,8 +8,7 @@ This add-on improves the accessibility of the Total Commander file manager. It i
 <a name="user-content-compatibility"></a>
 # Compatibility
 
-* NVDA 2017.3 or higher, including 2019.3.
-Note: In versions older than 2017.3, the add-on was not tested, but, most likely, no problems will arise.
+* NVDA 2018.3 or higher, including 2021.1.
 * Warning! The add-on may not be compatible with other add-ons for Total Commander, as well as the "sounds by navigation on files" add-on.
 
 <a name="user-content-main-features"></a>
@@ -19,6 +18,7 @@ Note: In versions older than 2017.3, the add-on was not tested, but, most likely
 * Sound indication when reaching the borders of the list of elements.
 * The pronunciation of labels for items in the drive selection window.
 * Support work with tabs.
+* Support for multi-column display mode. (This function is only available in TC 9+).
 * The ability to quickly recognize the active panel. To do this, press the key command NVDA + Up Arrow, or NVDA + TAB.
 * Full support for 64-bit versions of Total Commander.
 * Report actions when selecting items or undoing them. (This function is only available in TC 9+).
@@ -72,10 +72,20 @@ A: In this case, you need to [create a new issue](https://github.com/jawhien/ext
 
 Q: The add-on does not support my language, can I help with the translation?
 
-A: Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the author’s email address in the NVDA Add-ons Manager.
+A: Yes, please send me letter to the email address indicated in the add-on, and I will send you the necessary files and instructions. You can view the author’s email address in the NVDA Add-ons Manager. Well, if you are using GitHub, you can just send me a Pull request with translation, it will be much more convenient and faster.
 
 <a name="user-content-change-log"></a>
 # Change log
+
+V3.0: 01.06.2021
+
+* Introduced support for detailed display mode. Attention: this function is experimental and sometimes may not work correctly. If you find a bug, please report it.
+* The update module has been completely redesigned. Now it downloads and installs the new version himself, and there is no need to do it manually.
+* Added Czech and Slovak localization. Thanks to Radek Žalud and Peter Vágner for the translations provided.
+* Compatibility requirements have been changed. Now you need NVDA version 2018.3 or higher to install the add-on.
+* The bug that led to the fact that some drop-down lists were displayed incorrectly, for example, such as those opened by pressing the "F2" key in the group rename tool, has been fixed.
+* Fixed some compatibility issues with NVDA 2018.3.
+* Fixed compatibility with NVDA 2021.1.
 
 V2.5: 19.01.2021
 
