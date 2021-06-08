@@ -45,7 +45,10 @@ class getTCInfo():
 			size = size / 1024;
 			i += 1
 		if isinstance(size, float): size = int(size * 100) / 100
-		return "{size} {format}".format(size=size, format=formats[i])
+		try:
+			return "{size} {format}".format(size=size, format=formats[i])
+		except UnicodeEncodeError:
+			return u"{size} {format}".format(size=size, format=formats[i])
 
 	def threadMonitor(self, thread):
 		i = 0
