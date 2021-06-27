@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Total Commander 3.0.2\n"
 "Report-Msgid-Bugs-To: 'jawhien@gmail.com'\n"
 "POT-Creation-Date: 2021-06-15 16:06+0300\n"
-"PO-Revision-Date: 2021-06-15 16:16+0300\n"
+"PO-Revision-Date: 2021-06-27 19:38+0300\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,7 +67,7 @@ msgstr ""
 #: addon\appModules\totalcmd.py:143
 #, python-brace-format
 msgid "Selected {selected} of {total} items"
-msgstr ""
+msgstr "Seleccionado {selected} de {total} elementos"
 
 #: addon\appModules\totalcmd.py:146 addon\appModules\totalcmd.py:336
 #: addon\appModules\totalcmd.py:348 addon\appModules\totalcmd.py:358
@@ -79,13 +79,13 @@ msgstr ""
 #: addon\appModules\totalcmd.py:170 addon\appModules\totalcmd.py:185
 #: addon\appModules\totalcmd.py:283
 msgid "Left"
-msgstr ""
+msgstr "Izquierda"
 
 #. Translators: this message is spoken when the user switches from one panel to another.
 #: addon\appModules\totalcmd.py:174 addon\appModules\totalcmd.py:189
 #: addon\appModules\totalcmd.py:283
 msgid "Right"
-msgstr ""
+msgstr "Derecha"
 
 #: addon\appModules\totalcmd.py:254
 msgid "Name"
@@ -110,17 +110,17 @@ msgstr ""
 #. Translators: this text is added as a description of the objects in the corresponding panel.
 #: addon\appModules\totalcmd.py:297
 msgid "Left pannel"
-msgstr ""
+msgstr "Panel izquierdo"
 
 #. Translators: this text is added as a description of the objects in the corresponding panel.
 #: addon\appModules\totalcmd.py:300
 msgid "Right pannel"
-msgstr ""
+msgstr "Panel derecho"
 
 #: addon\appModules\totalcmd.py:309
 #, python-brace-format
 msgid "{current} of {all}"
-msgstr ""
+msgstr "{current} de {all}"
 
 #: addon\appModules\totalcmd.py:329
 msgid "Reports information about the number of selected elements"
