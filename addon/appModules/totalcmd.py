@@ -360,6 +360,13 @@ class tcFileListItem(sysListView32.ListItem):
 		datetime = tcInfo.getDateTime()
 		ui.message(datetime)
 
+	@script(gesture="kb:control+shift+f")
+	def script_reportTabName(self, gesture):
+		tabList = tcApi.getTabList()
+		for tab in tabList:
+			if controlTypes.STATE_SELECTED in tab.states:
+				ui.message(tab.name)
+
 	@script(gestures=["kb:control+alt+DownArrow", "kb:control+alt+UpArrow"])
 	def script_changeLine(self, gesture):
 			ui.message(_('Not supported in this version of total commander'))
