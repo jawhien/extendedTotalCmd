@@ -363,9 +363,22 @@ class tcFileListItem(sysListView32.ListItem):
 	@script(gesture="kb:control+shift+f")
 	def script_reportTabName(self, gesture):
 		tabList = tcApi.getTabList()
+		if not tabList:
+			ui.message(_("No tabs for active panel"))
+			return
+		activeTab = False
 		for tab in tabList:
 			if controlTypes.STATE_SELECTED in tab.states:
-				ui.message(tab.name)
+				activeTab = tab
+				break
+		ui.message(activeTab.name)
+		if scriptHandler.getLastScriptRepeatCount() != 0:
+			left, top, width, height = tab.location
+			x = left + (width//2)
+			y = top + (height//2)
+			winUser.setCursorPos(x, y)
+			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, None)
+			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTUP, 0, 0, 0, None)
 
 	@script(gestures=["kb:control+alt+DownArrow", "kb:control+alt+UpArrow"])
 	def script_changeLine(self, gesture):
