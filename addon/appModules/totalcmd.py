@@ -7,17 +7,14 @@
 import appModuleHandler
 import addonHandler
 import api
-import NVDAObjects
-from NVDAObjects.IAccessible import IAccessible
-from NVDAObjects.IAccessible import sysListView32
+from NVDAObjects.IAccessible import IAccessible, sysListView32, getNVDAObjectFromEvent
 import speech
 import controlTypes
 import winsound
 import re
 import ui
 import winUser
-import scriptHandler
-from scriptHandler import script
+from scriptHandler import script, getLastScriptRepeatCount
 import threading
 from . import tcApi
 import config
@@ -60,7 +57,7 @@ class getTCInfo():
 				i = 0
 
 	def getCurrentDirPath(self):
-		return NVDAObjects.IAccessible.getNVDAObjectFromEvent(tcApi.getCurDirPanelHandle(), winUser.OBJID_CLIENT, 0).name[:-1]
+		return getNVDAObjectFromEvent(tcApi.getCurDirPanelHandle(), winUser.OBJID_CLIENT, 0).name[:-1]
 
 	def getSingleFileSize(self, name):
 		currentDir = self.getCurrentDirPath()
@@ -248,7 +245,7 @@ class tcFileListItem(sysListView32.ListItem):
 		return self.IAccessibleObject.accName(self.IAccessibleChildID)
 
 	def _getColumnHeader(self, column):
-		obj = NVDAObjects.IAccessible.getNVDAObjectFromEvent(tcApi.getHeaderHandle(), winUser.OBJID_CLIENT, 0)
+		obj = getNVDAObjectFromEvent(tcApi.getHeaderHandle(), winUser.OBJID_CLIENT, 0)
 		text = obj.displayText
 		if len(text) == 0 or len(self._getAccessibleName().split("\t")) == 4:
 			headers = [_("Name"), _("Size"), _("Date"), _("Attributes")]
@@ -348,7 +345,7 @@ class tcFileListItem(sysListView32.ListItem):
 			ui.message(_('Not supported in this version of total commander'))
 			return
 		curPath = tcInfo.getCurrentDirPath()
-		if scriptHandler.getLastScriptRepeatCount() != 0 and api.copyToClip(curPath):
+		if getLastScriptRepeatCount() != 0 and api.copyToClip(curPath):
 			ui.message(_("Copied to clipboard"))
 		ui.message(curPath)
 
@@ -372,7 +369,7 @@ class tcFileListItem(sysListView32.ListItem):
 				activeTab = tab
 				break
 		ui.message(activeTab.name)
-		if scriptHandler.getLastScriptRepeatCount() != 0:
+		if getLastScriptRepeatCount() != 0:
 			left, top, width, height = tab.location
 			x = left + (width//2)
 			y = top + (height//2)
