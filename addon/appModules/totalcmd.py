@@ -360,7 +360,7 @@ class tcFileListItem(sysListView32.ListItem):
 		datetime = tcInfo.getDateTime()
 		ui.message(datetime)
 
-	@script(gesture="kb:control+shift+f", description=_("Reports the name of the current tab in the active panel. Pressing twice opens the menu for that tab."))
+	@script(gesture="kb:alt+w", description=_("Reports the name of the current tab in the active panel. Pressing twice opens the menu for that tab."))
 	def script_reportTabName(self, gesture):
 		tabList = tcApi.getTabList()
 		if not tabList:
@@ -380,7 +380,7 @@ class tcFileListItem(sysListView32.ListItem):
 			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, None)
 			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTUP, 0, 0, 0, None)
 
-	@script(gesture="kb:control+shift+g", description=_("Report the active panel."))
+	@script(gesture="kb:nvda+a", description=_("Report the active panel."))
 	def script_reportActivePanel(self, gesture):
 		if not tcApi.isApiSupported():
 			ui.message(_('Not supported in this version of total commander'))

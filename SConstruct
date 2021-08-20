@@ -195,12 +195,12 @@ for mdFile in env.Glob(os.path.join('addon', 'doc', '*', '*.md')):
 # Pot target
 i18nFiles = expandGlobs(buildVars.i18nSources)
 gettextvars = {
-	'gettext_package_bugs_address': 'nvda-translations@groups.io',
-	'gettext_package_name': buildVars.addon_info['addon_name'],
+	'gettext_package_bugs_address': 'jawhien@gmail.com',
+	'gettext_package_name': buildVars.addon_info['addon_buildFileName'],
 	'gettext_package_version': buildVars.addon_info['addon_version']
 }
 
-pot = env.gettextPotFile("${addon_name}.pot", i18nFiles, **gettextvars)
+pot = env.gettextPotFile("${addon_buildFileName}.pot", i18nFiles, **gettextvars)
 env.Alias('pot', pot)
 env.Depends(pot, i18nFiles)
 mergePot = env.gettextMergePotFile("${addon_name}-merge.pot", i18nFiles, **gettextvars)
