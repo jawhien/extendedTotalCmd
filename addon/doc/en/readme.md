@@ -64,6 +64,8 @@ You can install the add-on through the NVDA add-on manager, for this, do the fol
 * Control + Shift + R - Reports size information for selected items. If no items are selected, reports the size of the file in focus.
 * Control + Shift + D - Reports the full path of the current directory. Pressing twice Copies it to the clipboard.
 * Control + Shift + T - reports the date and time of the change.
+* NVDA + A - reports the active panel.
+* Alt + W - reports the name of the current tab. Pressing twice it opens its context menu.
 
 <a name="user-content-acknowledgments"></a>
 # Acknowledgments
@@ -91,6 +93,13 @@ A: Yes, please send me letter to the email address indicated in the add-on, and 
 
 <a name="user-content-change-log"></a>
 # Change log
+
+V3.1: 08.09.2021
+
+* Added a function to reports the active panel. Press "NVDA + A" to find out the active panel.
+* Added a function to reports the current tab on the active panel. When you press "ALT + W", the name of the current tab will be reported; Pressing twice  it, its context menu will open.
+* Added Spanish localization.
+* Other minor improvements and fixes.
 
 V3.0: 01.06.2021
 
