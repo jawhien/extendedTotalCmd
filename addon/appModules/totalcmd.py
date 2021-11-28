@@ -22,6 +22,7 @@ import eventHandler
 import os
 from tones import beep
 from time import sleep
+from datetime import datetime
 
 addonHandler.initTranslation()
 
@@ -112,14 +113,42 @@ class getTCInfo():
 		size=re.match(r'[\d,\s]+\s[\S]+\s', statusBar)
 		return size.group().strip()
 
-	def getDateTime(self):
-		if tcApi.getSelectedElements() > 0:
-			return _("There is no information about the time of the change.")
-		str = tcApi.getStatusBarText()
-		datetime = re.search(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2,4}\s[0-9]{1,2}:[0-9]{1,2}', str)
-		if not datetime:
-			return _("There is no information about the time of the change.")
-		return datetime.group(0)
+	def getDateTime(self, name):
+		currentDir = self.getCurrentDirPath()
+		getmtime = os.path.getmtime
+		if name == "..":
+			return _("This object is not supported.")
+		path = os.path.join(currentDir, name)
+		statusbar = tcApi.getStatusBarText()
+		if currentDir.startswith("\\\\") and not re.findall(r'<\S*[\s>]', statusbar) and re.findall(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}', statusbar):
+# If the path to the file is relative and cannot be determined.
+			str = tcApi.getStatusBarText()
+			mtime = re.search(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2,4}\s[0-9]{1,2}:[0-9]{1,2}', str)
+			if not mtime:
+				return _("There is no information about the time of the change.")
+			return mtime.group(0)
+		elif currentDir.startswith("\\\\"):
+# This information is not displayed in the status bar for directories.
+			return _("This object is not supported.")
+		elif re.match(r'[0-9]+:/', currentDir) and not re.findall(r'<\S*[\s>]', statusbar):
+# this is the file in ftp connection
+			str = tcApi.getStatusBarText()
+			mtime = re.search(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2,4}\s[0-9]{1,2}:[0-9]{1,2}', str)
+			if not mtime:
+				return _("There is no information about the time of the change.")
+			return mtime.group(0)
+		elif re.match(r'[0-9]+:/', currentDir) and re.findall(r'<\S*[\s>]', statusbar):
+# This information is not displayed for directories when connected via FTP.
+			return _("This object is not supported.")
+		elif os.path.isfile(path):
+			time = datetime.fromtimestamp(getmtime(path)).strftime("%d.%m.%Y %H:%M")
+			return time
+		elif os.path.isdir(path):
+			time = datetime.fromtimestamp(getmtime(path)).strftime("%d.%m.%Y %H:%M")
+			return time
+		else:
+# If it was not possible to determine the appropriate method of obtaining information.
+			return _("This object is not supported.")
 
 	def speakSelectedCommand(self):
 		if tcApi.isApiSupported():
@@ -354,8 +383,13 @@ class tcFileListItem(sysListView32.ListItem):
 		if not tcApi.isApiSupported():
 			ui.message(_('Not supported in this version of total commander'))
 			return
-		datetime = tcInfo.getDateTime()
-		ui.message(datetime)
+		if tcApi.getSelectedElements() > 0:
+			ui.message(_("There is no information about the time of the change."))
+			return
+		else:
+			name = self._getColumnContent(1) if isMultiColumn else self.name
+			size = tcInfo.getDateTime(name)
+		ui.message(size)
 
 	@script(gesture="kb:alt+w", description=_("Reports the name of the current tab in the active panel. Pressing twice opens the menu for that tab."))
 	def script_reportTabName(self, gesture):
