@@ -23,6 +23,7 @@ import os
 from tones import beep
 from time import sleep
 from datetime import datetime
+from shutil import disk_usage
 
 addonHandler.initTranslation()
 
@@ -444,8 +445,16 @@ class TCDriveList(IAccessible):
 	def event_gainFocus(self):
 		name = self.name
 		description = self.displayText
+		usage = None
+		if name and name[2:3].isalpha():
+			try:
+				u = disk_usage(name[2:3] + ":")
+				usage = " ({used}/{total})".format(used=tcInfo.formatSize(u.used), total=tcInfo.formatSize(u.total))
+			except:
+				pass
 		if description and name[:2] == "[-" and name[-2:] == "-]":
 			self.name = description[0:1] + " (" + description[2:] + ")"
+			if usage is not None: self.name += usage
 		super(TCDriveList,self).event_gainFocus()
 
 class TCTabControl(IAccessible):
