@@ -234,9 +234,9 @@ class AppModule(appModuleHandler.AppModule):
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
 		windowClass = obj.windowClassName
-		if windowClass in ("TMyListBox","LCLListBox") and obj.role == controlTypes.ROLE_LIST:
+		if windowClass in ("TMyListBox","LCLListBox") and obj.role == controlTypes.Role.LIST:
 			clsList.insert(0, tcFileListObject)
-		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD" and obj.role == controlTypes.ROLE_LISTITEM:
+		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD" and obj.role == controlTypes.Role.LISTITEM:
 			clsList.insert(0, tcFileListItem)
 		if windowClass in ("TMyListBox","LCLListBox") and self._getForegroundWindowClass(obj) == "TCONNECT":
 			clsList.insert(0, TCFTPList)
@@ -292,7 +292,7 @@ class tcFileListItem(sysListView32.ListItem):
 		return name[column-1]
 
 	def _get_positionInfo(self):
-		if tcApi.isApiSupported() and self.role == controlTypes.ROLE_LISTITEM:
+		if tcApi.isApiSupported() and self.role == controlTypes.Role.LISTITEM:
 			index= tcApi.getCurrentElementNum()
 			totalCount= tcApi.getCountElements()
 			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
@@ -328,8 +328,8 @@ class tcFileListItem(sysListView32.ListItem):
 
 		if self.name:
 			speakList=[]
-			if controlTypes.STATE_SELECTED in self.states:
-				speakList.append(controlTypes.stateLabels[controlTypes.STATE_SELECTED])
+			if controlTypes.State.SELECTED in self.states:
+				speakList.append(controlTypes.State.SELECTED.displayString)
 			speakList.append(self.name.split("\\")[-1])
 			if config.conf['presentation']['reportObjectPositionInformation'] == True and tcApi.isApiSupported():
 				positionInfo = self.positionInfo
@@ -400,7 +400,7 @@ class tcFileListItem(sysListView32.ListItem):
 			return
 		activeTab = False
 		for tab in tabList:
-			if controlTypes.STATE_SELECTED in tab.states:
+			if controlTypes.State.SELECTED in tab.states:
 				activeTab = tab
 				break
 		ui.message(activeTab.name)
@@ -476,14 +476,14 @@ class TCTabControl(IAccessible):
 			return False
 
 	def event_selection(self):
-		if controlTypes.STATE_SELECTED in self.states and not self.isDuplicateIAccessibleEvent(self):
+		if controlTypes.State.SELECTED in self.states and not self.isDuplicateIAccessibleEvent(self):
 			self.reportFocus()
 		super(TCTabControl,self).event_selection()
 
 class tcMessageBox(IAccessible):
 
 	def initOverlayClass(self):
-		self.role = controlTypes.ROLE_STATICTEXT
+		self.role = controlTypes.Role.STATICTEXT
 		text = self.displayText
 		if text.find("?") >= 0:
 			self.name = text[:text.rfind("?") + 1]
