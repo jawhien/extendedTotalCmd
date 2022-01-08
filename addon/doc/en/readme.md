@@ -23,7 +23,7 @@ This add-on improves the accessibility of the Total Commander file manager. It i
 <a name="user-content-compatibility"></a>
 # Compatibility
 
-* NVDA 2018.3 or higher, including 2021.1.
+* NVDA 2018.3 or higher, including 2022.1.
 * Warning! The add-on may not be compatible with other add-ons for Total Commander, as well as the "sounds by navigation on files" add-on.
 
 <a name="user-content-main-features"></a>
@@ -93,6 +93,13 @@ A: Yes, please send me letter to the email address indicated in the add-on, and 
 
 <a name="user-content-change-log"></a>
 # Change log
+
+V3.2: 08.01.2022
+
+* Added information about the disk to the window for selecting disks in the format Used space / total space.
+* fixed compatibility with nvda 2022+
+* Fixed determination of the file modification time.
+* Made minor localization improvements.
 
 V3.1: 08.09.2021
 
