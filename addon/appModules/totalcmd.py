@@ -233,10 +233,18 @@ class AppModule(appModuleHandler.AppModule):
 			return obj
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
+		try:
+			roleList = controlTypes.Role.LIST
+			roleListItem = controlTypes.Role.LISTITEM
+		except AttributeError:
+			roleList = controlTypes.ROLE_LIST
+			roleListItem = controlTypes.ROLE_LISTITEM
+
 		windowClass = obj.windowClassName
-		if windowClass in ("TMyListBox","LCLListBox") and obj.role == controlTypes.Role.LIST:
+
+		if windowClass in ("TMyListBox","LCLListBox") and obj.role == roleList:
 			clsList.insert(0, tcFileListObject)
-		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD" and obj.role == controlTypes.Role.LISTITEM:
+		if windowClass in ("TMyListBox","LCLListBox")  and self._getForegroundWindowClass(obj) == "TTOTAL_CMD" and obj.role == roleListItem:
 			clsList.insert(0, tcFileListItem)
 		if windowClass in ("TMyListBox","LCLListBox") and self._getForegroundWindowClass(obj) == "TCONNECT":
 			clsList.insert(0, TCFTPList)
@@ -292,7 +300,12 @@ class tcFileListItem(sysListView32.ListItem):
 		return name[column-1]
 
 	def _get_positionInfo(self):
-		if tcApi.isApiSupported() and self.role == controlTypes.Role.LISTITEM:
+		try:
+			roleListItem = controlTypes.Role.LISTITEM
+		except AttributeError:
+			roleListItem = controlTypes.ROLE_LISTITEM
+
+		if tcApi.isApiSupported() and self.role == roleListItem:
 			index= tcApi.getCurrentElementNum()
 			totalCount= tcApi.getCountElements()
 			return dict(indexInGroup=index,similarItemsInGroup=totalCount) 
@@ -318,6 +331,13 @@ class tcFileListItem(sysListView32.ListItem):
 		pass
 
 	def reportFocus(self):
+		try:
+			stateSelected = controlTypes.State.SELECTED
+			stateSelectedText = controlTypes.State.SELECTED.displayString
+		except AttributeError:
+			stateSelected = controlTypes.STATE_SELECTED
+			stateSelectedText = controlTypes.stateLabels[controlTypes.STATE_SELECTED]
+
 		global activePannel
 		if activePannel == 1:
 			# Translators: this text is added as a description of the objects in the corresponding panel.
@@ -328,8 +348,8 @@ class tcFileListItem(sysListView32.ListItem):
 
 		if self.name:
 			speakList=[]
-			if controlTypes.State.SELECTED in self.states:
-				speakList.append(controlTypes.State.SELECTED.displayString)
+			if stateSelected in self.states:
+				speakList.append(stateSelectedText)
 			speakList.append(self.name.split("\\")[-1])
 			if config.conf['presentation']['reportObjectPositionInformation'] == True and tcApi.isApiSupported():
 				positionInfo = self.positionInfo
@@ -394,13 +414,18 @@ class tcFileListItem(sysListView32.ListItem):
 
 	@script(gesture="kb:alt+w", description=_("Reports the name of the current tab in the active panel. Pressing twice opens the menu for that tab."))
 	def script_reportTabName(self, gesture):
+		try:
+			stateSelected = controlTypes.State.SELECTED
+		except AttributeError:
+			stateSelected = controlTypes.STATE_SELECTED
+
 		tabList = tcApi.getTabList()
 		if not tabList:
 			ui.message(_("No tabs for active panel"))
 			return
 		activeTab = False
 		for tab in tabList:
-			if controlTypes.State.SELECTED in tab.states:
+			if stateSelected in tab.states:
 				activeTab = tab
 				break
 		ui.message(activeTab.name)
@@ -476,14 +501,23 @@ class TCTabControl(IAccessible):
 			return False
 
 	def event_selection(self):
-		if controlTypes.State.SELECTED in self.states and not self.isDuplicateIAccessibleEvent(self):
+		try:
+			stateSelected = controlTypes.State.SELECTED
+		except AttributeError:
+			stateSelected = controlTypes.STATE_SELECTED
+
+		if stateSelected in self.states and not self.isDuplicateIAccessibleEvent(self):
 			self.reportFocus()
 		super(TCTabControl,self).event_selection()
 
 class tcMessageBox(IAccessible):
 
 	def initOverlayClass(self):
-		self.role = controlTypes.Role.STATICTEXT
+		try:
+			self.role = controlTypes.Role.STATICTEXT
+		except AttributeError:
+			self.role = controlTypes.ROLE_STATICTEXT
+
 		text = self.displayText
 		if text.find("?") >= 0:
 			self.name = text[:text.rfind("?") + 1]
