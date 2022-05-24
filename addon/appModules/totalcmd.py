@@ -24,6 +24,7 @@ from tones import beep
 from time import sleep
 from datetime import datetime
 from shutil import disk_usage
+from versionInfo import version_year
 
 addonHandler.initTranslation()
 
@@ -265,7 +266,10 @@ class tcFileListObject(sysListView32.List):
 		return name
 
 	def _get_isMultiColumn(self):
-		return isMultiColumn
+		if version_year >= 2022:
+			return False
+		else:
+			return isMultiColumn
 
 	def _get_columnCount(self):
 		return len(self._getAccessibleName().split("\t"))
