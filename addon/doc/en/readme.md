@@ -94,6 +94,18 @@ A: Yes, please send me letter to the email address indicated in the add-on, and 
 <a name="user-content-change-log"></a>
 # Change log
 
+V3.2.3: 25.05.2022
+
+* Fixed multi-column mode in NVDA 2022.1 or higher.
+
+V3.2.2: 24.05.2022
+
+* This patch disables multi-column mode in NVDA 2022 as it does not work properly and should be fixed soon.
+
+V3.2.1: 09.01.2022
+
+* Fixed accidentally broken compatibility with earlier versions of NVDA.
+
 V3.2: 08.01.2022
 
 * Added information about the disk to the window for selecting disks in the format Used space / total space.
