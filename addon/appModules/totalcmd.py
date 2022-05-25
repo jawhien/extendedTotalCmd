@@ -24,7 +24,6 @@ from tones import beep
 from time import sleep
 from datetime import datetime
 from shutil import disk_usage
-from versionInfo import version_year
 
 addonHandler.initTranslation()
 
@@ -266,10 +265,7 @@ class tcFileListObject(sysListView32.List):
 		return name
 
 	def _get_isMultiColumn(self):
-		if version_year >= 2022:
-			return False
-		else:
-			return isMultiColumn
+		return isMultiColumn
 
 	def _get_columnCount(self):
 		return len(self._getAccessibleName().split("\t"))
@@ -285,6 +281,10 @@ class tcFileListItem(sysListView32.ListItem):
 
 	def _getAccessibleName(self):
 		return self.IAccessibleObject.accName(self.IAccessibleChildID)
+
+	def _getColumnLocation(self, col):
+		# This is a stub to work in NVDA 2022 and above.
+		return False
 
 	def _getColumnHeader(self, column):
 		obj = getNVDAObjectFromEvent(tcApi.getHeaderHandle(), winUser.OBJID_CLIENT, 0)
