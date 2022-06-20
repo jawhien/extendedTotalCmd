@@ -5,6 +5,24 @@
 
 Цей додаток поліпшує доступність файлового менеджера Total Commander. Він сумісний з усіма версіями TC, починаючи з 7.0, але деякі функції працюють лише у версії 9.0 і новіших.
 
+[Підтримати автора додатка](https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/donation.php)
+[Репозиторій на GitHub ](https://github.com/jawhien/extendedTotalCmd)
+
+<!-- border -->
+
+# Зміст
+
+* [Сумісність](#user-content-compatibility)
+* [Основні можливості](#user-content-main-features)
+* [Встановлення](#user-content-installation)
+* [Комбінації клавіш](#user-content-key-commands)
+* [Подяки](#user-content-acknowledgments)
+* [Найчастіші запитання](#user-content-faq)
+* [Журнал змін](#user-content-change-log)
+* [Офіційна сторінка додатка](https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/)
+
+<!-- border -->
+
 <a name="user-content-compatibility"></a>
 # Сумісність
 
