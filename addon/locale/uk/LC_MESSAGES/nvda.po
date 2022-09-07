@@ -1,0 +1,273 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-06-19 00:04+0300\n"
+"PO-Revision-Date: 2022-06-19 00:48+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1\n"
+"X-Poedit-Basepath: ../../../..\n"
+"X-Poedit-SearchPath-0: buildVars.py\n"
+"X-Poedit-SearchPath-1: addon/appModules/tcApi.py\n"
+"X-Poedit-SearchPath-2: addon/appModules/totalcmd.py\n"
+"X-Poedit-SearchPath-3: addon/globalPlugins/extendedTotalCMD/__init__.py\n"
+"X-Poedit-SearchPath-4: addon/globalPlugins/extendedTotalCMD/updater.py\n"
+"X-Poedit-SearchPath-5: addon/installTasks.py\n"
+
+#: addon/appModules/totalcmd.py:40
+msgid "Bytes"
+msgstr "Байти"
+
+#: addon/appModules/totalcmd.py:40
+msgid "kB"
+msgstr "кБ"
+
+#: addon/appModules/totalcmd.py:40
+msgid "mB"
+msgstr "мБ"
+
+#: addon/appModules/totalcmd.py:40
+msgid "gB"
+msgstr "гБ"
+
+#: addon/appModules/totalcmd.py:40
+msgid "tB"
+msgstr "тБ"
+
+#: addon/appModules/totalcmd.py:67 addon/appModules/totalcmd.py:73
+#: addon/appModules/totalcmd.py:121 addon/appModules/totalcmd.py:133
+#: addon/appModules/totalcmd.py:143 addon/appModules/totalcmd.py:152
+msgid "This object is not supported."
+msgstr "Цей об’єкт не підтримується."
+
+#: addon/appModules/totalcmd.py:77 addon/appModules/totalcmd.py:90
+msgid "No size information. Try select this item."
+msgstr "Немає інформації про розмір. Спробуйте виділити цей елемент."
+
+#: addon/appModules/totalcmd.py:83 addon/appModules/totalcmd.py:113
+msgid "The size is calculated, wait a few seconds..."
+msgstr "Розмір обчислюється, зачекайте кілька секунд..."
+
+#: addon/appModules/totalcmd.py:129 addon/appModules/totalcmd.py:139
+#: addon/appModules/totalcmd.py:412
+msgid "There is no information about the time of the change."
+msgstr "Немає інформації про час змінення."
+
+#: addon/appModules/totalcmd.py:158
+#, python-brace-format
+msgid "Selected {count} items"
+msgstr "Виділено {count} елементів"
+
+#: addon/appModules/totalcmd.py:162
+msgid "Nothing selected"
+msgstr "Нічого не виділено"
+
+#: addon/appModules/totalcmd.py:170
+#, python-brace-format
+msgid "Selected {selected} of {total} items"
+msgstr "Виділено {selected} із {total} елементів"
+
+#: addon/appModules/totalcmd.py:173 addon/appModules/totalcmd.py:387
+#: addon/appModules/totalcmd.py:399 addon/appModules/totalcmd.py:409
+#: addon/appModules/totalcmd.py:447 addon/appModules/totalcmd.py:456
+msgid "Not supported in this version of total commander"
+msgstr "Не підтримується в цій версії total commander"
+
+#: addon/appModules/totalcmd.py:197 addon/appModules/totalcmd.py:212
+#: addon/appModules/totalcmd.py:327
+msgid "Left"
+msgstr "Ліва"
+
+#: addon/appModules/totalcmd.py:201 addon/appModules/totalcmd.py:216
+#: addon/appModules/totalcmd.py:327
+msgid "Right"
+msgstr "Права"
+
+#: addon/appModules/totalcmd.py:293
+msgid "Name"
+msgstr "Ім’я"
+
+#: addon/appModules/totalcmd.py:293
+msgid "Size"
+msgstr "Розмір"
+
+#: addon/appModules/totalcmd.py:293
+msgid "Date"
+msgstr "Дата"
+
+#: addon/appModules/totalcmd.py:293 addon/appModules/totalcmd.py:299
+msgid "Attributes"
+msgstr "Атрибути"
+
+#: addon/appModules/totalcmd.py:294
+msgid "Unknown column"
+msgstr "Невідома колонка"
+
+#: addon/appModules/totalcmd.py:348
+msgid "Left pannel"
+msgstr "Ліва панель"
+
+#: addon/appModules/totalcmd.py:351
+msgid "Right pannel"
+msgstr "Права панель"
+
+#: addon/appModules/totalcmd.py:360
+#, python-brace-format
+msgid "{current} of {all}"
+msgstr "{current} із {all}"
+
+#: addon/appModules/totalcmd.py:380
+msgid "Reports information about the number of selected elements"
+msgstr "Повідомляє інформацію про кількість виділених елементів"
+
+#: addon/appModules/totalcmd.py:384
+msgid ""
+"Reports the size of the file under the cursor. If multiple objects are "
+"selected, reports their total size."
+msgstr ""
+"Повідомляє розмір файлу під курсором. Якщо виділено кілька об’єктів, "
+"повідомляє їхній загальний розмір."
+
+#: addon/appModules/totalcmd.py:396
+msgid ""
+"Reports the current path to the folder. Pressing twice Copies it to the "
+"clipboard."
+msgstr ""
+"Повідомляє поточний шлях до папки. Подвійне натискання копіює його в буфер "
+"обміну."
+
+#: addon/appModules/totalcmd.py:403
+msgid "Copied to clipboard"
+msgstr "Скопійовано в буфер обміну"
+
+#: addon/appModules/totalcmd.py:406
+msgid "Reports the modification time of the file under the cursor."
+msgstr "Повідомляє час змінення файлу, розташованого під курсором."
+
+#: addon/appModules/totalcmd.py:419
+msgid ""
+"Reports the name of the current tab in the active panel. Pressing twice "
+"opens the menu for that tab."
+msgstr ""
+"Повідомляє назву поточної вкладки на активній панелі. Подвійне натискання "
+"відкриває меню для цієї вкладки."
+
+#: addon/appModules/totalcmd.py:428
+msgid "No tabs for active panel"
+msgstr "Немає вкладок для активної панелі"
+
+#: addon/appModules/totalcmd.py:444
+msgid "Report the active panel."
+msgstr "Повідомляє активну панель."
+
+#: addon/appModules/totalcmd.py:451
+msgid "Left panel active"
+msgstr "Активна ліва панель"
+
+#: addon/appModules/totalcmd.py:451
+msgid "Right panel active"
+msgstr "Активна права панель"
+
+#: addon/globalPlugins/extendedTotalCMD/__init__.py:22
+msgid "Update Total Commander add-on..."
+msgstr "Оновити додаток Total Commander..."
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:31
+msgid ""
+"An error occurred while checking for updates! Check your internet connection."
+msgstr ""
+"Під час перевірки наявності оновлень виникла помилка. Перевірте інтернет-"
+"з’єднання."
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:36
+msgid ""
+"To install the new version of the add-on, you need NVDA 2018.3 or higher."
+msgstr ""
+"Для встановлення нової версії додатка потрібна версія NVDA 2018.3 або новіша."
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:40
+#, python-brace-format
+msgid "New version {version} is available. Do you want to download it?"
+msgstr "Доступна нова версія {version}. Хочете її завантажити?"
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:51
+msgid "No update available."
+msgstr "Немає доступних оновлень."
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:59
+msgid "Data load error"
+msgstr "Помилка завантаження даних"
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:59
+#: addon/globalPlugins/extendedTotalCMD/updater.py:68 addon/installTasks.py:35
+msgid "Error"
+msgstr "Помилка"
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:68 addon/installTasks.py:35
+#, python-brace-format
+msgid ""
+"This version of NVDA is incompatible. To install the add-on, NVDA version "
+"{year}.{major} or higher is required. Please update NVDA or download an "
+"older version of the add-on here: \n"
+"{link}"
+msgstr ""
+"Ця версія NVDA несумісна. Для встановлення додатка необхідна версія NVDA "
+"{year}.{major} чи новіша. Будь ласка, оновіть NVDA чи завантажте старішу "
+"версію додатка тут: \n"
+"{link}"
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:81
+msgid ""
+"Changes were made to add-ons. You must restart NVDA for these changes to "
+"take effect. Would you like to restart now?"
+msgstr ""
+"До додатків внесено зміни. Щоб вони почали діяти, необхідно перезапустити "
+"NVDA. Хочете перезапустити зараз?"
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:81
+msgid "Restart NVDA"
+msgstr "Перезапустити NVDA"
+
+#: addon/globalPlugins/extendedTotalCMD/updater.py:96
+#: addon/globalPlugins/extendedTotalCMD/updater.py:99
+#: addon/globalPlugins/extendedTotalCMD/updater.py:104
+msgid "Update Total Commander add-on"
+msgstr "Оновити додаток Total Commander"
+
+#: addon/installTasks.py:39
+#, python-brace-format
+msgid ""
+" {name} - this free add-on for NVDA.\n"
+"You can make a donation to the author to help further development of this "
+"add-on and other free software.\n"
+"You want to make a donation now? For transaction you will be redirected to "
+"the website of the developer."
+msgstr ""
+" {name} — це безкоштовний додаток для NVDA.\n"
+"Ви можете зробити благодійний внесок автору для допомоги на подальший "
+"розвиток цього додатка  та іншого вільного програмного забезпечення.\n"
+"Хочете зробити благодійний внесок зараз? Для здійснення транзакції вас буде "
+"переспрямовано на сайт розробника."
+
+#: addon/installTasks.py:43
+#, python-brace-format
+msgid "Request donations for {name}"
+msgstr "Запит благодійного внеску для {name}"
+
+#: buildVars.py:23
+msgid "Total Commander"
+msgstr "Total Commander"
+
+#: buildVars.py:26
+msgid ""
+"This add-on improves the accessability of the Total Commander file manager, "
+"mostly versions 8.0 and higher."
+msgstr ""
+"Цей додаток поліпшує доступність файлового менеджера Total Commander "
+"здебільшого починаючи з версії 8 і новіших."
