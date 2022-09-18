@@ -316,6 +316,40 @@ class tcFileListItem(sysListView32.ListItem):
 		else:
 			return None
 
+	def _get_name(self):
+		# this function is from nvda code with minor modifications.
+		LVS_OWNERDRAWFIXED=0x0400
+		CHAR_LTR_MARK = u'\u200E'
+		CHAR_RTL_MARK = u'\u200F'
+		parent = self.parent
+		if not isinstance(parent, tcFileListObject) or not parent.isMultiColumn or self._shouldDisableMultiColumn:
+			name = super(tcFileListItem, self).name
+			if name:
+				return name
+			elif self.windowStyle & LVS_OWNERDRAWFIXED:
+				return self.displayText
+			return name
+		textList = []
+		for col in range(1, self.childCount + 1):
+			location = self._getColumnLocation(col)
+			if location and location.width == 0:
+				continue
+			content = self._getColumnContent(col)
+			if not content:
+				continue
+			if config.conf["documentFormatting"]["reportTableHeaders"] and col != 1:
+				header = self._getColumnHeader(col)
+			else:
+				header = None
+			if header:
+				textList.append("%s: %s" % (header, content))
+			else:
+				textList.append(content)
+		name = "; ".join(textList)
+		# Some list view items in Windows Vista and later can contain annoying left-to-right and right-to-left
+		# indicator characters which really should not be there.
+		return name.replace(CHAR_LTR_MARK,'').replace(CHAR_RTL_MARK,'')
+
 	def event_gainFocus(self):
 		global activePannel, isMultiColumn
 		if self.location == None: return
