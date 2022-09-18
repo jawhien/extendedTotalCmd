@@ -363,7 +363,7 @@ class tcFileListItem(sysListView32.ListItem):
 			if self.hasFocus:
 				speech.speakMessage(" ".join(speakList))
 		else:
-			super(TCFileList,self).reportFocus()
+			super(tcFileListItem, self).reportFocus()
 
 	@script(gestures=tcInfo.getPreviousItemGestures())
 	def script_previousElement(self, gesture):
