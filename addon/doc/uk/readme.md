@@ -1,6 +1,3 @@
-# Цей документ іншими мовами
-[Русский](https://github.com/jawhien/extendedTotalCmd/tree/master/addon/doc/ru)
-
 # Total Commander
 
 Цей додаток поліпшує доступність файлового менеджера Total Commander. Він сумісний з усіма версіями TC, починаючи з 7.0, але деякі функції працюють лише у версії 9.0 і новіших.
