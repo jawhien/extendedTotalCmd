@@ -94,6 +94,14 @@ A: Yes, please send me letter to the email address indicated in the add-on, and 
 <a name="user-content-change-log"></a>
 # Change log
 
+V3.3: 27.11.2022
+
+* Added Ukrainian localization.
+* Fixed issue with multicolumn mode on some versions of NVDA.
+* Fixed import error in NVDA 2019.2 and below.
+* Updated documentation.
+* Fixed other minor bugs.
+
 V3.2.3: 25.05.2022
 
 * Fixed multi-column mode in NVDA 2022.1 or higher.

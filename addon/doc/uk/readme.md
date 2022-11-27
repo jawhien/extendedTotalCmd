@@ -94,6 +94,26 @@
 <a name="user-content-change-log"></a>
 # Журнал змін
 
+V3.3: 27.11.2022
+
+* Added Ukrainian localization.
+* Fixed issue with multicolumn mode on some versions of NVDA.
+* Fixed import error in NVDA 2019.2 and below.
+* Updated documentation.
+* Fixed other minor bugs.
+
+V3.2.3: 25.05.2022
+
+* Fixed multi-column mode in NVDA 2022.1 or higher.
+
+V3.2.2: 24.05.2022
+
+* This patch disables multi-column mode in NVDA 2022 as it does not work properly and should be fixed soon.
+
+V3.2.1: 09.01.2022
+
+* Fixed accidentally broken compatibility with earlier versions of NVDA.
+
 V3.2: 08.01.2022
 
 * Added information about the disk to the window for selecting disks in the format Used space / total space.
