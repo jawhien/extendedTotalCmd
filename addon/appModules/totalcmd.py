@@ -23,7 +23,12 @@ import os
 from tones import beep
 from time import sleep
 from datetime import datetime
-from shutil import disk_usage
+
+# needed to catch the error in nvda 2019.2 and below.
+try:
+	from shutil import disk_usage
+except ImportError:
+	pass
 
 addonHandler.initTranslation()
 
