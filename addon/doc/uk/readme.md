@@ -94,6 +94,10 @@
 <a name="user-content-change-log"></a>
 # Журнал змін
 
+V3.3.1: 02.12.2022
+
+* Fixed multi-column view in TC10.52
+
 V3.3: 27.11.2022
 
 * Added Ukrainian localization.
