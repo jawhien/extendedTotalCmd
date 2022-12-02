@@ -35,6 +35,10 @@ def loadUpdateInfo():
 	if newVersion >= "3.0" and (version_year, version_major) < (2018, 3):
 		updateInfo["text"] = _("To install the new version of the add-on, you need NVDA 2018.3 or higher.")
 		return
+	if newVersion >= "4.0" and (version_year, version_major) < (2019, 3):
+		updateInfo["text"] = _("To install the new version of the add-on, you need NVDA {year}.{major} or higher.").format(year=2019, major=3)
+		return
+
 # check which release is currently available. If we have a version with the "dev" index, we must make sure that the same or a newer release is available, otherwise the versions with the "dev" index will not be updated.
 	if (newVersion > updateInfo["currentVersion"]) or (updateInfo["currentVersion"].find("-dev") >= 1 and updateInfo["currentVersion"].rstrip("-dev") <= newVersion):
 		updateInfo["text"] = _("New version {version} is available. Do you want to download it?").format(version=newVersion)
