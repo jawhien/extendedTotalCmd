@@ -23,6 +23,7 @@ import os
 from tones import beep
 from time import sleep
 from datetime import datetime
+from wx import CallAfter
 
 # needed to catch the error in nvda 2019.2 and below.
 try:
@@ -103,7 +104,8 @@ class getTCInfo():
 					totalSize += os.path.getsize(fp)
 				except:
 					pass
-		ui.message(self.formatSize(totalSize))
+		# To avoid errors, let's call the "message" function on the main thread.
+		CallAfter(ui.message, self.formatSize(totalSize))
 
 	def getSingleFileSizeFromStatusbar(self, str):
 		size = re.sub(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}.*', '', str).strip()
