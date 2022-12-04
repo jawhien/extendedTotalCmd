@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Total Commander 3.0\n"
+"Project-Id-Version: Total Commander 3.3.2\n"
 "Report-Msgid-Bugs-To: 'jawhien@gmail.com'\n"
-"POT-Creation-Date: 2021-09-08 17:46+0300\n"
-"PO-Revision-Date: 2021-09-08 17:48+0300\n"
+"POT-Creation-Date: 2022-12-04 16:15+0300\n"
+"PO-Revision-Date: 2022-12-04 16:16+0300\n"
 "Last-Translator: Peter Vágner <peter.v@datagate.sk>\n"
 "Language-Team: sk\n"
 "Language: sk\n"
@@ -11,116 +11,89 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../../../..\n"
+"X-Poedit-SearchPath-0: buildVars.py\n"
+"X-Poedit-SearchPath-1: addon/installTasks.py\n"
+"X-Poedit-SearchPath-2: addon/globalPlugins\n"
+"X-Poedit-SearchPath-3: addon/appModules/tcApi.py\n"
+"X-Poedit-SearchPath-4: addon/appModules/totalcmd.py\n"
 
-#: addon\appModules\totalcmd.py:38
 msgid "Bytes"
 msgstr "Bajtov"
 
-#: addon\appModules\totalcmd.py:38
 msgid "kB"
 msgstr "kB"
 
-#: addon\appModules\totalcmd.py:38
 msgid "mB"
 msgstr "mB"
 
-#: addon\appModules\totalcmd.py:38
 msgid "gB"
 msgstr "gB"
 
-#: addon\appModules\totalcmd.py:38
 msgid "tB"
 msgstr "tB"
 
-#: addon\appModules\totalcmd.py:65 addon\appModules\totalcmd.py:71
 msgid "This object is not supported."
 msgstr "Nepodporovaný objekt."
 
-#: addon\appModules\totalcmd.py:75 addon\appModules\totalcmd.py:88
 msgid "No size information. Try select this item."
 msgstr "Informácia o veľkosti nie je k dispozícii. Skúste vybrať položku."
 
-#: addon\appModules\totalcmd.py:81 addon\appModules\totalcmd.py:111
 msgid "The size is calculated, wait a few seconds..."
 msgstr "Prebieha výpočet veľkosti. Čakajte prosím."
 
-#: addon\appModules\totalcmd.py:117 addon\appModules\totalcmd.py:121
 msgid "There is no information about the time of the change."
 msgstr "Informácia o čase poslednej zmeny nie je dostupná."
 
-#: addon\appModules\totalcmd.py:128
 #, python-brace-format
 msgid "Selected {count} items"
 msgstr "Vybratých {count} položiek"
 
-#. Translators: this message is spoken when the user manually deselects items.
-#: addon\appModules\totalcmd.py:132
 msgid "Nothing selected"
 msgstr "Nič nie je vybraté"
 
-#: addon\appModules\totalcmd.py:140
 #, python-brace-format
 msgid "Selected {selected} of {total} items"
 msgstr "Vybratých {selected} z {total} položiek"
 
-#: addon\appModules\totalcmd.py:143 addon\appModules\totalcmd.py:333
-#: addon\appModules\totalcmd.py:345 addon\appModules\totalcmd.py:355
-#: addon\appModules\totalcmd.py:383 addon\appModules\totalcmd.py:392
 msgid "Not supported in this version of total commander"
 msgstr "Nepodporované v tejto verzii total commander"
 
-#. Translators: this message is spoken when the user switches from one panel to another.
-#: addon\appModules\totalcmd.py:167 addon\appModules\totalcmd.py:182
-#: addon\appModules\totalcmd.py:280
 msgid "Left"
 msgstr "v ľavo"
 
-#. Translators: this message is spoken when the user switches from one panel to another.
-#: addon\appModules\totalcmd.py:171 addon\appModules\totalcmd.py:186
-#: addon\appModules\totalcmd.py:280
 msgid "Right"
 msgstr "v pravo"
 
-#: addon\appModules\totalcmd.py:251
 msgid "Name"
 msgstr "Názov"
 
-#: addon\appModules\totalcmd.py:251
 msgid "Size"
 msgstr "Veľkosť"
 
-#: addon\appModules\totalcmd.py:251
 msgid "Date"
 msgstr "Dátum"
 
-#: addon\appModules\totalcmd.py:251 addon\appModules\totalcmd.py:257
 msgid "Attributes"
 msgstr "Atribúty"
 
-#: addon\appModules\totalcmd.py:252
 msgid "Unknown column"
 msgstr "Neznámy stĺpec"
 
-#. Translators: this text is added as a description of the objects in the corresponding panel.
-#: addon\appModules\totalcmd.py:294
 msgid "Left pannel"
 msgstr "Ľavý panel"
 
-#. Translators: this text is added as a description of the objects in the corresponding panel.
-#: addon\appModules\totalcmd.py:297
 msgid "Right pannel"
 msgstr "Pravý panel"
 
-#: addon\appModules\totalcmd.py:306
 #, python-brace-format
 msgid "{current} of {all}"
 msgstr "{current} z {all}"
 
-#: addon\appModules\totalcmd.py:326
 msgid "Reports information about the number of selected elements"
 msgstr "Prečíta počet vybratých položiek"
 
-#: addon\appModules\totalcmd.py:330
 msgid ""
 "Reports the size of the file under the cursor. If multiple objects are "
 "selected, reports their total size."
@@ -128,7 +101,6 @@ msgstr ""
 "Prečíta veľkosť súboru pod kurzorom. Ak je vybratých viac položiek, prečíta "
 "ich celkovú veľkosť."
 
-#: addon\appModules\totalcmd.py:342
 msgid ""
 "Reports the current path to the folder. Pressing twice Copies it to the "
 "clipboard."
@@ -136,15 +108,12 @@ msgstr ""
 "Prečíta celú cestu do aktuálneho priečinka. Stlačené dva krát za sebou "
 "skopíruje do schránky."
 
-#: addon\appModules\totalcmd.py:349
 msgid "Copied to clipboard"
 msgstr "Okopírované do schránky"
 
-#: addon\appModules\totalcmd.py:352
 msgid "Reports the modification time of the file under the cursor."
 msgstr "Prečíta čas poslednej zmeny súboru pod kurzorom"
 
-#: addon\appModules\totalcmd.py:360
 msgid ""
 "Reports the name of the current tab in the active panel. Pressing twice "
 "opens the menu for that tab."
@@ -152,62 +121,56 @@ msgstr ""
 "Nahlási názov aktuálnej karty na aktívnom paneli. Dvojitým stlačením sa "
 "otvorí ponuka pre danú kartu."
 
-#: addon\appModules\totalcmd.py:364
 msgid "No tabs for active panel"
 msgstr "Žiadne karty pre aktívny panel"
 
-#: addon\appModules\totalcmd.py:380
 msgid "Report the active panel."
 msgstr "Nahlásiť aktívny panel."
 
-#. Translators: This message is spoken when the user presses a keyboard shortcut to speak the active panel.
-#: addon\appModules\totalcmd.py:387
 msgid "Left panel active"
 msgstr "Ľavý panel aktívny"
 
-#: addon\appModules\totalcmd.py:387
 msgid "Right panel active"
 msgstr "Pravý panel aktívny"
 
-#: addon\globalPlugins\extendedTotalCMD\__init__.py:22
 msgid "Update Total Commander add-on..."
 msgstr "Aktualizovať doplnok Total Commander..."
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:31
 msgid ""
 "An error occurred while checking for updates! Check your internet connection."
 msgstr ""
 "Počas kontroly aktualizácií sa vyskytla chyba! Prosím, skontrolujte prístup "
 "na internet."
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:36
 msgid ""
 "To install the new version of the add-on, you need NVDA 2018.3 or higher."
 msgstr ""
 "Aby ste mohli inštalovať novšiu verziu doplnku, mali by ste mať aspoň NVDA "
 "2018.3."
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:40
+#, python-brace-format
+msgid ""
+"To install the new version of the add-on, you need NVDA {year}.{major} or "
+"higher."
+msgstr ""
+"Aby ste mohli inštalovať novšiu verziu doplnku, mali by ste mať aspoň NVDA "
+"{year}.{major}."
+
 #, python-brace-format
 msgid "New version {version} is available. Do you want to download it?"
 msgstr ""
 "K dispozícii je aktualizácia doplnku na verziu {version} is. Chcete ju "
 "prevziať a nainštalovať?"
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:51
 msgid "No update available."
 msgstr "Nie sú k dispozícii žiadne aktualizácie."
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:59
 msgid "Data load error"
 msgstr "Chyba načítania údajov"
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:59
-#: addon\globalPlugins\extendedTotalCMD\updater.py:68 addon\installTasks.py:35
 msgid "Error"
 msgstr "Chyba"
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:68 addon\installTasks.py:35
 #, python-brace-format
 msgid ""
 "This version of NVDA is incompatible. To install the add-on, NVDA version "
@@ -221,7 +184,6 @@ msgstr ""
 "webu: \n"
 "{link}"
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:81
 msgid ""
 "Changes were made to add-ons. You must restart NVDA for these changes to "
 "take effect. Would you like to restart now?"
@@ -229,18 +191,12 @@ msgstr ""
 "Aby sa prejavili zmeny, je potrebné reštartovať NVDA. Chcete reštartovať "
 "teraz?"
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:81
 msgid "Restart NVDA"
 msgstr "Reštart NVDA"
 
-#: addon\globalPlugins\extendedTotalCMD\updater.py:96
-#: addon\globalPlugins\extendedTotalCMD\updater.py:99
-#: addon\globalPlugins\extendedTotalCMD\updater.py:104
 msgid "Update Total Commander add-on"
 msgstr "Aktualizovať doplnok Total Commander"
 
-#. Translators: The text of the dialog shown during add-on installation.
-#: addon\installTasks.py:39
 #, python-brace-format
 msgid ""
 " {name} - this free add-on for NVDA.\n"
@@ -255,21 +211,13 @@ msgstr ""
 "Ak si želáte prispieť teraz, budete presmerovaní na webstránku autora, kde "
 "dokončíte transakciu."
 
-#: addon\installTasks.py:43
 #, python-brace-format
 msgid "Request donations for {name}"
 msgstr "Žiadosť o príspevok pre {name}"
 
-#. Add-on summary, usually the user visible name of the addon.
-#. Translators: Summary for this add-on
-#. to be shown on installation and add-on information found in Add-ons Manager.
-#: buildVars.py:23
 msgid "Total Commander"
 msgstr "Total Commander"
 
-#. Add-on description
-#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
-#: buildVars.py:26
 msgid ""
 "This add-on improves the accessability of the Total Commander file manager, "
 "mostly versions 8.0 and higher."
