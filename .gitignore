@@ -1,7 +1,7 @@
 addon/LICENSE.txt
+*.html
 *.ini
 *.mo
-*.html
 *.pot
 *.nvda-addon
 .sconsign.dblite
