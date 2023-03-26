@@ -41,7 +41,6 @@ Este complemento melhora a acessibilidade do gerenciador de arquivos Total Comma
 - Capacidade de descobrir o tamanho do arquivo selecionado ou todos os itens selecionados.(Esta função está disponível na versão 9 ou superior).
 - Anúncio das informações corretas da posição de um item na lista. Para que este recurso funcione, ative a opção correspondente nas configurações do NVDA. (Esta função está disponível na versão 9 ou superior).
 
-<!-- border -->
 <a name="user-content-installation"></a
 #Instalação
 
