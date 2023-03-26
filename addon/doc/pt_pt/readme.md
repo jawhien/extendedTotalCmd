@@ -17,7 +17,10 @@ Este complemento melhora a acessibilidade do gerenciador de arquivos Total Comma
 - [Change log](#user-content-change-log)
 - [página oficial do add-on](https://jnsoft.ru/en/articles/nvda/extendedTotalCmd/)
 
-<a name="user-content-compatibility"></a># Compatibilidade
+<!-- border -->
+
+<a name="user-content-compatibility"></a>
+# Compatibilidade
 
 - -       NVDA 2018.3 ou superior, incluindo 2022.1.
 Atenção! O complemento pode não ser compatível com outros complementos para o Total Commander, bem como o complemento "sons por navegação em arquivos".
