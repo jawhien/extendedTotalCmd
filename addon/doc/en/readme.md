@@ -94,6 +94,10 @@ A: Yes, please send me letter to the email address indicated in the add-on, and 
 <a name="user-content-change-log"></a>
 # Change log
 
+V3.3.3: 27.03.2023
+
+* Added new localization languages: Portuguese, Portuguese-Brazilian
+
 V3.3.2: 05.12.2022
 
 * Fixed compatibility with BluetoothAudio add-on.

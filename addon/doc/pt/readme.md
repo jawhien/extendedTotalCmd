@@ -98,6 +98,10 @@ A: Sim, por favor, envie-me uma mensagem para o endereço de e-mail indicado no 
 
 Importante: A baixo daqui, tudo está em inglês!
 
+V3.3.3: 27.03.2023
+
+* Added new localization languages: Portuguese, Portuguese-Brazilian
+
 V3.3.2: 05.12.2022
 
 - Fixed compatibility with BluetoothAudio add-on.
