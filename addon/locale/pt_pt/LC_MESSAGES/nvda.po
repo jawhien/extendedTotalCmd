@@ -19,113 +19,81 @@ msgstr ""
 "X-Poedit-SearchPath-2: addon/globalPlugins\n"
 "X-Poedit-SearchPath-3: buildVars.py\n"
 
-#: addon/appModules/totalcmd.py:46
 msgid "Bytes"
 msgstr "Bytes"
 
-#: addon/appModules/totalcmd.py:46
 msgid "kB"
 msgstr "kB"
 
-#: addon/appModules/totalcmd.py:46
 msgid "mB"
 msgstr "mB"
 
-#: addon/appModules/totalcmd.py:46
 msgid "gB"
 msgstr "gB"
 
-#: addon/appModules/totalcmd.py:46
 msgid "tB"
 msgstr "tB"
 
-#: addon/appModules/totalcmd.py:73 addon/appModules/totalcmd.py:79
-#: addon/appModules/totalcmd.py:128 addon/appModules/totalcmd.py:140
-#: addon/appModules/totalcmd.py:150 addon/appModules/totalcmd.py:159
 msgid "This object is not supported."
 msgstr "Este objeto não é suportado."
 
-#: addon/appModules/totalcmd.py:83 addon/appModules/totalcmd.py:96
 msgid "No size information. Try select this item."
 msgstr "Sem informações de tamanho. Tente selecionar este item."
 
-#: addon/appModules/totalcmd.py:89 addon/appModules/totalcmd.py:120
 msgid "The size is calculated, wait a few seconds..."
 msgstr "O tamanho está sendo calculado, aguarde alguns segundos..."
 
-#: addon/appModules/totalcmd.py:136 addon/appModules/totalcmd.py:146
-#: addon/appModules/totalcmd.py:453
 msgid "There is no information about the time of the change."
 msgstr "Não há informações sobre a mudança de hora."
 
-#: addon/appModules/totalcmd.py:165
 #, python-brace-format
 msgid "Selected {count} items"
 msgstr "{count} Itens selecionados"
 
-#: addon/appModules/totalcmd.py:169
 msgid "Nothing selected"
 msgstr "Nada selecionado"
 
-#: addon/appModules/totalcmd.py:177
 #, python-brace-format
 msgid "Selected {selected} of {total} items"
 msgstr "Selecionado {selected} de {total} elementos"
 
-#: addon/appModules/totalcmd.py:180 addon/appModules/totalcmd.py:428
-#: addon/appModules/totalcmd.py:440 addon/appModules/totalcmd.py:450
-#: addon/appModules/totalcmd.py:488 addon/appModules/totalcmd.py:497
 msgid "Not supported in this version of total commander"
 msgstr "Não compatível com esta versão do Total Commander"
 
-#: addon/appModules/totalcmd.py:204 addon/appModules/totalcmd.py:219
-#: addon/appModules/totalcmd.py:368
 msgid "Left"
 msgstr "Esquerda"
 
-#: addon/appModules/totalcmd.py:208 addon/appModules/totalcmd.py:223
-#: addon/appModules/totalcmd.py:368
 msgid "Right"
 msgstr "Direita"
 
-#: addon/appModules/totalcmd.py:300
 msgid "Name"
 msgstr "Nome"
 
-#: addon/appModules/totalcmd.py:300
 msgid "Size"
 msgstr "Tamaño"
 
-#: addon/appModules/totalcmd.py:300
 msgid "Date"
 msgstr "Data"
 
-#: addon/appModules/totalcmd.py:300 addon/appModules/totalcmd.py:306
 msgid "Attributes"
 msgstr "Atributos"
 
-#: addon/appModules/totalcmd.py:301
 msgid "Unknown column"
 msgstr "coluna desconhecida"
 
-#: addon/appModules/totalcmd.py:389
 msgid "Left pannel"
 msgstr "painel esquerdo"
 
-#: addon/appModules/totalcmd.py:392
 msgid "Right pannel"
 msgstr "painel direito"
 
-#: addon/appModules/totalcmd.py:401
 #, python-brace-format
 msgid "{current} of {all}"
 msgstr "{current} de {all}"
 
-#: addon/appModules/totalcmd.py:421
 msgid "Reports information about the number of selected elements"
 msgstr "Diz informações sobre o número de itens selecionados"
 
-#: addon/appModules/totalcmd.py:425
 msgid ""
 "Reports the size of the file under the cursor. If multiple objects are "
 "selected, reports their total size."
@@ -133,7 +101,6 @@ msgstr ""
 "Informa o tamanho do arquivo sob o cursor. Se vários objetos forem "
 "selecionados, informa otamanho total."
 
-#: addon/appModules/totalcmd.py:437
 msgid ""
 "Reports the current path to the folder. Pressing twice Copies it to the "
 "clipboard."
@@ -141,15 +108,12 @@ msgstr ""
 "Informa o caminho atual para a pasta. Pressionar duas vezes o copia para a "
 "área de transferência."
 
-#: addon/appModules/totalcmd.py:444
 msgid "Copied to clipboard"
 msgstr "Copiado para a área de transferência"
 
-#: addon/appModules/totalcmd.py:447
 msgid "Reports the modification time of the file under the cursor."
 msgstr "Informa o tempo de modificação do arquivo sob o cursor."
 
-#: addon/appModules/totalcmd.py:460
 msgid ""
 "Reports the name of the current tab in the active panel. Pressing twice "
 "opens the menu for that tab."
@@ -157,41 +121,33 @@ msgstr ""
 "Informa o nome da guia atual no painel ativo. Pressionar duas vezes abre o "
 "menu dessa guia."
 
-#: addon/appModules/totalcmd.py:469
 msgid "No tabs for active panel"
 msgstr "Nenhuma guia para o painel ativo"
 
-#: addon/appModules/totalcmd.py:485
 msgid "Report the active panel."
 msgstr "Relate o painel ativo."
 
-#: addon/appModules/totalcmd.py:492
 msgid "Left panel active"
 msgstr "painel esquerdo ativo"
 
-#: addon/appModules/totalcmd.py:492
 msgid "Right panel active"
 msgstr "painel direito ativo"
 
-#: addon/globalPlugins/extendedTotalCMD/__init__.py:22
 msgid "Update Total Commander add-on..."
 msgstr "Atualizar o complemento Total Commander..."
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:31
 msgid ""
 "An error occurred while checking for updates! Check your internet connection."
 msgstr ""
 "Ocorreu um erro durante a busca por atualizações. Verifique a sua conexão "
 "com a internet."
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:36
 msgid ""
 "To install the new version of the add-on, you need NVDA 2018.3 or higher."
 msgstr ""
 "Para instalar a nova versão do complemento, você precisa do NVDA 2018.3 ou "
 "superior."
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:39
 #, python-brace-format
 msgid ""
 "To install the new version of the add-on, you need NVDA {year}.{major} or "
@@ -200,25 +156,19 @@ msgstr ""
 "Para instalar a nova versão do complemento, você precisa do NVDA {year}."
 "{major} ou superior."
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:44
 #, python-brace-format
 msgid "New version {version} is available. Do you want to download it?"
 msgstr "A versão: {version} está disponível. Deseja baixá-la?"
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:55
 msgid "No update available."
 msgstr "Atualização não disponível."
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:63
 msgid "Data load error"
 msgstr "erro ao carregar os dados"
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:63
-#: addon/globalPlugins/extendedTotalCMD/updater.py:72 addon/installTasks.py:35
 msgid "Error"
 msgstr "Erro"
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:72 addon/installTasks.py:35
 #, python-brace-format
 msgid ""
 "This version of NVDA is incompatible. To install the add-on, NVDA version "
@@ -231,7 +181,6 @@ msgstr ""
 "baixe uma versão mais antiga do plug-in aqui: \\n\n"
 "{link}"
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:85
 msgid ""
 "Changes were made to add-ons. You must restart NVDA for these changes to "
 "take effect. Would you like to restart now?"
@@ -239,17 +188,12 @@ msgstr ""
 "Foram feitas alterações nos complementos. Você deve reiniciar o NVDA para "
 "que essas alterações entrem em vigor. Deseja reiniciar agora?"
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:85
 msgid "Restart NVDA"
 msgstr "Reinicia NVDA"
 
-#: addon/globalPlugins/extendedTotalCMD/updater.py:100
-#: addon/globalPlugins/extendedTotalCMD/updater.py:103
-#: addon/globalPlugins/extendedTotalCMD/updater.py:108
 msgid "Update Total Commander add-on"
 msgstr "Atualizar complemento Total Commander"
 
-#: addon/installTasks.py:39
 #, python-brace-format
 msgid ""
 " {name} - this free add-on for NVDA.\n"
@@ -264,16 +208,13 @@ msgstr ""
 "Quer fazer uma doação agora? Para a transação, você será redirecionado para "
 "o site do desenvolvedor."
 
-#: addon/installTasks.py:43
 #, python-brace-format
 msgid "Request donations for {name}"
 msgstr "Solicitar doações para {name}"
 
-#: buildVars.py:23
 msgid "Total Commander"
 msgstr "Total Commander"
 
-#: buildVars.py:26
 msgid ""
 "This add-on improves the accessability of the Total Commander file manager, "
 "mostly versions 8.0 and higher."
