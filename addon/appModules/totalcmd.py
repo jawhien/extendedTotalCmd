@@ -57,7 +57,12 @@ class getTCInfo():
 
 	def threadMonitor(self, thread):
 		i = 0
-		while thread.isAlive():
+		# for python 3.11
+		try:
+			alive = thread.isAlive
+		except AttributeError:
+			alive = thread.is_alive
+		while alive():
 			sleep(0.1)
 			i += 1
 			if i == 10:
