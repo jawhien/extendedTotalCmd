@@ -1,0 +1,228 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: 'jawhien@gmail.com'\n"
+"POT-Creation-Date: 2022-10-25 19:55+0300\n"
+"PO-Revision-Date: 2024-08-13 10:40+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Poedit-Basepath: .\n"
+
+msgid "Bytes"
+msgstr "Bytes"
+
+msgid "kB"
+msgstr "KB"
+
+msgid "mB"
+msgstr "MB"
+
+msgid "gB"
+msgstr "GB"
+
+msgid "tB"
+msgstr "TB"
+
+#. This information is not displayed in the status bar for directories.
+#. This information is not displayed for directories when connected via FTP.
+#. If it was not possible to determine the appropriate method of obtaining information.
+msgid "This object is not supported."
+msgstr "Dieses Objekt wird nicht unterstützt."
+
+msgid "No size information. Try select this item."
+msgstr "Keine Größenangaben. Versuchen Sie, dieses Element auszuwählen."
+
+msgid "The size is calculated, wait a few seconds..."
+msgstr "Die Größe wird berechnet. Bitte einige Sekunden warten ..."
+
+msgid "There is no information about the time of the change."
+msgstr "Über den Zeitpunkt der Änderung liegen keine Informationen vor."
+
+#, python-brace-format
+msgid "Selected {count} items"
+msgstr "{count} Einträge ausgewählt."
+
+#. Translators: this message is spoken when the user manually deselects items.
+msgid "Nothing selected"
+msgstr "nichts ausgewählt"
+
+#, python-brace-format
+msgid "Selected {selected} of {total} items"
+msgstr "{selected} von {total} einträgen ausgewählt"
+
+msgid "Not supported in this version of total commander"
+msgstr "Wird in dieser Version von Total Commander nicht unterstützt"
+
+#. Translators: this message is spoken when the user switches from one panel to another.
+msgid "Left"
+msgstr "Links"
+
+#. Translators: this message is spoken when the user switches from one panel to another.
+msgid "Right"
+msgstr "Rechts"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Size"
+msgstr "Größe"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Attributes"
+msgstr "Attribute"
+
+msgid "Unknown column"
+msgstr "unbekannte Spalte"
+
+#. Translators: this text is added as a description of the objects in the corresponding panel.
+msgid "Left pannel"
+msgstr "Linke Seite"
+
+#. Translators: this text is added as a description of the objects in the corresponding panel.
+msgid "Right pannel"
+msgstr "Rechte Seite"
+
+#, python-brace-format
+msgid "{current} of {all}"
+msgstr "{current} von {all}"
+
+msgid "Reports information about the number of selected elements"
+msgstr "Meldet Informationen über die Anzahl der ausgewählten Elemente"
+
+msgid ""
+"Reports the size of the file under the cursor. If multiple objects are "
+"selected, reports their total size."
+msgstr ""
+"Gibt die Größe der Datei unter dem Cursor an. Wenn mehrere Objekte "
+"ausgewählt sind, wird deren Gesamtgröße gemeldet."
+
+msgid ""
+"Reports the current path to the folder. Pressing twice Copies it to the "
+"clipboard."
+msgstr ""
+"Meldet den aktuellen Pfad zum Ordner. Zweimal drücken Kopiert ihn in die "
+"Zwischenablage."
+
+msgid "Copied to clipboard"
+msgstr "In die Zwischenablage kopiert."
+
+msgid "Reports the modification time of the file under the cursor."
+msgstr "Meldet die Änderungszeit der Datei unter dem Cursor."
+
+msgid ""
+"Reports the name of the current tab in the active panel. Pressing twice "
+"opens the menu for that tab."
+msgstr ""
+"Meldet den Namen der aktuellen Registerkarte im aktiven Bereich. Durch "
+"zweimaliges Drücken wird das Menü für diese Registerkarte geöffnet."
+
+msgid "No tabs for active panel"
+msgstr "Keine Registerkarten für den aktiven Tab"
+
+msgid "Report the active panel."
+msgstr "Meldet den aktiven Tab."
+
+#. Translators: This message is spoken when the user presses a keyboard shortcut to speak the active panel.
+msgid "Left panel active"
+msgstr "Linke Seite aktiv"
+
+msgid "Right panel active"
+msgstr "Rechte Seite aktiv"
+
+msgid "Update Total Commander add-on..."
+msgstr "Aktualisiere Total Commander Add-On"
+
+msgid ""
+"An error occurred while checking for updates! Check your internet connection."
+msgstr ""
+"Beim Prüfen auf Updates ist ein Fehler aufgetreten Bitte Prüfe deine "
+"Internetverbindung."
+
+msgid ""
+"To install the new version of the add-on, you need NVDA 2018.3 or higher."
+msgstr ""
+"Zur Installation der neuen Version dieses Addons benötigst du NVDA 2018.3 "
+"oder höher."
+
+#, python-brace-format
+msgid "New version {version} is available. Do you want to download it?"
+msgstr ""
+"Eine neue Version {version} ist verfügbar. Willst du sie herunterladen?"
+
+msgid "No update available."
+msgstr "Kein Update verfügbar."
+
+msgid "Data load error"
+msgstr "Fehler beim Laden"
+
+msgid "Error"
+msgstr "Fehler"
+
+#, python-brace-format
+msgid ""
+"This version of NVDA is incompatible. To install the add-on, NVDA version "
+"{year}.{major} or higher is required. Please update NVDA or download an "
+"older version of the add-on here: \n"
+"{link}"
+msgstr ""
+"Diese Version von NVDA ist inkompatibel. Du benötigst version {year}.{major} "
+"von NVDA.\n"
+"Installiere NVDA oder eine ältere Version dieses Add-Ons hier:\n"
+"{link}"
+
+msgid ""
+"Changes were made to add-ons. You must restart NVDA for these changes to "
+"take effect. Would you like to restart now?"
+msgstr ""
+"Es wurden Änderungen an Add-Ons vorgenommen. Sie müssen NVDA neu starten, "
+"damit diese Änderungen wirksam werden. Möchten Sie jetzt neu starten?"
+
+msgid "Restart NVDA"
+msgstr "NVDA neustarten"
+
+msgid "Update Total Commander add-on"
+msgstr "Total Commander Add-on aktualisieren"
+
+#. Translators: The text of the dialog shown during add-on installation.
+#, python-brace-format
+msgid ""
+" {name} - this free add-on for NVDA.\n"
+"You can make a donation to the author to help further development of this "
+"add-on and other free software.\n"
+"You want to make a donation now? For transaction you will be redirected to "
+"the website of the developer."
+msgstr ""
+"{name} – dieses kostenlose Add-on für NVDA.\n"
+"\n"
+"Sie können dem Autor eine Spende zukommen lassen, um die Weiterentwicklung "
+"dieses Add-ons und anderer kostenloser Software zu unterstützen.\n"
+"\n"
+"Sie möchten jetzt spenden? Zur Transaktion werden Sie auf die Website des "
+"Entwicklers weitergeleitet."
+
+#, python-brace-format
+msgid "Request donations for {name}"
+msgstr "Ich bitte um Spenden für {name}."
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+msgid "Total Commander"
+msgstr "Total Commander"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+msgid ""
+"This add-on improves the accessability of the Total Commander file manager, "
+"mostly versions 8.0 and higher."
+msgstr ""
+"Dieses Add-on verbessert die Zugänglichkeit des Total Commander-"
+"Dateimanagers, hauptsächlich der Versionen 8.0 und höher."
