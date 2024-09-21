@@ -24,6 +24,7 @@ from tones import beep
 from time import sleep
 from datetime import datetime
 from wx import CallAfter
+import math
 
 # needed to catch the error in nvda 2019.2 and below.
 try:
@@ -43,17 +44,16 @@ isMultiColumn = False
 class getTCInfo():
 
 	def formatSize(self, size):
-		formats = [_("Bytes"), _("kB"), _("mB"), _("gB"), _("tB")]
-		i = 0
-		while size >= 1024:
-			if not formats[i + 1]: break
-			size = size / 1024;
-			i += 1
-		if isinstance(size, float): size = int(size * 100) / 100
-		try:
-			return "{size} {format}".format(size=size, format=formats[i])
-		except UnicodeEncodeError:
-			return u"{size} {format}".format(size=size, format=formats[i])
+		names = [_("Bytes"), _("KB"), _("MB"), _("GB"), _("TB"), _("PB"), _("EB"), _("ZB"), _("YB")]
+		if size == 0:
+			return "{size} {name}".format(size=size, name=names[0])
+		i = math.floor(math.log(size, 1024))
+		if size > 1024 ** (len(names) -1):
+			return _("I don't know what to call such a big size!")
+		formattedSize = round(size / 1024 ** i, 2)
+		if formattedSize.is_integer():
+			formattedSize = int(formattedSize)
+		return "{size} {name}".format(size=formattedSize, name=names[i])
 
 	def threadMonitor(self, thread):
 		i = 0
