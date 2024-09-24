@@ -25,12 +25,7 @@ from time import sleep
 from datetime import datetime
 from wx import CallAfter
 import math
-
-# needed to catch the error in nvda 2019.2 and below.
-try:
-	from shutil import disk_usage
-except ImportError:
-	pass
+from shutil import disk_usage
 
 addonHandler.initTranslation()
 
