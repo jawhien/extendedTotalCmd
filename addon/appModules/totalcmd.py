@@ -26,6 +26,7 @@ from datetime import datetime
 from wx import CallAfter
 import math
 from shutil import disk_usage
+from typing import List, Union
 
 addonHandler.initTranslation()
 
@@ -38,11 +39,12 @@ isMultiColumn = False
 
 class getTCInfo():
 
-	def formatSize(self, size):
-		names = [_("Bytes"), _("KB"), _("MB"), _("GB"), _("TB"), _("PB"), _("EB"), _("ZB"), _("YB")]
+	def getFormattedSize(self, size: int) -> str:
+		formattedSize: Union[int, float]
+		names: List[str] = [_("Bytes"), _("KB"), _("MB"), _("GB"), _("TB"), _("PB"), _("EB"), _("ZB"), _("YB")]
 		if size == 0:
 			return "{size} {name}".format(size=size, name=names[0])
-		i = math.floor(math.log(size, 1024))
+		i: int = math.floor(math.log(size, 1024))
 		if size > 1024 ** (len(names) -1):
 			return _("I don't know what to call such a big size!")
 		formattedSize = round(size / 1024 ** i, 2)
@@ -82,7 +84,7 @@ class getTCInfo():
 		elif re.match(r'[0-9]+:/', currentDir) and re.findall(r'<\S*[\s>]', statusbar):
 			return _("No size information. Try select this item.")
 		elif os.path.isfile(path):
-			return self.formatSize(os.path.getsize(path))
+			return self.getFormattedSize(os.path.getsize(path))
 		elif os.path.isdir(path):
 			threads = threading.enumerate()
 			for thr in threads:
@@ -105,7 +107,7 @@ class getTCInfo():
 				except:
 					pass
 		# To avoid errors, let's call the "message" function on the main thread.
-		CallAfter(ui.message, self.formatSize(totalSize))
+		CallAfter(ui.message, self.getFormattedSize(totalSize))
 
 	def getSingleFileSizeFromStatusbar(self, str):
 		size = re.sub(r'[0-9]{2}\.[0-9]{2}\.[0-9]{2}.*', '', str).strip()
@@ -519,7 +521,7 @@ class TCDriveList(IAccessible):
 		if name and name[2:3].isalpha():
 			try:
 				u = disk_usage(name[2:3] + ":")
-				usage = " ({used}/{total})".format(used=tcInfo.formatSize(u.used), total=tcInfo.formatSize(u.total))
+				usage = " ({used}/{total})".format(used=tcInfo.getFormattedSize(u.used), total=tcInfo.getFormattedSize(u.total))
 			except:
 				pass
 		if description and name[:2] == "[-" and name[-2:] == "-]":
