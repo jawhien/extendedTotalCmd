@@ -363,15 +363,18 @@ class tcFileListItem(sysListView32.ListItem):
 		global activePannel, isMultiColumn
 		if self.location == None: return
 		isMultiColumn = True if self.location.width > 430 else False
+		hasPanelLabels = False
+		if self.parent.role == controlTypes.Role.LIST and self.parent.name != "":
+			hasPanelLabels = True
 		if tcApi.isApiSupported():
 			curPanel = tcApi.getActivePanelNum()
 			if curPanel != activePannel:
 				# Translators: this message is spoken when the user switches from one panel to another.
 				message = _("Left") if curPanel == 1 else _("Right")
-				ui.message(message)
+				if not hasPanelLabels: ui.message(message)
 				activePannel = curPanel
 		else:
-			tcInfo.speakActivePannel(self)
+			if not hasPanelLabels: tcInfo.speakActivePannel(self)
 		super(tcFileListItem,self).event_gainFocus()
 
 	def event_selection(self):
