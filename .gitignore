@@ -1,4 +1,5 @@
 addon/LICENSE.txt
+.venv*
 *.html
 *.ini
 *.mo
