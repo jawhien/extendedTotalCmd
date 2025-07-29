@@ -36,7 +36,6 @@ oldActivePannel=0
 activePannel=1
 currentTab = 0
 isMultiColumn = False
-previousItem = -1
 
 class getTCInfo():
 
@@ -414,23 +413,15 @@ class tcFileListItem(sysListView32.ListItem):
 
 	@script(gestures=tcInfo.getPreviousItemGestures())
 	def script_previousElement(self, gesture):
-		global previousItem
 		gesture.send()
-		isUpdir = tcApi.isUpdir()
-		currentElement = tcApi.getCurrentElementNum()
-		if ((isUpdir and currentElement == 0) or (not isUpdir and currentElement == 1)) and currentElement == previousItem:
+		if not self.previous:
 			winsound.PlaySound("default", winsound.SND_ASYNC)
-		previousItem = currentElement
 
 	@script(gestures=tcInfo.getNextItemGestures())
 	def script_nextElement(self, gesture):
-		global previousItem
 		gesture.send()
-		currentItem = tcApi.getCurrentElementNum()
-		countItems = tcApi.getCountElements()
-		if currentItem == countItems and currentItem == previousItem:
+		if not self.next:
 			winsound.PlaySound("default", winsound.SND_ASYNC)
-		previousItem = currentItem
 
 	@script(gesture="kb:Control+Shift+e", description=_("Reports information about the number of selected elements"))
 	def script_selectedElementsInfo(self, gesture):
