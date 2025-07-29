@@ -413,14 +413,18 @@ class tcFileListItem(sysListView32.ListItem):
 
 	@script(gestures=tcInfo.getPreviousItemGestures())
 	def script_previousElement(self, gesture):
+		previousItem = tcApi.getCurrentElementNum()
 		gesture.send()
-		if not self.previous:
+		currentItem = tcApi.getCurrentElementNum()
+		if previousItem == currentItem:
 			winsound.PlaySound("default", winsound.SND_ASYNC)
 
 	@script(gestures=tcInfo.getNextItemGestures())
 	def script_nextElement(self, gesture):
+		previousItem = tcApi.getCurrentElementNum()
 		gesture.send()
-		if not self.next:
+		currentItem = tcApi.getCurrentElementNum()
+		if previousItem == currentItem:
 			winsound.PlaySound("default", winsound.SND_ASYNC)
 
 	@script(gesture="kb:Control+Shift+e", description=_("Reports information about the number of selected elements"))
