@@ -16,7 +16,7 @@ addonHandler.initTranslation()
 lang = getLanguage().split("_")[0]
 if lang != "en" and lang != "ru": lang = "en"
 
-donations_url = "https://jnsoft.ru/{lang}/articles/nvda/extendedTotalCmd/donation.php".format(lang=lang)
+donations_url = "https://jnsoft.ru/donations/total-commander"
 
 def onInstall():
 	manifest = addonHandler.getCodeAddon().manifest
