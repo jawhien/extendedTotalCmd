@@ -10,7 +10,14 @@ import gui
 import threading
 import urllib
 import json
-from versionInfo import version_year, version_major
+try:
+	from versionInfo import version_year, version_major
+except ImportError:
+	# These changes are required to work with NVDA 2026 or later.
+	import versionInfo
+	versionDetails = versionInfo.version_detailed.split(".")
+	version_year = int(versionDetails[0])
+	version_major = int(versionDetails[1])
 
 addonHandler.initTranslation()
 manifest = addonHandler.getCodeAddon().manifest
