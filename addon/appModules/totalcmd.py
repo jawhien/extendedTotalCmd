@@ -36,6 +36,9 @@ oldActivePannel=0
 activePannel=1
 currentTab = 0
 isMultiColumn = False
+prevObjectIdentity = {}
+prevObjectStates = None
+
 
 class getTCInfo():
 
@@ -266,6 +269,13 @@ class AppModule(appModuleHandler.AppModule):
 		if windowClass in ("TOverWriteForm"):
 			clsList.insert(0, tcOverWriteBox)
 
+	def event_foreground(self, obj, nextHandler):
+		global prevObjectIdentity, prevObjectStates
+		prevObjectIdentity = {}
+		prevObjectStates = None
+		nextHandler()
+
+
 class tcFileListObject(sysListView32.List):
 
 	def _getAccessibleName(self):
@@ -360,8 +370,17 @@ class tcFileListItem(sysListView32.ListItem):
 		return name.replace(CHAR_LTR_MARK,'').replace(CHAR_RTL_MARK,'')
 
 	def event_gainFocus(self):
-		global activePannel, isMultiColumn
+		global activePannel, isMultiColumn, prevObjectIdentity, prevObjectStates
 		if self.location == None: return
+
+		# Filtering of repeated events.
+		lastIdentity = prevObjectIdentity
+		prevObjectIdentity = self.IAccessibleIdentity
+		lastStates = prevObjectStates
+		prevObjectStates = self.states
+		if lastIdentity == self.IAccessibleIdentity and lastStates == self.states:
+			return
+
 		isMultiColumn = True if self.location.width > 430 else False
 		hasPanelLabels = False
 		if self.parent.role == controlTypes.Role.LIST and self.parent.name != "":
@@ -506,6 +525,21 @@ class tcFileListItem(sysListView32.ListItem):
 			ui.message(_('Not supported in this version of total commander'))
 
 class TCFTPList(IAccessible):
+
+	def event_gainFocus(self):
+		global prevObjectIdentity, prevObjectStates
+		# Filtering of repeated events.
+		lastIdentity = prevObjectIdentity
+		prevObjectIdentity = self.IAccessibleIdentity
+		lastStates = prevObjectStates
+		prevObjectStates = self.states
+		if lastIdentity == self.IAccessibleIdentity and lastStates == self.states:
+			return
+
+		super(TCFTPList,self).event_gainFocus()
+
+	def event_selection(self):
+		pass
 
 	@script(gestures=tcInfo.getPreviousItemGestures())
 	def script_previousElement(self, gesture):
