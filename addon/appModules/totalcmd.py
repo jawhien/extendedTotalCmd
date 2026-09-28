@@ -503,13 +503,14 @@ class tcFileListItem(sysListView32.ListItem):
 			return
 
 		ui.message(activeTab.name)
+
 		if getLastScriptRepeatCount() != 0:
 			left, top, width, height = activeTab.location
 			x = left + (width//2)
 			y = top + (height//2)
 			winUser.setCursorPos(x, y)
-			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, None)
-			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTUP, 0, 0, 0, None)
+			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)
+			winUser.mouse_event(winUser.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)
 
 	@script(gesture="kb:nvda+a", description=_("Report the active panel."))
 	def script_reportActivePanel(self, gesture):
