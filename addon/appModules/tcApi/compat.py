@@ -47,7 +47,7 @@ def getTabListHandle() -> int | None:
 	return common.GetTabListHandle()
 
 def getTabList() -> list[IAccessible.IAccessible] | None:
-	return common.GetTabList()
+	return common.GetTabList() or None
 
 def getTabListFromTab(obj: IAccessible.IAccessible) -> list[IAccessible.IAccessible]:
 	items = obj.parent

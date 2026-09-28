@@ -77,19 +77,15 @@ def GetTabListHandle() -> int | None:
 		case _:
 			return None
 
-def GetTabList() -> list[IAccessible.IAccessible] | None:
+def GetTabList() -> list[IAccessible.IAccessible]:
 	hnd = GetTabListHandle()
 	if hnd is None:
-		return None
+		return []
 	items = IAccessible.getNVDAObjectFromEvent(hnd, winUser.OBJID_CLIENT, 0)
 	if items is None:
-		return None
+		return []
 	tabList = items.children
-	tabs = []
-	for tab in tabList:
-		if tab.windowHandle == hnd and tab.name:
-			tabs.append(tab)
-	return tabs
+	return [tab for tab in tabList if tab.windowHandle == hnd and tab.name]
 
 def GetTabPosition(obj: IAccessible.IAccessible) -> dict[str, int] | None:
 	items = obj.parent
