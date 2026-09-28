@@ -23,7 +23,7 @@ addonHandler.initTranslation()
 lang = getLanguage().split("_")[0]
 if lang != "en" and lang != "ru": lang = "en"
 
-donations_url = "https://jnsoft.ru/donations/total-commander"
+donations_url = "https://yoomoney.ru/to/410012216939697"
 
 def onInstall():
 	manifest = addonHandler.getCodeAddon().manifest
