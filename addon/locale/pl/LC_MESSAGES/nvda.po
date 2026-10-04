@@ -1,0 +1,317 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: total-commander 4.2-dev\n"
+"Report-Msgid-Bugs-To: 'jawhien@gmail.com'\n"
+"POT-Creation-Date: 2026-10-04 19:56+0200\n"
+"PO-Revision-Date: 2026-10-04 20:11+0200\n"
+"Last-Translator: DJ Graco\n"
+"Language-Team: \n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.9\n"
+"X-Poedit-Basepath: .\n"
+
+#: addon\appModules\totalcmd.py:47
+msgid "Bytes"
+msgstr "Bajtów"
+
+#: addon\appModules\totalcmd.py:47
+msgid "KB"
+msgstr "KB"
+
+#: addon\appModules\totalcmd.py:47
+msgid "MB"
+msgstr "MB"
+
+#: addon\appModules\totalcmd.py:47
+msgid "GB"
+msgstr "GB"
+
+#: addon\appModules\totalcmd.py:47
+msgid "TB"
+msgstr "TB"
+
+#: addon\appModules\totalcmd.py:47
+msgid "PB"
+msgstr "PB"
+
+#: addon\appModules\totalcmd.py:47
+msgid "EB"
+msgstr "EB"
+
+#: addon\appModules\totalcmd.py:47
+msgid "ZB"
+msgstr "ZB"
+
+#: addon\appModules\totalcmd.py:47
+msgid "YB"
+msgstr "YB"
+
+#: addon\appModules\totalcmd.py:52
+msgid "I don't know what to call such a big size!"
+msgstr "Nie wiem jak nazwać taki duży rozmiar!"
+
+#. This information is not displayed in the status bar for directories.
+#. This information is not displayed for directories when connected via FTP.
+#. If it was not possible to determine the appropriate method of obtaining information.
+#: addon\appModules\totalcmd.py:78 addon\appModules\totalcmd.py:84
+#: addon\appModules\totalcmd.py:133 addon\appModules\totalcmd.py:145
+#: addon\appModules\totalcmd.py:155 addon\appModules\totalcmd.py:164
+msgid "This object is not supported."
+msgstr "Ten obiekt nie jest obsługiwany."
+
+#: addon\appModules\totalcmd.py:88 addon\appModules\totalcmd.py:101
+msgid "No size information. Try select this item."
+msgstr "Brak informacji o rozmiarze. Spróbuj wybrać ten element."
+
+#: addon\appModules\totalcmd.py:94 addon\appModules\totalcmd.py:125
+msgid "The size is calculated, wait a few seconds..."
+msgstr "Rozmiar jest obliczany, poczekaj kilka sekund..."
+
+#: addon\appModules\totalcmd.py:141 addon\appModules\totalcmd.py:151
+#: addon\appModules\totalcmd.py:481
+msgid "There is no information about the time of the change."
+msgstr "Brak informacji o czasie zmiany."
+
+#: addon\appModules\totalcmd.py:170
+#, python-brace-format
+msgid "Selected {count} items"
+msgstr "Zaznaczonych {count} elementów"
+
+#. Translators: this message is spoken when the user manually deselects items.
+#: addon\appModules\totalcmd.py:174
+msgid "Nothing selected"
+msgstr "Nie zaznaczono niczego"
+
+#: addon\appModules\totalcmd.py:182
+#, python-brace-format
+msgid "Selected {selected} of {total} items"
+msgstr "Zaznaczono {selected} z {total} elementów"
+
+#: addon\appModules\totalcmd.py:185 addon\appModules\totalcmd.py:456
+#: addon\appModules\totalcmd.py:468 addon\appModules\totalcmd.py:478
+#: addon\appModules\totalcmd.py:518 addon\appModules\totalcmd.py:527
+msgid "Not supported in this version of total commander"
+msgstr "Nieobsługiwane w tej wersji Total Commandera"
+
+#. Translators: this message is spoken when the user switches from one panel to another.
+#: addon\appModules\totalcmd.py:209 addon\appModules\totalcmd.py:224
+#: addon\appModules\totalcmd.py:392
+msgid "Left"
+msgstr "Lewy"
+
+#. Translators: this message is spoken when the user switches from one panel to another.
+#: addon\appModules\totalcmd.py:213 addon\appModules\totalcmd.py:228
+#: addon\appModules\totalcmd.py:392
+msgid "Right"
+msgstr "Prawy"
+
+#: addon\appModules\totalcmd.py:312
+msgid "Name"
+msgstr "Nazwa"
+
+#: addon\appModules\totalcmd.py:312
+msgid "Size"
+msgstr "Rozmiar"
+
+#: addon\appModules\totalcmd.py:312
+msgid "Date"
+msgstr "Data"
+
+#: addon\appModules\totalcmd.py:312 addon\appModules\totalcmd.py:318
+msgid "Attributes"
+msgstr "Atrybuty"
+
+#: addon\appModules\totalcmd.py:313
+msgid "Unknown column"
+msgstr "Nieznana kolumna"
+
+#. Translators: this text is added as a description of the objects in the corresponding panel.
+#: addon\appModules\totalcmd.py:413
+msgid "Left pannel"
+msgstr "Lewy panel"
+
+#. Translators: this text is added as a description of the objects in the corresponding panel.
+#: addon\appModules\totalcmd.py:416
+msgid "Right pannel"
+msgstr "Prawy panel"
+
+#: addon\appModules\totalcmd.py:425
+#, python-brace-format
+msgid "{current} of {all}"
+msgstr "{current} z {all}"
+
+#: addon\appModules\totalcmd.py:449
+msgid "Reports information about the number of selected elements"
+msgstr "Odczytuje informacje o liczbie wybranych elementów"
+
+#: addon\appModules\totalcmd.py:453
+msgid ""
+"Reports the size of the file under the cursor. If multiple objects are "
+"selected, reports their total size."
+msgstr ""
+"Odczytuje rozmiar pliku pod kursorem. W przypadku wybrania wielu obiektów "
+"odczytuje ich całkowity rozmiar."
+
+#: addon\appModules\totalcmd.py:465
+msgid ""
+"Reports the current path to the folder. Pressing twice Copies it to the "
+"clipboard."
+msgstr ""
+"Odczytuje bieżącą ścieżkę do folderu. Dwukrotne naciśnięcie kopiuje ją do "
+"schowka."
+
+#: addon\appModules\totalcmd.py:472
+msgid "Copied to clipboard"
+msgstr "Skopiowane do schowka"
+
+#: addon\appModules\totalcmd.py:475
+msgid "Reports the modification time of the file under the cursor."
+msgstr "Odczytuje czas modyfikacji pliku pod kursorem."
+
+#: addon\appModules\totalcmd.py:488
+msgid ""
+"Reports the name of the current tab in the active panel. Pressing twice "
+"opens the menu for that tab."
+msgstr ""
+"Odczytuje nazwę bieżącej karty w aktywnym panelu. Dwukrotne naciśnięcie "
+"otwiera menu dla tej karty."
+
+#: addon\appModules\totalcmd.py:497
+msgid "No tabs for active panel"
+msgstr "Brak kart dla aktywnego panelu"
+
+#: addon\appModules\totalcmd.py:502
+msgid "No active tab"
+msgstr "Brak aktywnej karty"
+
+#: addon\appModules\totalcmd.py:515
+msgid "Report the active panel."
+msgstr "Odczytuje aktywny panel"
+
+#. Translators: This message is spoken when the user presses a keyboard shortcut to speak the active panel.
+#: addon\appModules\totalcmd.py:522
+msgid "Left panel active"
+msgstr "Lewy panel aktywny"
+
+#: addon\appModules\totalcmd.py:522
+msgid "Right panel active"
+msgstr "Prawy panel aktywny"
+
+#: addon\globalPlugins\extendedTotalCMD\__init__.py:22
+msgid "Update Total Commander add-on..."
+msgstr "Aktualizuj dodatek Total Commander..."
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:38
+msgid ""
+"An error occurred while checking for updates! Check your internet connection."
+msgstr ""
+"Wystąpił błąd podczas sprawdzania aktualizacji! Sprawdź swoje łącze "
+"internetowe."
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:43
+msgid ""
+"To install the new version of the add-on, you need NVDA 2018.3 or higher."
+msgstr ""
+"Aby zainstalować nową wersję dodatku, potrzebujesz NVDA w wersji 2018.3 lub "
+"nowszej."
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:46
+#, python-brace-format
+msgid ""
+"To install the new version of the add-on, you need NVDA {year}.{major} or "
+"higher."
+msgstr ""
+"Aby zainstalować nową wersję dodatku, potrzebujesz NVDA w wersji {year}."
+"{major} lub nowszej."
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:51
+#, python-brace-format
+msgid "New version {version} is available. Do you want to download it?"
+msgstr "Nowa wersja {version} jest dostępna. Czy chcesz ją pobrać?"
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:62
+msgid "No update available."
+msgstr "Brak dostępnej aktualizacji."
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:70
+msgid "Data load error"
+msgstr "Błąd ładowania danych"
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:70
+#: addon\globalPlugins\extendedTotalCMD\updater.py:79 addon\installTasks.py:42
+msgid "Error"
+msgstr "Błąd"
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:79 addon\installTasks.py:42
+#, python-brace-format
+msgid ""
+"This version of NVDA is incompatible. To install the add-on, NVDA version "
+"{year}.{major} or higher is required. Please update NVDA or download an "
+"older version of the add-on here: \n"
+"{link}"
+msgstr ""
+"Ta wersja NVDA jest niezgodna. Aby zainstalować dodatek, wymagana jest "
+"wersja NVDA {year}.{major} lub wyższa. Proszę zaktualizować NVDA lub pobrać "
+"starszą wersję dodatku tutaj: \n"
+"{link}"
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:92
+msgid ""
+"Changes were made to add-ons. You must restart NVDA for these changes to "
+"take effect. Would you like to restart now?"
+msgstr ""
+"Wprowadzono zmiany w dodatkach. Aby zmiany zaczęły obowiązywać, musisz "
+"ponownie uruchomić NVDA. Czy chcesz teraz ponownie uruchomić?"
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:92
+msgid "Restart NVDA"
+msgstr "Uruchom ponownie NVDA"
+
+#: addon\globalPlugins\extendedTotalCMD\updater.py:107
+#: addon\globalPlugins\extendedTotalCMD\updater.py:110
+#: addon\globalPlugins\extendedTotalCMD\updater.py:115
+msgid "Update Total Commander add-on"
+msgstr "Zaktualizuj dodatek Total Commander"
+
+#. Translators: The text of the dialog shown during add-on installation.
+#: addon\installTasks.py:46
+#, python-brace-format
+msgid ""
+" {name} - this free add-on for NVDA.\n"
+"You can make a donation to the author to help further development of this "
+"add-on and other free software.\n"
+"You want to make a donation now? For transaction you will be redirected to "
+"the website of the developer."
+msgstr ""
+" {name} - to darmowy dodatek do NVDA.\n"
+"Możesz przekazać autorowi darowiznę, aby pomóc w dalszym rozwoju tego "
+"dodatku i innego bezpłatnego oprogramowania.\n"
+"Chcesz teraz przekazać darowiznę? W przypadku transakcji zostaniesz "
+"przekierowany na stronę dewelopera."
+
+#: addon\installTasks.py:50
+#, python-brace-format
+msgid "Request donations for {name}"
+msgstr "Darowizna dla {name}"
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
+#: buildVars.py:23
+msgid "Total Commander"
+msgstr "Total Commander"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+#: buildVars.py:26
+msgid ""
+"This add-on improves the accessability of the Total Commander file manager, "
+"mostly versions 8.0 and higher."
+msgstr ""
+"Ten dodatek poprawia dostępność menedżera plików Total Commander, głównie w "
+"wersjach 8.0 i wyższych."
